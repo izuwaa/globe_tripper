@@ -1,0 +1,18 @@
+[
+  {
+    "id": "luxury_trigger",
+    "input": "Money is no object, I want a 5-star trip to Paris.",
+    "expected_state": {
+      "preferences": { "budget_mode": "luxury" },
+      "trip_details": { "destination": "Paris" }
+    }
+  },
+  {
+    "id": "family_trigger",
+    "input": "Me, my wife, and 2 kids going to Disney.",
+    "expected_state": {
+      "demographics": { "adults": 2, "children": 2 },
+      "trip_details": { "destination": "Disney" }
+    }
+  }
+]

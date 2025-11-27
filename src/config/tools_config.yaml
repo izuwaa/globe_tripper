@@ -1,0 +1,4 @@
+tools:
+  - name: "search_flights"
+    description: "Placeholder tool definition; wire to a real provider later."
+    enabled: false

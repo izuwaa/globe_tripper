@@ -1,0 +1,40 @@
+# dispatcher:
+#   provider: "openai"
+#   model: "gpt-4o-mini"
+#   temperature: 0.0
+#   max_tokens: 1000
+
+dispatcher:
+  provider: "gemini"
+  model: "gemini-2.5-flash"
+  temperature: 0.0
+  max_tokens: 1000
+
+
+visa:
+  provider: "gemini"
+  model: "gemini-2.5-flash-lite"
+  temperature: 0.0
+  max_tokens: 1000
+
+flight:
+  provider: "gemini"
+  model: "gemini-2.5-flash-lite"
+  temperature: 0.0
+  max_tokens: 1000
+
+search:
+  provider: "gemini"
+  model: "gemini-2.5-flash-lite"
+  temperature: 0.0
+  max_tokens: 1000
+
+
+
+bureaucracy:   # using gemini for visa processing - large text
+  provider: "gemini"
+  model: "gemini-1.5-flash"
+  temperature: 0.1
+
+intake_constraints:
+  max_turns: 10 # if we have not finshed planning by the 10th turn, we fail gracefully
