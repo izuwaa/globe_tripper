@@ -1,0 +1,484 @@
+openapi: 3.0.0
+info:
+  title: Google Flights Calendar API
+  description: |
+    The Google Flights Calendar API provides a comprehensive calendar view of flight prices across different dates, helping you find the most affordable travel dates for your trip.
+    
+    This API returns a calendar grid showing flight prices for various date combinations within a specified date range. For round-trip searches, it shows prices for different outbound and return date combinations. For one-way searches, it shows prices for different outbound dates only.
+
+    **Cross-linking**: The departure_id and arrival_id parameters accept airport codes (e.g., "JFK", "LAX") or city codes (e.g., "/m/02_286" for New York). These IDs can be discovered using the Google Flights Location Search API.
+  version: 1.0.0
+servers:
+  - url: https://www.searchapi.io/api/v1
+paths:
+  /search:
+    get:
+      summary: Google Flights Calendar Search
+      security:
+        - ApiKeyAuth: []
+        - ApiKeyQuery: []
+      parameters:
+        - name: engine
+          in: query
+          required: true
+          description: Set to "google_flights_calendar"
+          schema:
+            type: string
+            default: "google_flights_calendar"
+        - name: departure_id
+          in: query
+          required: true
+          description: Airport code or city ID for departure location
+          schema:
+            type: string
+        - name: arrival_id
+          in: query
+          required: true
+          description: Airport code or city ID for arrival location
+          schema:
+            type: string
+        - name: currency
+          in: query
+          required: false
+          description: Currency code for prices
+          schema:
+            type: string
+            enum: ["ALL", "DZD", "ARS", "AMD", "AWG", "AUD", "AZN", "BSD", "BHD", "BYN", "BMD", "BAM", "BRL", "GBP", "BGN", "CAD", "XPF", "CLP", "CNY", "COP", "CRC", "CUP", "CZK", "DKK", "DOP", "EGP", "EUR", "GEL", "HKD", "HUF", "ISK", "INR", "IDR", "IRR", "ILS", "JMD", "JPY", "JOD", "KZT", "KWD", "LBP", "MKD", "MYR", "MXN", "MDL", "MAD", "TWD", "NZD", "NOK", "OMR", "PKR", "PAB", "PEN", "PHP", "PLN", "QAR", "RON", "RUB", "SAR", "RSD", "SGD", "ZAR", "KRW", "SEK", "CHF", "THB", "TRY", "UAH", "AED", "USD", "VND"]
+            default: "USD"
+        - name: hl
+          in: query
+          required: false
+          description: Language code (ISO 639-1)
+          schema:
+            type: string
+            enum: ["af", "bs", "ca", "cs", "da", "de", "et", "en-gb", "en-us", "es", "es-419", "eu", "fil", "fr", "gl", "hr", "id", "is", "it", "sw", "lv", "lt", "hu", "ms", "nl", "no", "pl", "pt-br", "pt-pt", "ro", "sq", "sk", "sl", "sr-latn", "fi", "sv", "vi", "tr", "el", "bg", "mk", "mn", "ru", "sr", "uk", "ka", "iw", "ur", "ar", "fa", "am", "ne", "mr", "hi", "bn", "pa", "gu", "ta", "te", "kn", "ml", "si", "th", "lo", "km", "ko", "ja", "zh-cn", "zh-tw"]
+            default: "en"
+        - name: gl
+          in: query
+          required: false
+          description: Country code (ISO 3166-1 alpha-2)
+          schema:
+            type: string
+            enum: ["af", "al", "dz", "as", "ad", "ao", "ai", "aq", "ag", "ar", "am", "au", "at", "az", "bs", "bh", "bd", "by", "be", "bz", "bj", "bt", "bo", "ba", "bw", "br", "vg", "bn", "bg", "bf", "bi", "kh", "cm", "ca", "cv", "cf", "td", "cl", "cn", "cx", "co", "cg", "cd", "ck", "cr", "ci", "hr", "cu", "cy", "cz", "dk", "dj", "dm", "do", "tl", "ec", "eg", "sv", "ee", "et", "fk", "fj", "fi", "fr", "pf", "tf", "ga", "gm", "ge", "de", "gh", "gi", "gr", "gl", "gd", "gp", "gu", "gt", "gg", "gn", "gw", "gy", "ht", "hn", "hk", "hu", "is", "in", "id", "ir", "iq", "ie", "im", "il", "it", "jm", "jp", "je", "jo", "kz", "ke", "ki", "kr", "kw", "kg", "la", "lv", "lb", "ls", "lr", "ly", "li", "lt", "lu", "mo", "mk", "mg", "mw", "my", "mv", "ml", "mt", "mh", "mq", "mr", "mu", "yt", "mx", "fm", "md", "mc", "mn", "me", "ms", "ma", "mz", "mm", "na", "nr", "np", "nl", "nc", "nz", "ni", "ne", "ng", "nu", "no", "om", "pk", "pw", "ps", "pa", "pg", "py", "pe", "ph", "pn", "pl", "pt", "pr", "qa", "re", "ro", "ru", "rw", "sh", "kn", "pm", "vc", "ws", "sm", "st", "sa", "sn", "rs", "sc", "sl", "sg", "sk", "si", "sb", "so", "za", "gs", "es", "lk", "sd", "sr", "sz", "se", "ch", "sy", "tw", "tj", "tz", "th", "tg", "tk", "to", "tt", "tn", "tr", "tm", "tc", "tv", "ug", "ua", "ae", "gb", "us", "um", "uy", "uz", "vu", "va", "ve", "vn", "wf", "ye", "zm", "zw"]
+            default: "us"
+        - name: outbound_date
+          in: query
+          required: true
+          description: Outbound flight date in YYYY-MM-DD format
+          schema:
+            type: string
+            pattern: '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+        - name: return_date
+          in: query
+          required: false
+          description: Return flight date in YYYY-MM-DD format (required for round-trip flights)
+          schema:
+            type: string
+            pattern: '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+        - name: flight_type
+          in: query
+          required: false
+          description: Type of flight search
+          schema:
+            type: string
+            enum: ["round_trip", "one_way", "multi_city"]
+            default: "round_trip"
+        - name: travel_class
+          in: query
+          required: false
+          description: Travel class preference
+          schema:
+            type: string
+            enum: ["economy", "premium_economy", "business", "first_class"]
+            default: "economy"
+        - name: stops
+          in: query
+          required: false
+          description: Maximum number of stops allowed
+          schema:
+            type: string
+            enum: ["any", "nonstop", "one_stop_or_fewer", "two_stops_or_fewer"]
+            default: "any"
+        - name: adults
+          in: query
+          required: false
+          description: Number of adult passengers (1-9)
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 9
+            default: 1
+        - name: children
+          in: query
+          required: false
+          description: Number of child passengers (0-9)
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 9
+            default: 0
+        - name: infants_in_seat
+          in: query
+          required: false
+          description: Number of infants with their own seat (0-9)
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 9
+            default: 0
+        - name: infants_on_lap
+          in: query
+          required: false
+          description: Number of lap infants (0-9)
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 9
+            default: 0
+        - name: max_price
+          in: query
+          required: false
+          description: Maximum price filter
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 2147483647
+        - name: carry_on_bags
+          in: query
+          required: false
+          description: Number of carry-on bags
+          schema:
+            type: integer
+            minimum: 0
+        - name: checked_bags
+          in: query
+          required: false
+          description: Number of checked bags
+          schema:
+            type: integer
+            minimum: 0
+        - name: included_airlines
+          in: query
+          required: false
+          description: Comma-separated list of airline codes to include
+          schema:
+            type: string
+        - name: excluded_airlines
+          in: query
+          required: false
+          description: Comma-separated list of airline codes to exclude
+          schema:
+            type: string
+        - name: outbound_times
+          in: query
+          required: false
+          description: Comma-separated list of departure/arrival time preferences (0-23)
+          schema:
+            type: string
+        - name: return_times
+          in: query
+          required: false
+          description: Comma-separated list of return flight departure/arrival time preferences (0-23)
+          schema:
+            type: string
+        - name: emissions
+          in: query
+          required: false
+          description: Filter for lower emissions flights
+          schema:
+            type: string
+            enum: ["1"]
+        - name: included_connecting_airports
+          in: query
+          required: false
+          description: Comma-separated list of airport codes to include as connections
+          schema:
+            type: string
+        - name: excluded_connecting_airports
+          in: query
+          required: false
+          description: Comma-separated list of airport codes to exclude as connections
+          schema:
+            type: string
+        - name: layover_duration_min
+          in: query
+          required: false
+          description: Minimum layover duration in minutes
+          schema:
+            type: integer
+            minimum: 0
+        - name: layover_duration_max
+          in: query
+          required: false
+          description: Maximum layover duration in minutes
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 2147483647
+        - name: max_flight_duration
+          in: query
+          required: false
+          description: Maximum flight duration in minutes
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 2147483647
+        - name: separate_tickets
+          in: query
+          required: false
+          description: Control display of separate ticket options
+          schema:
+            type: string
+            enum: ["0", "1"]
+        - name: outbound_date_start
+          in: query
+          required: false
+          description: Start date for outbound date range in YYYY-MM-DD format
+          schema:
+            type: string
+            pattern: '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+        - name: outbound_date_end
+          in: query
+          required: false
+          description: End date for outbound date range in YYYY-MM-DD format
+          schema:
+            type: string
+            pattern: '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+        - name: return_date_start
+          in: query
+          required: false
+          description: Start date for return date range in YYYY-MM-DD format
+          schema:
+            type: string
+            pattern: '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+        - name: return_date_end
+          in: query
+          required: false
+          description: End date for return date range in YYYY-MM-DD format
+          schema:
+            type: string
+            pattern: '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Validation Error. There is an issue with query parameters, such as missing required parameters or invalid values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Authentication Error. The API key is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate Limit Exceeded. The number of allowed requests has been exceeded. Consider upgrading your plan or waiting for the limit to reset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error. Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Timeout. We could not retrieve results in 90 seconds.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Use Bearer authentication. Format: "Bearer YOUR_API_KEY"'
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Pass API key as query parameter
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        search_metadata:
+          $ref: '#/components/schemas/SearchMetadata'
+        search_parameters:
+          $ref: '#/components/schemas/SearchParameters'
+        calendar:
+          type: array
+          description: Array of calendar entries with flight prices
+          items:
+            $ref: '#/components/schemas/CalendarEntry'
+        error:
+          type: string
+          description: Error message if no results found
+    SearchMetadata:
+      type: object
+      required: [id, status, created_at]
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the search request
+        status:
+          type: string
+          description: Status of the search request
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the search was created
+        request_time_taken:
+          type: number
+          description: Time taken to make the request in seconds
+        parsing_time_taken:
+          type: number
+          description: Time taken to parse the results in seconds
+        total_time_taken:
+          type: number
+          description: Total time taken for the search in seconds
+        request_url:
+          type: string
+          description: Google Flights URL for this search
+        html_url:
+          type: string
+          description: URL to view HTML results
+        json_url:
+          type: string
+          description: URL to view JSON results
+    SearchParameters:
+      type: object
+      properties:
+        engine:
+          type: string
+          description: Search engine used
+        departure_id:
+          type: string
+          description: Departure location ID
+        arrival_id:
+          type: string
+          description: Arrival location ID
+        currency:
+          type: string
+          description: Currency code
+        hl:
+          type: string
+          description: Language code
+        gl:
+          type: string
+          description: Country code
+        outbound_date:
+          type: string
+          description: Outbound flight date
+        return_date:
+          type: string
+          description: Return flight date
+        flight_type:
+          type: string
+          description: Type of flight
+        travel_class:
+          type: string
+          description: Travel class
+        stops:
+          type: string
+          description: Stop preferences
+        adults:
+          type: integer
+          description: Number of adults
+        children:
+          type: integer
+          description: Number of children
+        infants_in_seat:
+          type: integer
+          description: Number of infants with seats
+        infants_on_lap:
+          type: integer
+          description: Number of lap infants
+        max_price:
+          type: integer
+          description: Maximum price
+        carry_on_bags:
+          type: integer
+          description: Number of carry-on bags
+        checked_bags:
+          type: integer
+          description: Number of checked bags
+        included_airlines:
+          type: string
+          description: Included airlines
+        excluded_airlines:
+          type: string
+          description: Excluded airlines
+        outbound_times:
+          type: string
+          description: Outbound time preferences
+        return_times:
+          type: string
+          description: Return time preferences
+        emissions:
+          type: string
+          description: Emissions filter
+        included_connecting_airports:
+          type: string
+          description: Included connecting airports
+        excluded_connecting_airports:
+          type: string
+          description: Excluded connecting airports
+        layover_duration_min:
+          type: integer
+          description: Minimum layover duration
+        layover_duration_max:
+          type: integer
+          description: Maximum layover duration
+        max_flight_duration:
+          type: integer
+          description: Maximum flight duration
+        separate_tickets:
+          type: string
+          description: Separate tickets preference
+        outbound_date_start:
+          type: string
+          description: Outbound date range start
+        outbound_date_end:
+          type: string
+          description: Outbound date range end
+        return_date_start:
+          type: string
+          description: Return date range start
+        return_date_end:
+          type: string
+          description: Return date range end
+    CalendarEntry:
+      type: object
+      properties:
+        departure:
+          type: string
+          description: Departure date in YYYY-MM-DD format
+        return:
+          type: string
+          description: Return date in YYYY-MM-DD format (only for round-trip flights)
+        price:
+          type: integer
+          description: Flight price in the selected currency
+        has_no_flights:
+          type: boolean
+          description: Indicates if there are no flights available for this date combination
+        is_lowest_price:
+          type: boolean
+          description: Indicates if this is the lowest price in the calendar
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong

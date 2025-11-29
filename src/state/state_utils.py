@@ -132,14 +132,22 @@ def is_intake_complete(state: PlannerState) -> bool:
     """
     td, demo, pref = state.trip_details, state.demographics, state.preferences
 
+    # Origin can be provided either at the trip level or per traveler,
+    # using either city names or airport codes.
+    has_trip_origin = bool(td.origin) or bool(td.origin_airport_code)
+    has_per_traveler_origin = bool(demo.travelers) and all(
+        (t.origin or t.origin_airport_code) for t in demo.travelers
+    )
+    has_origin_info = has_trip_origin or has_per_traveler_origin
+
     # Basic trip + budget info must be present.
     basic_ok = all(
         [
             td.destination,
-            td.origin,
             td.start_date,
             td.end_date,
             pref.budget_mode is not None,
+            has_origin_info,
         ]
     )
 

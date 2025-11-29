@@ -1,7 +1,10 @@
 from typing import Optional, List, Dict, Any, Tuple
 import logging
+import os
 import re
 from datetime import date, timedelta
+
+import requests
 from google.adk.tools.tool_context import ToolContext
 from src.state.planner_state import Traveler
 from src.state.state_utils import (
@@ -19,7 +22,13 @@ from src.state.visa_state import (
     VisaSearchTask,
     VisaSearchResult,
 )
-from src.state.flight_state import FlightState, FlightSearchTask, FlightSearchResult
+from src.state.flight_state import (
+    FlightState,
+    FlightSearchTask,
+    FlightSearchResult,
+    FlightOption,
+    TravelerFlightChoice,
+)
 
 
 logger = logging.getLogger(__name__)
@@ -30,6 +39,8 @@ def update_trip_plan(
     # TripDetails
     destination: Optional[str] = None,
     origin: Optional[str] = None,
+    origin_airport_code: Optional[str] = None,
+    destination_airport_code: Optional[str] = None,
     start_date: Optional[str] = None,
     end_date: Optional[str] = None,
     flexible_dates: Optional[bool] = None,
@@ -107,6 +118,10 @@ def update_trip_plan(
         state.trip_details.destination = destination
     if origin is not None:
         state.trip_details.origin = origin
+    if origin_airport_code is not None:
+        state.trip_details.origin_airport_code = origin_airport_code
+    if destination_airport_code is not None:
+        state.trip_details.destination_airport_code = destination_airport_code
     if start_date is not None:
         state.trip_details.start_date = start_date
     if end_date is not None:
@@ -144,6 +159,8 @@ def update_trip_plan(
                 age=incoming.age if incoming.age is not None else base.age,
                 nationality=incoming.nationality or base.nationality,
                 origin=incoming.origin or base.origin,
+                origin_airport_code=incoming.origin_airport_code or base.origin_airport_code,
+                luggage_count=incoming.luggage_count if incoming.luggage_count is not None else base.luggage_count,
                 interests=incoming.interests or base.interests,
                 mobility_needs=incoming.mobility_needs or base.mobility_needs,
                 dietary_needs=incoming.dietary_needs or base.dietary_needs,
@@ -176,6 +193,17 @@ def update_trip_plan(
 
     if normalized_travelers:
         state.demographics.travelers = normalized_travelers
+        # If aggregate nationality is still unset but per-traveler nationalities
+        # are known, infer a compact list of unique nationalities so downstream
+        # logic and agents have both views available without re-asking.
+        if state.demographics.nationality in (None, []):
+            nat_values = {
+                t.nationality
+                for t in normalized_travelers
+                if t.nationality
+            }
+            if nat_values:
+                state.demographics.nationality = sorted(nat_values)
     # ---- Preferences ----
     if budget_mode is not None:
         state.preferences.budget_mode = budget_mode
@@ -234,10 +262,6 @@ def update_trip_plan(
     if daily_rhythm is not None:
         state.preferences.daily_rhythm = daily_rhythm
 
-    # ---- Status / lifecycle ----
-    if state.status == "intake" and is_intake_complete(state):
-        state.status = "planning"
-
     # Write back into state and session
     save_planner_state(tool_context, state)
 
@@ -278,7 +302,20 @@ def assess_visa_requirements(tool_context: ToolContext) -> dict[str, Any]:
 
     requirements: List[VisaRequirement] = []
 
-    destination = planner_state.trip_details.destination
+    # For flight searches, prefer a concrete destination airport code when
+    # available (e.g. "LHR"); fall back to the broader destination string
+    # otherwise (e.g. "London", "UK").
+    # For flight searches we require a concrete arrival airport code so that
+    # downstream tools can call external APIs reliably. If it is missing, we
+    # skip task derivation and let higher-level agents ask the user to specify it.
+    destination_airport = planner_state.trip_details.destination_airport_code
+    if not destination_airport:
+        logger.info(
+            "[Tool] derive_flight_search_tasks skipped – missing destination_airport_code",
+        )
+        return {"status": "skipped", "reason": "missing_destination_airport_code"}
+
+    destination = destination_airport
     travelers = planner_state.demographics.travelers or []
 
     for idx, traveler in enumerate(travelers):
@@ -380,10 +417,24 @@ def derive_flight_search_tasks(tool_context: ToolContext) -> Dict[str, Any]:
     visa_state = get_visa_state(tool_context)
     flight_state = get_flight_state(tool_context)
 
-    destination = planner_state.trip_details.destination
-    origin_default = planner_state.trip_details.origin
+    # For flight searches we *require* a concrete destination airport code so
+    # downstream tools can call external APIs reliably. If it is missing, we
+    # skip task derivation and let higher-level agents resolve it first.
+    destination_airport = planner_state.trip_details.destination_airport_code
+    if not destination_airport:
+        logger.info(
+            "[Tool] derive_flight_search_tasks skipped – missing destination_airport_code",
+        )
+        return {"status": "skipped", "reason": "missing_destination_airport_code"}
+
+    destination = destination_airport
+    origin_default = (
+        planner_state.trip_details.origin_airport_code
+        or planner_state.trip_details.origin
+    )
     start_date = planner_state.trip_details.start_date
     end_date = planner_state.trip_details.end_date
+    flexible_dates = planner_state.trip_details.flexible_dates
     budget_mode = planner_state.preferences.budget_mode
 
     travelers = planner_state.demographics.travelers or []
@@ -420,19 +471,38 @@ def derive_flight_search_tasks(tool_context: ToolContext) -> Dict[str, Any]:
             "Departure date adjusted to respect visa processing timelines; "
             f"earliest safe departure estimated as {recommended_departure_date}."
         )
-        # Preserve trip length if we have a return date.
         if original_return_date:
             try:
                 ret_dt = date.fromisoformat(original_return_date)
-                delta = ret_dt - dep_dt
-                recommended_return_date = (safe_dep_dt + delta).isoformat()
             except Exception:
-                recommended_return_date = original_return_date
+                ret_dt = None
+
+            if ret_dt:
+                # If the visa-safe departure would push the trip to start on or
+                # after the originally requested return date, extend the return
+                # to preserve at least the original trip length (or a minimum
+                # of 3 days if the original length was invalid/zero).
+                if safe_dep_dt >= ret_dt:
+                    delta = ret_dt - dep_dt if dep_dt else None
+                    if not delta or delta.days <= 0:
+                        delta = timedelta(days=3)
+                    recommended_return_date = (safe_dep_dt + delta).isoformat()
+                elif flexible_dates:
+                    # Standard case: preserve trip length when dates are flexible.
+                    try:
+                        delta = ret_dt - dep_dt
+                        recommended_return_date = (safe_dep_dt + delta).isoformat()
+                    except Exception:
+                        recommended_return_date = original_return_date
+                else:
+                    # Dates not flexible and safe departure is still before the
+                    # original return; keep the user's requested end date.
+                    recommended_return_date = original_return_date
 
     # Group travelers by (origin_city, destination).
     groups: Dict[Tuple[Optional[str], str], List[int]] = {}
     for idx, traveler in enumerate(travelers):
-        origin_city = traveler.origin or origin_default
+        origin_city = traveler.origin_airport_code or traveler.origin or origin_default
         key = (origin_city, destination)
         groups.setdefault(key, []).append(idx)
 
@@ -768,11 +838,14 @@ def record_flight_search_result(
     tool_context: ToolContext,
     task_id: str,
     summary: str,
+    options: Optional[List[Dict[str, Any]]] = None,
     best_price_hint: Optional[str] = None,
     best_time_hint: Optional[str] = None,
     cheap_but_long_hint: Optional[str] = None,
     recommended_option_label: Optional[str] = None,
     notes: Optional[str] = None,
+    chosen_option_type: Optional[str] = None,
+    selection_reason: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
     Persist a normalized FlightSearchResult into FlightState for a given task_id.
@@ -793,15 +866,28 @@ def record_flight_search_result(
 
     query = matching_task.prompt
 
+    option_models: List[FlightOption] = []
+    for opt in options or []:
+        try:
+            option_models.append(FlightOption(**opt))
+        except Exception as exc:
+            logger.warning(
+                "[Tool] record_flight_search_result could not parse option",
+                extra={"task_id": task_id, "option": opt, "error": str(exc)},
+            )
+
     result = FlightSearchResult(
         task_id=task_id,
         query=query,
+        options=option_models,
         summary=summary,
         best_price_hint=best_price_hint,
         best_time_hint=best_time_hint,
         cheap_but_long_hint=cheap_but_long_hint,
         recommended_option_label=recommended_option_label,
         notes=notes,
+        chosen_option_type=chosen_option_type,
+        selection_reason=selection_reason,
     )
 
     flight_state.search_results.append(result)
@@ -832,6 +918,7 @@ def apply_flight_search_results(tool_context: ToolContext) -> Dict[str, Any]:
     a single summary field.
     """
     flight_state = get_flight_state(tool_context)
+    planner_state = get_planner_state(tool_context)
 
     if not flight_state.search_results:
         logger.info("[Tool] apply_flight_search_results skipped – no search_results present")
@@ -855,6 +942,57 @@ def apply_flight_search_results(tool_context: ToolContext) -> Dict[str, Any]:
     if lines:
         flight_state.overall_summary = "\n".join(lines)
 
+    # Build per-traveler flight choices so later agents can reason
+    # about itineraries without re-implementing the join logic.
+    traveler_flights: List[TravelerFlightChoice] = []
+
+    travelers = planner_state.demographics.travelers or []
+    results_by_task: Dict[str, FlightSearchResult] = {
+        r.task_id: r for r in flight_state.search_results or []
+    }
+
+    for traveler_index in range(len(travelers)):
+        for task in flight_state.search_tasks or []:
+            if traveler_index not in (task.traveler_indexes or []):
+                continue
+
+            result = results_by_task.get(task.task_id)
+            if result is None:
+                continue
+
+            chosen_option = None
+            other_options: List[FlightOption] = []
+
+            chosen_type = result.chosen_option_type
+            for opt in result.options or []:
+                if chosen_type and opt.option_type == chosen_type and chosen_option is None:
+                    chosen_option = opt
+                else:
+                    other_options.append(opt)
+
+            if chosen_option is None and result.options:
+                chosen_option = result.options[0]
+                other_options = list(result.options[1:])
+
+            traveler_flights.append(
+                TravelerFlightChoice(
+                    traveler_index=traveler_index,
+                    task_id=task.task_id,
+                    summary=result.summary,
+                    best_price_hint=result.best_price_hint,
+                    best_time_hint=result.best_time_hint,
+                    cheap_but_long_hint=result.cheap_but_long_hint,
+                    recommended_option_label=result.recommended_option_label,
+                    notes=result.notes,
+                    chosen_option_type=result.chosen_option_type,
+                    selection_reason=result.selection_reason,
+                    chosen_option=chosen_option,
+                    other_options=other_options,
+                )
+            )
+
+    flight_state.traveler_flights = traveler_flights
+
     save_flight_state(tool_context, flight_state)
 
     logger.info(
@@ -862,6 +1000,7 @@ def apply_flight_search_results(tool_context: ToolContext) -> Dict[str, Any]:
         extra={
             "num_tasks": len(flight_state.search_tasks),
             "num_results": len(flight_state.search_results),
+            "num_traveler_flights": len(traveler_flights),
         },
     )
 
@@ -871,6 +1010,758 @@ def apply_flight_search_results(tool_context: ToolContext) -> Dict[str, Any]:
         "status": "success",
         "num_tasks": len(flight_state.search_tasks),
         "num_results": len(flight_state.search_results),
+        "num_traveler_flights": len(traveler_flights),
+    }
+
+
+def read_flights_for_traveler(
+    tool_context: ToolContext,
+    traveler_index: int,
+) -> Dict[str, Any]:
+    """
+    Helper to expose flight choices for a specific traveler.
+
+    It joins PlannerState and FlightState so agents can see, in one
+    object, which FlightSearchTasks cover this traveler and which
+    FlightOptions were chosen vs alternatives.
+
+    Returns a dictionary with:
+      - traveler_index: the requested index
+      - traveler: basic traveler fields from PlannerState (if available)
+      - tasks: list of entries, one per matching FlightSearchTask:
+          - task_id, origin, destination, traveler_indexes
+          - departure_date, return_date
+          - summary, best_price_hint, best_time_hint, cheap_but_long_hint
+          - recommended_option_label, notes, chosen_option_type, selection_reason
+          - chosen_option: the selected FlightOption (dict) if any
+          - other_options: remaining FlightOptions (list of dicts)
+    """
+    planner_state = get_planner_state(tool_context)
+    flight_state = get_flight_state(tool_context)
+
+    traveler: Dict[str, Any] | None = None
+    travelers = planner_state.demographics.travelers or []
+    if 0 <= traveler_index < len(travelers):
+        traveler = travelers[traveler_index].model_dump()
+
+    results_by_task: Dict[str, FlightSearchResult] = {
+        r.task_id: r for r in flight_state.search_results or []
+    }
+
+    tasks_payload: List[Dict[str, Any]] = []
+
+    for task in flight_state.search_tasks or []:
+        if traveler_index not in (task.traveler_indexes or []):
+            continue
+
+        result = results_by_task.get(task.task_id)
+        if result is None:
+            # No search result yet for this task; surface basic task info only.
+            tasks_payload.append(
+                {
+                    "task_id": task.task_id,
+                    "origin": task.origin_city,
+                    "destination": task.destination_city,
+                    "traveler_indexes": task.traveler_indexes,
+                    "departure_date": task.recommended_departure_date
+                    or task.original_departure_date,
+                    "return_date": task.recommended_return_date or task.original_return_date,
+                    "summary": None,
+                    "best_price_hint": None,
+                    "best_time_hint": None,
+                    "cheap_but_long_hint": None,
+                    "recommended_option_label": None,
+                    "notes": None,
+                    "chosen_option_type": None,
+                    "selection_reason": None,
+                    "chosen_option": None,
+                    "other_options": [],
+                }
+            )
+            continue
+
+        chosen_option = None
+        other_options: List[Dict[str, Any]] = []
+
+        chosen_type = result.chosen_option_type
+        for opt in result.options or []:
+            if chosen_type and opt.option_type == chosen_type and chosen_option is None:
+                chosen_option = opt.model_dump()
+            else:
+                other_options.append(opt.model_dump())
+
+        if chosen_option is None and result.options:
+            # Fallback: treat the first option as chosen if none matched.
+            first = result.options[0]
+            chosen_option = first.model_dump()
+            other_options = [opt.model_dump() for opt in result.options[1:]]
+
+        tasks_payload.append(
+            {
+                "task_id": task.task_id,
+                "origin": task.origin_city,
+                "destination": task.destination_city,
+                "traveler_indexes": task.traveler_indexes,
+                "departure_date": task.recommended_departure_date
+                or task.original_departure_date,
+                "return_date": task.recommended_return_date or task.original_return_date,
+                "summary": result.summary,
+                "best_price_hint": result.best_price_hint,
+                "best_time_hint": result.best_time_hint,
+                "cheap_but_long_hint": result.cheap_but_long_hint,
+                "recommended_option_label": result.recommended_option_label,
+                "notes": result.notes,
+                "chosen_option_type": result.chosen_option_type,
+                "selection_reason": result.selection_reason,
+                "chosen_option": chosen_option,
+                "other_options": other_options,
+            }
+        )
+
+    logger.info(
+        "[Tool] read_flights_for_traveler called",
+        extra={
+            "traveler_index": traveler_index,
+            "num_tasks": len(tasks_payload),
+        },
+    )
+
+    return {
+        "traveler_index": traveler_index,
+        "traveler": traveler,
+        "tasks": tasks_payload,
+    }
+
+
+def searchapi_google_flights(
+    tool_context: ToolContext,
+    departure_id: str,
+    arrival_id: str,
+    outbound_date: str,
+    return_date: Optional[str] = None,
+    adults: int = 1,
+    children: int = 0,
+    infants_in_seat: int = 0,
+    travel_class: Optional[str] = None,
+    currency: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Call SearchAPI.io's Google Flights engine for structured flight data.
+
+    This complements the generic google_search and skyscanner_search_flights tools
+    by returning flight-specific JSON suitable for downstream normalization.
+
+    Environment:
+      - SEARCHAPI_IO_API_KEY: API key for https://www.searchapi.io/ (required)
+
+    Args mirror the core query parameters from src/tools/google_flights.yaml.
+    """
+    api_key = os.getenv("SEARCHAPI_IO_API_KEY")
+    if not api_key:
+        logger.warning(
+            "[Tool] searchapi_google_flights missing SEARCHAPI_IO_API_KEY",
+            extra={},
+        )
+        return {
+            "status": "error",
+            "reason": "missing_configuration",
+            "detail": "SEARCHAPI_IO_API_KEY must be set.",
+        }
+
+    base_url = "https://www.searchapi.io/api/v1/search"
+
+    params: Dict[str, Any] = {
+        "engine": "google_flights",
+        "departure_id": departure_id,
+        "arrival_id": arrival_id,
+        "outbound_date": outbound_date,
+        "adults": adults,
+        "children": children,
+        "infants_in_seat": infants_in_seat,
+    }
+    if return_date:
+        params["return_date"] = return_date
+    if travel_class:
+        # Matches the "travel_class" query parameter in the OpenAPI spec.
+        params["travel_class"] = travel_class
+    if currency:
+        params["currency"] = currency
+
+    # Prefer query-param auth (ApiKeyQuery) to avoid header confusion.
+    params["api_key"] = api_key
+
+    try:
+        response = requests.get(base_url, params=params, timeout=15)
+    except Exception as exc:
+        logger.exception(
+            "[Tool] searchapi_google_flights request failed",
+            extra={"departure_id": departure_id, "arrival_id": arrival_id},
+        )
+        return {
+            "status": "error",
+            "reason": "request_failed",
+            "detail": str(exc),
+        }
+
+    if response.status_code != 200:
+        logger.warning(
+            "[Tool] searchapi_google_flights non-200 response",
+            extra={
+                "status_code": response.status_code,
+                "text_preview": response.text[:200],
+            },
+        )
+        return {
+            "status": "error",
+            "reason": "non_200",
+            "status_code": response.status_code,
+            "body_preview": response.text[:200],
+        }
+
+    try:
+        raw_json = response.json()
+    except ValueError:
+        logger.warning(
+            "[Tool] searchapi_google_flights invalid JSON response",
+            extra={"text_preview": response.text[:200]},
+        )
+        return {
+            "status": "error",
+            "reason": "invalid_json",
+            "body_preview": response.text[:200],
+        }
+
+    # Lightweight normalization for SearchAPI.io's Google Flights schema.
+    # Each entry in best_flights/other_flights has:
+    #   - price
+    #   - total_duration
+    #   - flights: list of segments (with airline, departure_airport, arrival_airport, etc.)
+    #   - layovers, carbon_emissions, etc.
+    options: List[Dict[str, Any]] = []
+    if isinstance(raw_json, dict):
+        best = raw_json.get("best_flights") or []
+        other = raw_json.get("other_flights") or []
+
+        def _build_option(flight: Dict[str, Any], source: str) -> Optional[Dict[str, Any]]:
+            if not isinstance(flight, dict):
+                return None
+
+            segments = flight.get("flights") or []
+            airlines = sorted(
+                {
+                    seg.get("airline")
+                    for seg in segments
+                    if isinstance(seg, dict) and seg.get("airline")
+                }
+            )
+
+            legs: List[Dict[str, Any]] = []
+            total_seg_duration = 0
+            for seg in segments:
+                if not isinstance(seg, dict):
+                    continue
+                dep = seg.get("departure_airport") or {}
+                arr = seg.get("arrival_airport") or {}
+                departure_time = None
+                if dep.get("date") and dep.get("time"):
+                    departure_time = f"{dep.get('date')}T{dep.get('time')}"
+                arrival_time = None
+                if arr.get("date") and arr.get("time"):
+                    arrival_time = f"{arr.get('date')}T{arr.get('time')}"
+
+                seg_duration = seg.get("duration")
+                if isinstance(seg_duration, int):
+                    total_seg_duration += seg_duration
+
+                legs.append(
+                    {
+                        "airline": seg.get("airline"),
+                        "flight_number": seg.get("flight_number"),
+                        "departure_airport": dep.get("id"),
+                        "departure_time": departure_time,
+                        "arrival_airport": arr.get("id"),
+                        "arrival_time": arrival_time,
+                        "duration_minutes": seg_duration,
+                    }
+                )
+
+            total_duration = flight.get("total_duration")
+            if not isinstance(total_duration, int):
+                total_duration = total_seg_duration or None
+
+            option: Dict[str, Any] = {
+                "price": flight.get("price"),
+                "airlines": airlines or None,
+                "duration_minutes": total_duration,
+                "stops": max(len(legs) - 1, 0) if legs else None,
+                "legs": legs,
+                "total_outbound_duration_minutes": total_duration,
+                "total_return_duration_minutes": None,
+                "total_trip_duration_minutes": total_duration,
+                "source": source,
+                "raw": flight,
+            }
+            return option
+
+        for flight in best:
+            opt = _build_option(flight, source="best")
+            if opt:
+                options.append(opt)
+        for flight in other:
+            opt = _build_option(flight, source="other")
+            if opt:
+                options.append(opt)
+
+    print(
+        "[Tool DEBUG] searchapi_google_flights options summary:",
+        {
+            "num_options": len(options),
+            "first_option_price": options[0].get("price") if options else None,
+            "first_option_airlines": options[0].get("airlines") if options else None,
+        },
+    )
+
+    logger.info(
+        "[Tool] searchapi_google_flights completed",
+        extra={
+            "departure_id": departure_id,
+            "arrival_id": arrival_id,
+            "outbound_date": outbound_date,
+            "return_date": return_date,
+            "num_options": len(options),
+        },
+    )
+
+    return {
+        "status": "success",
+        "departure_id": departure_id,
+        "arrival_id": arrival_id,
+        "outbound_date": outbound_date,
+        "return_date": return_date,
+        "adults": adults,
+        "children": children,
+        "infants_in_seat": infants_in_seat,
+        "travel_class": travel_class,
+        "currency": currency,
+        "num_options": len(options),
+        "options": options,
+        "raw": raw_json,
+    }
+
+
+def searchapi_google_flights_calendar(
+    tool_context: ToolContext,
+    departure_id: str,
+    arrival_id: str,
+    outbound_date_start: str,
+    outbound_date_end: str,
+    return_date_start: Optional[str] = None,
+    return_date_end: Optional[str] = None,
+    adults: int = 1,
+    children: int = 0,
+    infants_in_seat: int = 0,
+    travel_class: Optional[str] = None,
+    currency: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Call SearchAPI.io's Google Flights Calendar engine for a date range.
+
+    This returns a calendar grid of prices across outbound/return date combinations,
+    useful for finding cheaper or nearby dates when the exact requested dates
+    are flexible or sold out.
+
+    Environment:
+      - SEARCHAPI_IO_API_KEY: API key for https://www.searchapi.io/ (required)
+    """
+    api_key = os.getenv("SEARCHAPI_IO_API_KEY")
+    if not api_key:
+        logger.warning(
+            "[Tool] searchapi_google_flights_calendar missing SEARCHAPI_IO_API_KEY",
+            extra={},
+        )
+        return {
+            "status": "error",
+            "reason": "missing_configuration",
+            "detail": "SEARCHAPI_IO_API_KEY must be set.",
+        }
+
+    base_url = "https://www.searchapi.io/api/v1/search"
+
+    # Use the start dates both as the central outbound/return dates and as the
+    # beginning of the explored window, so we satisfy the required fields in
+    # the calendar API while still exposing a range.
+    params: Dict[str, Any] = {
+        "engine": "google_flights_calendar",
+        "departure_id": departure_id,
+        "arrival_id": arrival_id,
+        "outbound_date": outbound_date_start,
+        "outbound_date_start": outbound_date_start,
+        "outbound_date_end": outbound_date_end,
+        "adults": adults,
+        "children": children,
+        "infants_in_seat": infants_in_seat,
+    }
+    if return_date_start:
+        params["return_date"] = return_date_start
+        params["return_date_start"] = return_date_start
+    if return_date_end:
+        params["return_date_end"] = return_date_end
+    if travel_class:
+        params["travel_class"] = travel_class
+    if currency:
+        params["currency"] = currency
+
+    params["api_key"] = api_key
+
+    try:
+        response = requests.get(base_url, params=params, timeout=15)
+    except Exception as exc:
+        logger.exception(
+            "[Tool] searchapi_google_flights_calendar request failed",
+            extra={"departure_id": departure_id, "arrival_id": arrival_id},
+        )
+        return {
+            "status": "error",
+            "reason": "request_failed",
+            "detail": str(exc),
+        }
+
+    if response.status_code != 200:
+        logger.warning(
+            "[Tool] searchapi_google_flights_calendar non-200 response",
+            extra={
+                "status_code": response.status_code,
+                "text_preview": response.text[:200],
+            },
+        )
+        return {
+            "status": "error",
+            "reason": "non_200",
+            "status_code": response.status_code,
+            "body_preview": response.text[:200],
+        }
+
+    try:
+        raw_json = response.json()
+    except ValueError:
+        logger.warning(
+            "[Tool] searchapi_google_flights_calendar invalid JSON response",
+            extra={"text_preview": response.text[:200]},
+        )
+        return {
+            "status": "error",
+            "reason": "invalid_json",
+            "body_preview": response.text[:200],
+        }
+
+    # Normalize the calendar list into a simple array of entries the LLM can reason over.
+    calendar_entries: List[Dict[str, Any]] = []
+    if isinstance(raw_json, dict):
+        for entry in raw_json.get("calendar") or []:
+            if not isinstance(entry, dict):
+                continue
+            calendar_entries.append(
+                {
+                    "departure": entry.get("departure"),
+                    "return": entry.get("return"),
+                    "price": entry.get("price"),
+                    "has_no_flights": entry.get("has_no_flights"),
+                    "is_lowest_price": entry.get("is_lowest_price"),
+                }
+            )
+
+    logger.info(
+        "[Tool] searchapi_google_flights_calendar completed",
+        extra={
+            "departure_id": departure_id,
+            "arrival_id": arrival_id,
+            "outbound_date_start": outbound_date_start,
+            "outbound_date_end": outbound_date_end,
+            "return_date_start": return_date_start,
+            "return_date_end": return_date_end,
+            "num_entries": len(calendar_entries),
+        },
+    )
+
+    return {
+        "status": "success",
+        "departure_id": departure_id,
+        "arrival_id": arrival_id,
+        "outbound_date_start": outbound_date_start,
+        "outbound_date_end": outbound_date_end,
+        "return_date_start": return_date_start,
+        "return_date_end": return_date_end,
+        "adults": adults,
+        "children": children,
+        "infants_in_seat": infants_in_seat,
+        "travel_class": travel_class,
+        "currency": currency,
+        "num_entries": len(calendar_entries),
+        "calendar": calendar_entries,
+        "raw": raw_json,
+    }
+
+
+def resolve_airports(
+    tool_context: ToolContext,
+    location: str,
+) -> Dict[str, Any]:
+    """
+    Resolve a free-form location string (e.g. "Houston, Texas", "Lagos")
+    into likely airport candidates using SearchAPI.io's Google Flights engine.
+
+    This is intended for use by intake/dispatcher agents before flight planning,
+    so that FlightSearchTasks can be built with concrete airport codes.
+    """
+    api_key = os.getenv("SEARCHAPI_IO_API_KEY")
+    if not api_key:
+        logger.warning(
+            "[Tool] resolve_airports missing SEARCHAPI_IO_API_KEY",
+            extra={},
+        )
+        return {
+            "status": "error",
+            "reason": "missing_configuration",
+            "detail": "SEARCHAPI_IO_API_KEY must be set.",
+            "location": location,
+        }
+
+    base_url = "https://www.searchapi.io/api/v1/search"
+
+    # Use the google_flights engine with the free-form location as departure_id.
+    # We provide a dummy arrival_id and future date just to retrieve the airports list.
+    future = date.today().replace(year=date.today().year + 1)
+    params: Dict[str, Any] = {
+        "engine": "google_flights",
+        "departure_id": location,
+        "arrival_id": "LHR",
+        "outbound_date": future.isoformat(),
+        "api_key": api_key,
+    }
+
+    try:
+        response = requests.get(base_url, params=params, timeout=15)
+    except Exception as exc:
+        logger.exception(
+            "[Tool] resolve_airports request failed",
+            extra={"location": location},
+        )
+        return {
+            "status": "error",
+            "reason": "request_failed",
+            "detail": str(exc),
+            "location": location,
+        }
+
+    if response.status_code != 200:
+        logger.warning(
+            "[Tool] resolve_airports non-200 response",
+            extra={
+                "status_code": response.status_code,
+                "text_preview": response.text[:200],
+            },
+        )
+        return {
+            "status": "error",
+            "reason": "non_200",
+            "status_code": response.status_code,
+            "body_preview": response.text[:200],
+            "location": location,
+        }
+
+    try:
+        raw_json = response.json()
+    except ValueError:
+        logger.warning(
+            "[Tool] resolve_airports invalid JSON response",
+            extra={"text_preview": response.text[:200]},
+        )
+        return {
+            "status": "error",
+            "reason": "invalid_json",
+            "body_preview": response.text[:200],
+            "location": location,
+        }
+
+    candidates: List[Dict[str, Any]] = []
+    airports = []
+    if isinstance(raw_json, dict):
+        airports = raw_json.get("airports") or []
+
+    for ap in airports:
+        if not isinstance(ap, dict):
+            continue
+        candidates.append(
+            {
+                "code": ap.get("code"),
+                "name": ap.get("name"),
+                "city": ap.get("city"),
+                "country": ap.get("country"),
+            }
+        )
+
+    logger.info(
+        "[Tool] resolve_airports completed",
+        extra={
+            "location": location,
+            "num_candidates": len(candidates),
+        },
+    )
+
+    return {
+        "status": "success",
+        "location": location,
+        "num_candidates": len(candidates),
+        "candidates": candidates,
+    }
+
+
+def skyscanner_search_flights(
+    tool_context: ToolContext,
+    origin: str,
+    destination: str,
+    departure_date: str,
+    return_date: Optional[str] = None,
+    adults: int = 1,
+    cabin: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Call the Skyscanner API to search for flights.
+
+    This is a thin wrapper around the HTTP API and is intended to be used
+    by a flight-focused agent. It returns the raw JSON response plus a
+    lightweight normalized view of options.
+
+    Environment / configuration:
+      - SKYSCANNER_API_KEY: API key or bearer token for Skyscanner.
+      - SKYSCANNER_FLIGHTS_URL: Base URL for the flights search endpoint.
+
+    Args:
+        tool_context: ToolContext provided by ADK (unused except for logging).
+        origin: Origin city or airport code (e.g. "LOS" or "Lagos").
+        destination: Destination city or airport code (e.g. "LHR" or "London").
+        departure_date: Departure date in ISO format (YYYY-MM-DD).
+        return_date: Optional return date in ISO format.
+        adults: Number of adult passengers.
+        cabin: Preferred cabin (e.g. "economy", "premium", "business", "first").
+
+    Returns:
+        dict: A dict containing status, request parameters, and either parsed
+              results or an error message.
+    """
+    api_key = os.getenv("SKYSCANNER_API_KEY")
+    base_url = os.getenv("SKYSCANNER_FLIGHTS_URL")
+
+    if not api_key or not base_url:
+        logger.warning(
+            "[Tool] skyscanner_search_flights missing configuration",
+            extra={"has_api_key": bool(api_key), "has_base_url": bool(base_url)},
+        )
+        return {
+            "status": "error",
+            "reason": "missing_configuration",
+            "detail": "SKYSCANNER_API_KEY and SKYSCANNER_FLIGHTS_URL must be set.",
+        }
+
+    params: Dict[str, Any] = {
+        "origin": origin,
+        "destination": destination,
+        "departure_date": departure_date,
+        "adults": adults,
+    }
+    if return_date:
+        params["return_date"] = return_date
+    if cabin:
+        params["cabin_class"] = cabin
+
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "x-api-key": api_key,
+    }
+
+    try:
+        response = requests.get(base_url, params=params, headers=headers, timeout=10)
+    except Exception as exc:
+        logger.exception(
+            "[Tool] skyscanner_search_flights request failed",
+            extra={"origin": origin, "destination": destination},
+        )
+        return {
+            "status": "error",
+            "reason": "request_failed",
+            "detail": str(exc),
+        }
+
+    if response.status_code != 200:
+        logger.warning(
+            "[Tool] skyscanner_search_flights non-200 response",
+            extra={
+                "status_code": response.status_code,
+                "text_preview": response.text[:200],
+            },
+        )
+        return {
+            "status": "error",
+            "reason": "non_200",
+            "status_code": response.status_code,
+            "body_preview": response.text[:200],
+        }
+
+    try:
+        raw_json = response.json()
+    except ValueError:
+        logger.warning(
+            "[Tool] skyscanner_search_flights invalid JSON response",
+            extra={"text_preview": response.text[:200]},
+        )
+        return {
+            "status": "error",
+            "reason": "invalid_json",
+            "body_preview": response.text[:200],
+        }
+
+    # Lightweight normalization: this will need to be adapted to the actual Skyscanner
+    # response schema, but we expose a generic "options" list so the LLM can reason over it.
+    options: List[Dict[str, Any]] = []
+    if isinstance(raw_json, dict):
+        # Example heuristic: look for a top-level "itineraries" or "data" list.
+        itineraries = raw_json.get("itineraries") or raw_json.get("data") or []
+        if isinstance(itineraries, list):
+            for item in itineraries:
+                if not isinstance(item, dict):
+                    continue
+                option: Dict[str, Any] = {
+                    "price": item.get("price") or item.get("pricing_options"),
+                    "duration": item.get("duration"),
+                    "stops": item.get("stops"),
+                    "carrier": item.get("carrier") or item.get("airline"),
+                    "raw": item,
+                }
+                options.append(option)
+
+    logger.info(
+        "[Tool] skyscanner_search_flights completed",
+        extra={
+            "origin": origin,
+            "destination": destination,
+            "departure_date": departure_date,
+            "return_date": return_date,
+            "num_options": len(options),
+        },
+    )
+
+    return {
+        "status": "success",
+        "origin": origin,
+        "destination": destination,
+        "departure_date": departure_date,
+        "return_date": return_date,
+        "adults": adults,
+        "cabin": cabin,
+        "num_options": len(options),
+        "options": options,
+        "raw": raw_json,
     }
 
 

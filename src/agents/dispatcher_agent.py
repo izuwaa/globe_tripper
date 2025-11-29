@@ -1,7 +1,8 @@
 import os
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm
-from src.tools.tools import update_trip_plan
+from src.tools.tools import update_trip_plan, resolve_airports
+from src.tools.planning_tools import mark_ready_for_planning
 import yaml
 from google.genai import types as genai_types
 
@@ -24,7 +25,7 @@ dispatcher_agent = Agent(
     name="dispatcher_agent",
     model=LiteLlm(model=f"{_agent_config.get('provider', '')}/{_agent_config.get('model', '')}"),
     instruction=_instructions,
-    tools=[update_trip_plan],
+    tools=[update_trip_plan, resolve_airports, mark_ready_for_planning],
     generate_content_config=genai_types.GenerateContentConfig(
     temperature=float(_agent_config.get("temperature", 0.2)),
     max_output_tokens=int(_agent_config.get("max_tokens", 1000)),

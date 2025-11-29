@@ -1,0 +1,176 @@
+openapi: 3.0.0
+info:
+  title: Google Hotels Autocomplete API
+  description: |
+    Google Hotels Autocomplete API provides autocomplete suggestions for hotel searches. It returns a list of suggestions including hotels, airports, and general queries based on the search input.
+  version: 1.0.0
+servers:
+  - url: https://www.searchapi.io/api/v1
+paths:
+  /search:
+    get:
+      summary: Google Hotels Autocomplete Search
+      security:
+        - ApiKeyAuth: []
+        - ApiKeyQuery: []
+      parameters:
+        - name: engine
+          in: query
+          required: true
+          description: Search engine to use
+          schema:
+            type: string
+            enum: ["google_hotels_autocomplete"]
+        - name: q
+          in: query
+          required: true
+          description: Search query for hotel autocomplete suggestions
+          schema:
+            type: string
+        - name: hl
+          in: query
+          required: false
+          description: Language and locale for the search results (e.g., "en-US", "es-419")
+          schema:
+            type: string
+            default: "en-US"
+            enum: ["af", "bs", "ca", "cs", "da", "de", "et", "en-GB", "en-US", "es", "es-419", "eu", "fil", "fr", "gl", "hr", "id", "is", "it", "sw", "lv", "lt", "hu", "ms", "nl", "no", "pl", "pt-BR", "pt-PT", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "el", "bg", "mk", "mn", "ru", "sr", "uk", "ka", "iw", "ur", "ar", "fa", "am", "ne", "mr", "hi", "bn", "pa", "gu", "ta", "te", "kn", "ml", "si", "th", "lo", "km", "ko", "ja", "zh-CN", "zh-TW"]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Validation Error. There is an issue with query parameters, such as missing required parameters or invalid values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Authentication Error. The API key is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate Limit Exceeded. The number of allowed requests has been exceeded. Consider upgrading your plan or waiting for the limit to reset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server Error. Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Timeout. We could not retrieve results in 90 seconds.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Use Bearer authentication. Format: "Bearer YOUR_API_KEY"'
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Pass API key as query parameter
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        search_metadata:
+          $ref: '#/components/schemas/SearchMetadata'
+        search_parameters:
+          $ref: '#/components/schemas/SearchParameters'
+        suggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Suggestion'
+          description: Array of autocomplete suggestions
+        error:
+          type: string
+          description: Error message if no results were found
+    SearchMetadata:
+      type: object
+      required: [id, status, created_at]
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the search request
+        status:
+          type: string
+          description: Status of the search request
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the search was created
+        request_time_taken:
+          type: number
+          description: Time taken to make the request in seconds
+        parsing_time_taken:
+          type: number
+          description: Time taken to parse the results in seconds
+        total_time_taken:
+          type: number
+          description: Total time taken for the search in seconds
+        request_url:
+          type: string
+          description: Google Hotels URL for this search
+        html_url:
+          type: string
+          description: URL to view HTML results
+        json_url:
+          type: string
+          description: URL to view JSON results
+    SearchParameters:
+      type: object
+      properties:
+        engine:
+          type: string
+          description: Search engine used
+        q:
+          type: string
+          description: Search query
+        hl:
+          type: string
+          description: Language and locale
+    Suggestion:
+      type: object
+      required: [title]
+      properties:
+        type:
+          type: string
+          description: Type of suggestion - "hotel" for hotels, "airport" for airports, or "query" for general queries
+          enum: ["hotel", "airport", "query"]
+        kgmid:
+          type: string
+          description: Knowledge Graph Machine ID for the entity
+        ludocid:
+          type: string
+          description: Local Universal Document ID for the entity
+        title:
+          type: string
+          description: Title of the suggestion
+        subtitle:
+          type: string
+          description: Additional information about the suggestion (e.g., location)
+        thumbnail:
+          type: string
+          description: URL of the thumbnail image
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong

@@ -2,6 +2,7 @@ from typing import Any, Dict
 
 from src.state.state_utils import get_planner_state
 from src.tools.tools import update_trip_plan
+from src.tools.planning_tools import mark_ready_for_planning
 
 
 class DummyState(dict):
@@ -49,8 +50,14 @@ def test_update_trip_plan_sets_basic_trip_details_and_status():
     assert state.demographics.adults == 2
     assert state.demographics.children == 2
     assert state.preferences.budget_mode == "luxury"
-    # Intake should be complete with these fields populated.
-    assert state.status == "planning"
+    # Intake should be complete with these fields populated, but status
+    # remains "intake" until mark_ready_for_planning is called.
+    assert state.status == "intake"
+
+    # Explicitly transition to planning via the planning tool.
+    mark_ready_for_planning(ctx)
+    state_after_mark = get_planner_state(ctx)
+    assert state_after_mark.status == "planning"
 
 
 def test_update_trip_plan_merges_per_traveler_details_incrementally():
@@ -89,4 +96,3 @@ def test_update_trip_plan_merges_per_traveler_details_incrementally():
     assert adult.interests == ["cars"]
     assert child.age == 8
     assert child.interests == ["planes"]
-

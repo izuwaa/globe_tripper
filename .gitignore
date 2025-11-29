@@ -1,0 +1,39 @@
+/.env
+/.env.*
+*.env
+# Environment files
+.env
+.env.*
+*.env
+
+# Virtualenvs
+.venv/
+venv/
+
+# Python cache / build
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# Tests / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs & local outputs
+Output.logs/
+*.log
+
+# Local scratch (optional; remove if you want tracked)
+Scratch.txt

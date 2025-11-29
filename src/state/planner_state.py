@@ -6,6 +6,9 @@ from pydantic import BaseModel, Field
 class TripDetails(BaseModel):
     destination: Optional[str] = None
     origin: Optional[str] = None
+    # Preferred airport codes when known (e.g. "LOS", "IAH", "LHR").
+    origin_airport_code: Optional[str] = None
+    destination_airport_code: Optional[str] = None
     start_date: Optional[str] = None
     end_date: Optional[str] = None
     flexible_dates: Optional[bool] = False
@@ -17,6 +20,11 @@ class Traveler(BaseModel):
     nationality: Optional[str] = None
     # Optional per-traveler origin if not shared with the main trip origin.
     origin: Optional[str] = None
+    # Optional per-traveler origin airport code (e.g. "LOS", "IAH").
+    origin_airport_code: Optional[str] = None
+    # Optional per-traveler luggage count so downstream planning can reason
+    # about baggage distribution (e.g. who is checking most bags).
+    luggage_count: Optional[int] = None
     # Interests specific to this traveler (e.g. ["cars"], ["shopping"]).
     interests: Optional[List[str]] = None
     # Additional attributes like dietary restrictions, mobility needs, sensory needs.
@@ -38,7 +46,7 @@ class Demographics(BaseModel):
 
 
 class Preferences(BaseModel):
-    budget_mode: Optional[Literal["economy", "standard", "luxury"]] = "standard"
+    budget_mode: Optional[Literal["economy", "standard", "luxury", "strict"]] = "standard"
     total_budget: Optional[float] = None
     pace: Optional[Literal["relaxed", "moderate", "busy"]] = "moderate"
     interests: Optional[List[str]] = []
