@@ -2,6 +2,7 @@ from google.adk.tools.tool_context import ToolContext
 from src.state.planner_state import PlannerState
 from src.state.visa_state import VisaState
 from src.state.flight_state import FlightState
+from src.state.accommodation_state import AccommodationState
 
 
 def get_planner_state(tool_context: ToolContext) -> PlannerState:
@@ -116,6 +117,39 @@ def save_flight_state(tool_context: ToolContext, flight_state: FlightState) -> N
         return
 
     state_obj["flights"] = flight_state.model_dump()
+
+
+def get_accommodation_state(tool_context: ToolContext) -> AccommodationState:
+    """
+    Load AccommodationState from ADK's session state.
+
+    Accommodation planning output is stored under the "accommodation" key
+    to keep it separate from the core PlannerState.
+    """
+    state_obj = getattr(tool_context, "state", None)
+    if state_obj is None:
+        return AccommodationState()
+
+    raw = state_obj.get("accommodation") or {}
+    try:
+        return AccommodationState.model_validate(raw)
+    except Exception:
+        return AccommodationState()
+
+
+def save_accommodation_state(
+    tool_context: ToolContext,
+    accommodation_state: AccommodationState,
+) -> None:
+    """
+    Persist AccommodationState into ADK's per-session state under the
+    "accommodation" key.
+    """
+    state_obj = getattr(tool_context, "state", None)
+    if state_obj is None:
+        return
+
+    state_obj["accommodation"] = accommodation_state.model_dump()
 
 
 

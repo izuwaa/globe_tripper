@@ -1,4 +1,4 @@
-from typing import Optional, List, Dict, Any, Tuple
+from typing import Optional, List, Dict, Any, Tuple, Literal
 import logging
 import os
 import re
@@ -15,6 +15,8 @@ from src.state.state_utils import (
     save_visa_state,
     get_flight_state,
     save_flight_state,
+    get_accommodation_state,
+    save_accommodation_state,
 )
 from src.state.visa_state import (
     VisaState,
@@ -28,6 +30,13 @@ from src.state.flight_state import (
     FlightSearchResult,
     FlightOption,
     TravelerFlightChoice,
+)
+from src.state.accommodation_state import (
+    AccommodationState,
+    AccommodationSearchTask,
+    AccommodationSearchResult,
+    AccommodationOption,
+    TravelerAccommodationChoice,
 )
 
 
@@ -527,7 +536,11 @@ def derive_flight_search_tasks(tool_context: ToolContext) -> Dict[str, Any]:
             f"- Recommended return date: {recommended_return_date or 'UNKNOWN'}\n"
             f"- Cabin preference: {cabin_pref or 'unspecified'}\n"
             f"- Budget mode: {budget_mode or 'unspecified'}\n"
-            f"- Travelers covered (indexes): {indexes}\n\n"
+            f"- Travelers covered (indexes): {indexes}\n"
+            "- Grouping intent: travelers in this task form one traveling party from the same origin. "
+            "Prefer itineraries that keep them on the same flights where practical. If that is not possible "
+            "(for example due to availability or price constraints), choose well-coordinated alternatives "
+            "with similar arrival/departure times and briefly note this in your summary.\n\n"
             "Identify:\n"
             "- The cheapest reasonable option (avoid extremely long or multi-day itineraries).\n"
             "- The fastest reasonable option.\n"
@@ -590,6 +603,31 @@ def read_visa_search_state(tool_context: ToolContext) -> Dict[str, Any]:
         extra={
             "num_search_tasks": len(visa_state.search_tasks),
             "num_search_results": len(visa_state.search_results),
+        },
+    )
+
+    return {
+        "search_tasks": dump_state.get("search_tasks", []),
+        "search_results": dump_state.get("search_results", []),
+    }
+
+
+def read_accommodation_search_state(tool_context: ToolContext) -> Dict[str, Any]:
+    """
+    Lightweight reader for the current AccommodationState search-related fields.
+
+    Intended for use by search-focused agents so they can see which
+    AccommodationSearchTasks already exist and which AccommodationSearchResults
+    have been populated, without needing to know how state is stored.
+    """
+    accommodation_state = get_accommodation_state(tool_context)
+    dump_state = accommodation_state.model_dump()
+
+    logger.info(
+        "[Tool] read_accommodation_search_state called",
+        extra={
+            "num_search_tasks": len(accommodation_state.search_tasks),
+            "num_search_results": len(accommodation_state.search_results),
         },
     )
 
@@ -910,6 +948,181 @@ def record_flight_search_result(
     }
 
 
+def derive_accommodation_search_tasks(tool_context: ToolContext) -> Dict[str, Any]:
+    """
+    Build AccommodationSearchTask objects based on the current PlannerState
+    (and optionally refined by FlightState).
+
+    For now, we create a single task that covers all travelers for the main
+    destination, using:
+    - location from PlannerState.trip_details.destination
+    - check_in/check_out from PlannerState.trip_details start/end dates
+    - budget_mode and accommodation/location preferences from PlannerState.preferences
+
+    Later we can extend this to support multi-city segments and use
+    FlightState.traveler_flights to tighten the stay window.
+    """
+    planner_state = get_planner_state(tool_context)
+    accommodation_state = get_accommodation_state(tool_context)
+
+    destination = planner_state.trip_details.destination
+    planner_start_date = planner_state.trip_details.start_date
+    planner_end_date = planner_state.trip_details.end_date
+    travelers = planner_state.demographics.travelers or []
+
+    if not destination or not travelers:
+        logger.info(
+            "[Tool] derive_accommodation_search_tasks skipped – missing destination or travelers",
+        )
+        return {"status": "skipped", "reason": "missing_destination_or_travelers"}
+
+    traveler_indexes = list(range(len(travelers)))
+
+    # Default to planner start/end dates, but tighten the window if we have
+    # concrete flight choices with arrival/departure datetimes.
+    check_in_date = planner_start_date
+    check_out_date = planner_end_date
+
+    flight_state = get_flight_state(tool_context)
+    arrival_dates: List[str] = []
+    departure_dates: List[str] = []
+
+    for choice in flight_state.traveler_flights or []:
+        if choice.traveler_index not in traveler_indexes:
+            continue
+
+        option = choice.chosen_option
+        # If no chosen_option recorded (e.g. stub result), fall back to first other_option.
+        if option is None and choice.other_options:
+            option = choice.other_options[0]
+        if option is None:
+            continue
+
+        if option.outbound_arrival and len(option.outbound_arrival) >= 10:
+            arrival_dates.append(option.outbound_arrival[:10])
+
+        # For departure, prefer return_departure; if missing, fall back to return_arrival.
+        departure_str = option.return_departure or option.return_arrival
+        if departure_str and len(departure_str) >= 10:
+            departure_dates.append(departure_str[:10])
+
+    if arrival_dates:
+        check_in_date = min(arrival_dates)
+    if departure_dates:
+        check_out_date = max(departure_dates)
+
+    pref = planner_state.preferences
+    budget_mode = pref.budget_mode
+    preferred_types = pref.accommodation_preferences or []
+    neighborhood_prefs = pref.neighborhood_preferences or []
+    neighborhood_avoid = pref.neighborhood_avoid or []
+    room_configuration = pref.room_configuration
+
+    # Collect simple age/role context so downstream agents can respect
+    # common-sense constraints (e.g. young children not staying alone).
+    child_ages: List[int] = []
+    adult_count = 0
+    for t in travelers:
+        if t.role == "adult":
+            adult_count += 1
+        elif t.role == "child" and t.age is not None:
+            child_ages.append(t.age)
+
+    special_reqs: List[str] = []
+    for group in [
+        pref.mobility_constraints or [],
+        pref.dietary_requirements or [],
+        pref.sensory_needs or [],
+    ]:
+        for item in group:
+            if item and item not in special_reqs:
+                special_reqs.append(item)
+
+    task_id = f"accommodation_{len(accommodation_state.search_tasks)}"
+
+    prompt_lines = [
+        "Search for suitable accommodation options for the following trip context:",
+        f"- Destination: {destination}",
+        f"- Check-in date: {check_in_date or 'UNKNOWN'}",
+        f"- Check-out date: {check_out_date or 'UNKNOWN'}",
+        f"- Budget mode: {budget_mode or 'unspecified'}",
+        f"- Travelers covered (indexes): {traveler_indexes}",
+        f"- Number of adults: {adult_count}",
+        f"- Child ages (if any): {child_ages or 'none'}",
+    ]
+    if preferred_types:
+        prompt_lines.append(f"- Preferred stay types: {preferred_types}")
+    if room_configuration:
+        prompt_lines.append(f"- Room configuration: {room_configuration}")
+    if neighborhood_prefs:
+        prompt_lines.append(f"- Neighborhoods to prioritize: {neighborhood_prefs}")
+    if neighborhood_avoid:
+        prompt_lines.append(f"- Neighborhoods to avoid: {neighborhood_avoid}")
+    if special_reqs:
+        prompt_lines.append(f"- Special requirements: {special_reqs}")
+    # Grouping intent: this is one traveling party who would generally prefer
+    # to stay in the same property (hotel or rental) if practical. If the
+    # property/room layout requires multiple rooms or units, keep the party
+    # together in the same property and clearly explain the grouping in your
+    # summary instead of splitting them across unrelated properties.
+    prompt_lines.append(
+        "- Grouping intent: the travelers listed above form one traveling party. "
+        "Prefer a single property that can host the whole group. If that is not "
+        "practical, keep them in the same property (for example multiple rooms in "
+        "one hotel or multiple units in one building) and briefly explain the "
+        "grouping in your summary."
+    )
+    # Safety hint so downstream agents avoid assigning very young
+    # children to rooms without an adult.
+    if child_ages and adult_count > 0:
+        youngest = min(child_ages)
+        prompt_lines.append(
+            f"- Important: the youngest child is {youngest} years old; do NOT assign children to rooms "
+            "without at least one adult present."
+        )
+
+    prompt = "\n".join(prompt_lines)
+
+    task = AccommodationSearchTask(
+        task_id=task_id,
+        traveler_indexes=traveler_indexes,
+        location=destination,
+        check_in_date=check_in_date,
+        check_out_date=check_out_date,
+        budget_mode=budget_mode,
+        preferred_types=preferred_types,
+        neighborhood_preferences=neighborhood_prefs,
+        neighborhood_avoid=neighborhood_avoid,
+        room_configuration=room_configuration,
+        special_requirements=special_reqs,
+        prompt=prompt,
+        purpose="accommodation_options_lookup",
+    )
+
+    accommodation_state.search_tasks.append(task)
+    save_accommodation_state(tool_context, accommodation_state)
+
+    logger.info(
+        "[Tool] derive_accommodation_search_tasks completed",
+        extra={
+            "destination": destination,
+            "num_travelers": len(travelers),
+            "task_id": task_id,
+        },
+    )
+
+    print(
+        f"[Tool] derive_accommodation_search_tasks created 1 accommodation task "
+        f"for destination={destination} travelers={traveler_indexes}"
+    )
+
+    return {
+        "status": "success",
+        "num_tasks_created": 1,
+        "tasks": [task.model_dump()],
+    }
+
+
 def apply_flight_search_results(tool_context: ToolContext) -> Dict[str, Any]:
     """
     Apply FlightSearchResult entries back into FlightState by deriving a simple
@@ -1012,6 +1225,396 @@ def apply_flight_search_results(tool_context: ToolContext) -> Dict[str, Any]:
         "num_results": len(flight_state.search_results),
         "num_traveler_flights": len(traveler_flights),
     }
+
+
+def record_accommodation_search_result(
+    tool_context: ToolContext,
+    task_id: str,
+    summary: str,
+    options: Optional[List[Dict[str, Any]]] = None,
+    best_price_hint: Optional[str] = None,
+    best_location_hint: Optional[str] = None,
+    family_friendly_hint: Optional[str] = None,
+    neighborhood_hint: Optional[str] = None,
+    recommended_option_label: Optional[str] = None,
+    notes: Optional[str] = None,
+    chosen_option_type: Optional[str] = None,
+    selection_reason: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Persist a normalized AccommodationSearchResult into AccommodationState for a given task_id.
+
+    This tool does NOT call external services. It relies on the agent
+    to pass in a concise summary and extracted hints based on prior
+    accommodation search calls.
+    """
+    accommodation_state = get_accommodation_state(tool_context)
+
+    matching_task = next(
+        (t for t in accommodation_state.search_tasks if t.task_id == task_id),
+        None,
+    )
+    if matching_task is None:
+        logger.warning(
+            "[Tool] record_accommodation_search_result called with unknown task_id",
+            extra={"task_id": task_id},
+        )
+        return {"status": "error", "reason": "unknown_task_id", "task_id": task_id}
+
+    query = matching_task.prompt
+
+    option_models: List[AccommodationOption] = []
+    for opt in options or []:
+        try:
+            option_models.append(AccommodationOption(**opt))
+        except Exception as exc:
+            logger.warning(
+                "[Tool] record_accommodation_search_result could not parse option",
+                extra={"task_id": task_id, "option": opt, "error": str(exc)},
+            )
+
+    result = AccommodationSearchResult(
+        task_id=task_id,
+        query=query,
+        options=option_models,
+        summary=summary,
+        best_price_hint=best_price_hint,
+        best_location_hint=best_location_hint,
+        family_friendly_hint=family_friendly_hint,
+        neighborhood_hint=neighborhood_hint,
+        recommended_option_label=recommended_option_label,
+        notes=notes,
+        chosen_option_type=chosen_option_type,
+        selection_reason=selection_reason,
+    )
+
+    accommodation_state.search_results.append(result)
+    save_accommodation_state(tool_context, accommodation_state)
+
+    logger.info(
+        "[Tool] record_accommodation_search_result completed",
+        extra={
+            "task_id": task_id,
+            "num_results_total": len(accommodation_state.search_results),
+        },
+    )
+
+    print(
+        f"[Accommodation Result Tool] Recorded AccommodationSearchResult for task_id={task_id}"
+    )
+
+    return {
+        "status": "success",
+        "task_id": task_id,
+        "num_results_total": len(accommodation_state.search_results),
+    }
+
+
+def apply_accommodation_search_results(tool_context: ToolContext) -> Dict[str, Any]:
+    """
+    Apply AccommodationSearchResult entries back into AccommodationState by deriving
+    an overall summary and per-traveler accommodation choices.
+
+    This mirrors apply_flight_search_results but for accommodation.
+    """
+    accommodation_state = get_accommodation_state(tool_context)
+    planner_state = get_planner_state(tool_context)
+
+    if not accommodation_state.search_results:
+        logger.info(
+            "[Tool] apply_accommodation_search_results skipped – no search_results present",
+        )
+        return {"status": "skipped", "reason": "no_search_results"}
+
+    lines: List[str] = []
+    for result in accommodation_state.search_results:
+        parts: List[str] = []
+        if result.summary:
+            parts.append(result.summary.strip())
+        if result.best_price_hint:
+            parts.append(f"Price hint: {result.best_price_hint}")
+        if result.best_location_hint:
+            parts.append(f"Location hint: {result.best_location_hint}")
+        if result.recommended_option_label:
+            parts.append(f"Recommended: {result.recommended_option_label}")
+        line = " ".join(parts)
+        if line:
+            lines.append(f"- Task {result.task_id}: {line}")
+
+    if lines:
+        accommodation_state.overall_summary = "\n".join(lines)
+
+    traveler_accommodations: List[TravelerAccommodationChoice] = []
+
+    travelers = planner_state.demographics.travelers or []
+    results_by_task: Dict[str, AccommodationSearchResult] = {
+        r.task_id: r for r in accommodation_state.search_results or []
+    }
+
+    for traveler_index in range(len(travelers)):
+        for task in accommodation_state.search_tasks or []:
+            if traveler_index not in (task.traveler_indexes or []):
+                continue
+
+            result = results_by_task.get(task.task_id)
+            if result is None:
+                continue
+
+            chosen_option = None
+            other_options: List[AccommodationOption] = []
+
+            chosen_type = result.chosen_option_type
+            for opt in result.options or []:
+                if chosen_type and opt.option_type == chosen_type and chosen_option is None:
+                    chosen_option = opt
+                else:
+                    other_options.append(opt)
+
+            if chosen_option is None and result.options:
+                chosen_option = result.options[0]
+                other_options = list(result.options[1:])
+
+            traveler_accommodations.append(
+                TravelerAccommodationChoice(
+                    traveler_index=traveler_index,
+                    task_id=task.task_id,
+                    summary=result.summary,
+                    best_price_hint=result.best_price_hint,
+                    best_location_hint=result.best_location_hint,
+                    family_friendly_hint=result.family_friendly_hint,
+                    neighborhood_hint=result.neighborhood_hint,
+                    recommended_option_label=result.recommended_option_label,
+                    notes=result.notes,
+                    chosen_option_type=result.chosen_option_type,
+                    selection_reason=result.selection_reason,
+                    chosen_option=chosen_option,
+                    other_options=other_options,
+                )
+            )
+
+    accommodation_state.traveler_accommodations = traveler_accommodations
+
+    save_accommodation_state(tool_context, accommodation_state)
+
+    logger.info(
+        "[Tool] apply_accommodation_search_results completed",
+        extra={
+            "num_tasks": len(accommodation_state.search_tasks),
+            "num_results": len(accommodation_state.search_results),
+            "num_traveler_accommodations": len(traveler_accommodations),
+        },
+    )
+
+    print(
+        "[Tool] apply_accommodation_search_results updated AccommodationState.overall_summary"
+    )
+
+    return {
+        "status": "success",
+        "num_tasks": len(accommodation_state.search_tasks),
+        "num_results": len(accommodation_state.search_results),
+        "num_traveler_accommodations": len(traveler_accommodations),
+    }
+
+
+def record_traveler_accommodation_choice(
+    tool_context: ToolContext,
+    task_id: str,
+    traveler_indexes: List[int],
+    chosen_option_type: Optional[
+        Literal["cheapest", "best_location", "family_friendly", "balanced", "luxury"]
+    ] = None,
+    notes: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Record per-traveler accommodation choices for a single AccommodationSearchTask.
+
+    This is an explicit, function-call style helper that an agent can use once it has
+    decided which canonical option type should be treated as "chosen" for the given task.
+
+    For each traveler_index in traveler_indexes, a TravelerAccommodationChoice entry is
+    appended to AccommodationState.traveler_accommodations.
+    """
+    accommodation_state = get_accommodation_state(tool_context)
+    planner_state = get_planner_state(tool_context)
+
+    matching_task = next(
+        (t for t in accommodation_state.search_tasks if t.task_id == task_id),
+        None,
+    )
+    if matching_task is None:
+        logger.warning(
+            "[Tool] record_traveler_accommodation_choice called with unknown task_id",
+            extra={"task_id": task_id},
+        )
+        return {"status": "error", "reason": "unknown_task_id", "task_id": task_id}
+
+    results_by_task: Dict[str, AccommodationSearchResult] = {
+        r.task_id: r for r in accommodation_state.search_results or []
+    }
+    result = results_by_task.get(task_id)
+    if result is None:
+        logger.warning(
+            "[Tool] record_traveler_accommodation_choice called with no search_result present",
+            extra={"task_id": task_id},
+        )
+        return {
+            "status": "error",
+            "reason": "no_search_result",
+            "task_id": task_id,
+        }
+
+    # Decide which option is considered "chosen" for this task.
+    chosen_option = None
+    other_options: List[AccommodationOption] = []
+
+    effective_type = chosen_option_type or result.chosen_option_type
+    for opt in result.options or []:
+        if effective_type and opt.option_type == effective_type and chosen_option is None:
+            chosen_option = opt
+        else:
+            other_options.append(opt)
+
+    if chosen_option is None and result.options:
+        chosen_option = result.options[0]
+        other_options = list(result.options[1:])
+
+    if chosen_option is None:
+        logger.warning(
+            "[Tool] record_traveler_accommodation_choice found no options to choose from",
+            extra={"task_id": task_id},
+        )
+        return {
+            "status": "error",
+            "reason": "no_options",
+            "task_id": task_id,
+        }
+
+    travelers = planner_state.demographics.travelers or []
+    valid_indexes = {
+        idx for idx in traveler_indexes if 0 <= idx < len(travelers)
+    }
+    if not valid_indexes:
+        logger.warning(
+            "[Tool] record_traveler_accommodation_choice received no valid traveler_indexes",
+            extra={"task_id": task_id, "traveler_indexes": traveler_indexes},
+        )
+        return {
+            "status": "error",
+            "reason": "no_valid_travelers",
+            "task_id": task_id,
+        }
+
+    created_count = 0
+    for traveler_index in sorted(valid_indexes):
+        accommodation_state.traveler_accommodations.append(
+            TravelerAccommodationChoice(
+                traveler_index=traveler_index,
+                task_id=task_id,
+                summary=result.summary,
+                best_price_hint=result.best_price_hint,
+                best_location_hint=result.best_location_hint,
+                family_friendly_hint=result.family_friendly_hint,
+                neighborhood_hint=result.neighborhood_hint,
+                recommended_option_label=result.recommended_option_label,
+                notes=notes or result.notes,
+                chosen_option_type=effective_type,
+                selection_reason=result.selection_reason,
+                chosen_option=chosen_option,
+                other_options=other_options,
+            )
+        )
+        created_count += 1
+
+    save_accommodation_state(tool_context, accommodation_state)
+
+    logger.info(
+        "[Tool] record_traveler_accommodation_choice completed",
+        extra={
+            "task_id": task_id,
+            "num_travelers": created_count,
+        },
+    )
+
+    return {
+        "status": "success",
+        "task_id": task_id,
+        "num_travelers": created_count,
+    }
+
+
+def _build_canonical_accommodation_options(raw_options: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    Helper to pick up to three canonical accommodation options from the raw
+    normalized options list returned by SearchAPI tools.
+
+    We assign:
+      - 'cheapest' to the lowest total_price_low (or nightly_price_low)
+      - 'best_location' to the highest rating (if distinct)
+      - 'balanced' to another reasonable option (if available)
+    """
+    if not raw_options:
+        return []
+
+    def price_key(opt: Dict[str, Any]) -> float:
+        total = opt.get("total_price_low") or opt.get("total_price_high")
+        nightly = opt.get("nightly_price_low") or opt.get("nightly_price_high")
+        return float(total or nightly or 0.0)
+
+    def rating_key(opt: Dict[str, Any]) -> float:
+        return float(opt.get("rating") or 0.0)
+
+    sorted_by_price = sorted(raw_options, key=price_key)
+    cheapest = sorted_by_price[0]
+
+    sorted_by_rating = sorted(raw_options, key=rating_key, reverse=True)
+    best_loc = sorted_by_rating[0] if sorted_by_rating else None
+
+    canonical: List[Dict[str, Any]] = []
+
+    def make_option(opt: Dict[str, Any], option_type: str) -> Dict[str, Any]:
+        provider = opt.get("provider")
+        stay_type = "vacation_rental" if provider == "airbnb" else "hotel" if provider == "google_hotels" else "other"
+        return {
+            "option_type": option_type,
+            "stay_type": stay_type,
+            "provider": provider,
+            "name": opt.get("name"),
+            "description": opt.get("description"),
+            "location_label": opt.get("location_label"),
+            "neighborhood": opt.get("neighborhood"),
+            "city": opt.get("city"),
+            "country": opt.get("country"),
+            "currency": opt.get("currency"),
+            "nightly_price_low": opt.get("nightly_price_low"),
+            "nightly_price_high": opt.get("nightly_price_high"),
+            "total_price_low": opt.get("total_price_low"),
+            "total_price_high": opt.get("total_price_high"),
+            "rating": opt.get("rating"),
+            "rating_count": opt.get("rating_count"),
+            "max_guests": opt.get("max_guests"),
+            "bedrooms": opt.get("bedrooms"),
+            "beds": opt.get("beds"),
+            "bathrooms": opt.get("bathrooms"),
+            "amenities": opt.get("amenities") or [],
+            "cancellation_policy": opt.get("cancellation_policy"),
+            "url": opt.get("url"),
+            "notes": opt.get("notes"),
+        }
+
+    canonical.append(make_option(cheapest, "cheapest"))
+
+    if best_loc and best_loc is not cheapest:
+        canonical.append(make_option(best_loc, "best_location"))
+
+    for opt in sorted_by_price:
+        if len(canonical) >= 3:
+            break
+        if opt is cheapest or opt is best_loc:
+            continue
+        canonical.append(make_option(opt, "balanced"))
+
+    return canonical
 
 
 def read_flights_for_traveler(
@@ -1613,6 +2216,358 @@ def resolve_airports(
         "location": location,
         "num_candidates": len(candidates),
         "candidates": candidates,
+    }
+
+
+def searchapi_airbnb_properties(
+    tool_context: ToolContext,
+    location_query: str,
+    check_in_date: Optional[str] = None,
+    check_out_date: Optional[str] = None,
+    adults: int = 1,
+    children: int = 0,
+    infants: int = 0,
+    pets: int = 0,
+    min_price: Optional[int] = None,
+    max_price: Optional[int] = None,
+    time_period: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Call SearchAPI.io's Airbnb engine for structured accommodation data.
+
+    This uses the Airbnb OpenAPI spec (src/tools/airbnb_openapi_spec.yaml) and
+    returns a lightweight normalized list of options suitable for feeding into
+    AccommodationOption via an agent.
+
+    Environment:
+      - SEARCHAPI_IO_API_KEY: API key for https://www.searchapi.io/ (required)
+    """
+    api_key = os.getenv("SEARCHAPI_IO_API_KEY")
+    if not api_key:
+        logger.warning(
+            "[Tool] searchapi_airbnb_properties missing SEARCHAPI_IO_API_KEY",
+            extra={},
+        )
+        return {
+            "status": "error",
+            "reason": "missing_configuration",
+            "detail": "SEARCHAPI_IO_API_KEY must be set.",
+        }
+
+    base_url = "https://www.searchapi.io/api/v1/search"
+
+    params: Dict[str, Any] = {
+        "engine": "airbnb",
+        "q": location_query,
+    }
+    if check_in_date:
+        params["check_in_date"] = check_in_date
+    if check_out_date:
+        params["check_out_date"] = check_out_date
+    if time_period and not check_in_date:
+        params["time_period"] = time_period
+    if adults:
+        params["adults"] = adults
+    if children:
+        params["children"] = children
+    if infants:
+        params["infants"] = infants
+    if pets:
+        params["pets"] = pets
+    if min_price is not None:
+        params["price_min"] = min_price
+    if max_price is not None:
+        params["price_max"] = max_price
+
+    params["api_key"] = api_key
+
+    try:
+        response = requests.get(base_url, params=params, timeout=15)
+    except Exception as exc:
+        logger.exception(
+            "[Tool] searchapi_airbnb_properties request failed",
+            extra={"location_query": location_query},
+        )
+        return {
+            "status": "error",
+            "reason": "request_failed",
+            "detail": str(exc),
+        }
+
+    if response.status_code != 200:
+        logger.warning(
+            "[Tool] searchapi_airbnb_properties non-200 response",
+            extra={
+                "status_code": response.status_code,
+                "text_preview": response.text[:200],
+            },
+        )
+        return {
+            "status": "error",
+            "reason": "non_200",
+            "status_code": response.status_code,
+            "body_preview": response.text[:200],
+        }
+
+    try:
+        raw_json = response.json()
+    except ValueError:
+        logger.warning(
+            "[Tool] searchapi_airbnb_properties invalid JSON response",
+            extra={"text_preview": response.text[:200]},
+        )
+        return {
+            "status": "error",
+            "reason": "invalid_json",
+            "body_preview": response.text[:200],
+        }
+
+    # Lightweight normalization: extract key fields from Airbnb listings into a
+    # shape the LLM can easily map to AccommodationOption.
+    options: List[Dict[str, Any]] = []
+    if isinstance(raw_json, dict):
+        listings = raw_json.get("properties") or raw_json.get("results") or []
+        for prop in listings:
+            if not isinstance(prop, dict):
+                continue
+
+            price_info = prop.get("price") or {}
+            accommodations = prop.get("accommodations") or []
+
+            # Very coarse currency inference based on the leading symbol.
+            currency: Optional[str] = None
+            total_price_str = price_info.get("total_price")
+            if isinstance(total_price_str, str) and total_price_str.startswith("$"):
+                currency = "USD"
+
+            nightly = price_info.get("extracted_price_per_qualifier")
+            total = price_info.get("extracted_total_price")
+
+            # Basic bedroom/bed inference from the accommodations strings.
+            bedrooms = None
+            beds = None
+            for item in accommodations:
+                if not isinstance(item, str):
+                    continue
+                lower = item.lower()
+                if "bedroom" in lower and bedrooms is None:
+                    # e.g. "2 bedrooms"
+                    parts = lower.split()
+                    for p in parts:
+                        if p.isdigit():
+                            bedrooms = int(p)
+                            break
+                if "bed" in lower and beds is None:
+                    # e.g. "3 beds" or "2 king beds"
+                    parts = lower.split()
+                    for p in parts:
+                        if p.isdigit():
+                            beds = int(p)
+                            break
+
+            options.append(
+                {
+                    "provider": "airbnb",
+                    "name": prop.get("title"),
+                    "description": prop.get("description"),
+                    "location_label": prop.get("description"),
+                    "neighborhood": None,
+                    "city": None,
+                    "country": None,
+                    "currency": currency,
+                    "nightly_price_low": nightly,
+                    "nightly_price_high": nightly,
+                    "total_price_low": total,
+                    "total_price_high": total,
+                    "rating": prop.get("rating"),
+                    "rating_count": prop.get("reviews"),
+                    "max_guests": None,
+                    "bedrooms": bedrooms,
+                    "beds": beds,
+                    "bathrooms": None,
+                    "amenities": accommodations,
+                    "url": prop.get("booking_link") or prop.get("link"),
+                    "raw": prop,
+                }
+            )
+
+    logger.info(
+        "[Tool] searchapi_airbnb_properties completed",
+        extra={
+            "location_query": location_query,
+            "check_in_date": check_in_date,
+            "check_out_date": check_out_date,
+            "num_options": len(options),
+        },
+    )
+
+    return {
+        "status": "success",
+        "engine": "airbnb",
+        "location_query": location_query,
+        "check_in_date": check_in_date,
+        "check_out_date": check_out_date,
+        "adults": adults,
+        "children": children,
+        "infants": infants,
+        "pets": pets,
+        "num_options": len(options),
+        "options": options,
+        "raw": raw_json,
+    }
+
+
+def searchapi_google_hotels_properties(
+    tool_context: ToolContext,
+    location_query: str,
+    check_in_date: Optional[str] = None,
+    check_out_date: Optional[str] = None,
+    adults: int = 1,
+    children: int = 0,
+    min_price: Optional[int] = None,
+    max_price: Optional[int] = None,
+    currency: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Call SearchAPI.io's Google Hotels engine for structured accommodation data.
+
+    This is a complementary source to Airbnb and is intended for hotel-style
+    properties. It returns a lightweight normalized list of options that an
+    agent can map into AccommodationOption.
+
+    Environment:
+      - SEARCHAPI_IO_API_KEY: API key for https://www.searchapi.io/ (required)
+    """
+    api_key = os.getenv("SEARCHAPI_IO_API_KEY")
+    if not api_key:
+        logger.warning(
+            "[Tool] searchapi_google_hotels_properties missing SEARCHAPI_IO_API_KEY",
+            extra={},
+        )
+        return {
+            "status": "error",
+            "reason": "missing_configuration",
+            "detail": "SEARCHAPI_IO_API_KEY must be set.",
+        }
+
+    base_url = "https://www.searchapi.io/api/v1/search"
+
+    # Use SearchAPI.io's Google Hotels engine so hotel queries succeed.
+    params: Dict[str, Any] = {
+        "engine": "google_hotels",
+        "q": location_query,
+    }
+    if check_in_date:
+        params["check_in_date"] = check_in_date
+    if check_out_date:
+        params["check_out_date"] = check_out_date
+    if adults:
+        params["adults"] = adults
+    if children:
+        params["children"] = children
+    if min_price is not None:
+        params["price_min"] = min_price
+    if max_price is not None:
+        params["price_max"] = max_price
+    if currency:
+        params["currency"] = currency
+
+    params["api_key"] = api_key
+
+    try:
+        response = requests.get(base_url, params=params, timeout=15)
+    except Exception as exc:
+        logger.exception(
+            "[Tool] searchapi_google_hotels_properties request failed",
+            extra={"location_query": location_query},
+        )
+        return {
+            "status": "error",
+            "reason": "request_failed",
+            "detail": str(exc),
+        }
+
+    if response.status_code != 200:
+        logger.warning(
+            "[Tool] searchapi_google_hotels_properties non-200 response",
+            extra={
+                "status_code": response.status_code,
+                "text_preview": response.text[:200],
+            },
+        )
+        return {
+            "status": "error",
+            "reason": "non_200",
+            "status_code": response.status_code,
+            "body_preview": response.text[:200],
+        }
+
+    try:
+        raw_json = response.json()
+    except ValueError:
+        logger.warning(
+            "[Tool] searchapi_google_hotels_properties invalid JSON response",
+            extra={"text_preview": response.text[:200]},
+        )
+        return {
+            "status": "error",
+            "reason": "invalid_json",
+            "body_preview": response.text[:200],
+        }
+
+    options: List[Dict[str, Any]] = []
+    if isinstance(raw_json, dict):
+        hotels = raw_json.get("hotels") or raw_json.get("properties") or raw_json.get("results") or []
+        for hotel in hotels:
+            if not isinstance(hotel, dict):
+                continue
+
+            pricing = hotel.get("pricing") or {}
+            location = hotel.get("location") or {}
+
+            options.append(
+                {
+                    "provider": "google_hotels",
+                    "name": hotel.get("name"),
+                    "description": hotel.get("description"),
+                    "location_label": location.get("neighborhood") or location.get("address"),
+                    "neighborhood": location.get("neighborhood"),
+                    "city": location.get("city"),
+                    "country": location.get("country"),
+                    "currency": pricing.get("currency") or currency,
+                    "nightly_price_low": pricing.get("price"),
+                    "nightly_price_high": pricing.get("price"),
+                    "rating": hotel.get("rating"),
+                    "rating_count": hotel.get("rating_count"),
+                    "max_guests": hotel.get("max_guests"),
+                    "amenities": hotel.get("amenities") or [],
+                    "url": hotel.get("link") or hotel.get("url"),
+                    "raw": hotel,
+                }
+            )
+
+    logger.info(
+        "[Tool] searchapi_google_hotels_properties completed",
+        extra={
+            "location_query": location_query,
+            "check_in_date": check_in_date,
+            "check_out_date": check_out_date,
+            "num_options": len(options),
+        },
+    )
+
+    return {
+        "status": "success",
+        "engine": "google_hotels",
+        "location_query": location_query,
+        "check_in_date": check_in_date,
+        "check_out_date": check_out_date,
+        "adults": adults,
+        "children": children,
+        "currency": currency,
+        "num_options": len(options),
+        "options": options,
+        "raw": raw_json,
     }
 
 

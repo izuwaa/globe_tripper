@@ -1,0 +1,1008 @@
+{
+  "search_metadata": {
+    "id": "search_W75dANvqloTdLgXXA4blrDJ3",
+    "status": "Success",
+    "created_at": "2025-11-30T08:48:40Z",
+    "request_time_taken": 0.89,
+    "parsing_time_taken": 0.48,
+    "total_time_taken": 1.37,
+    "request_url": "https://www.airbnb.com/s/London---UK/homes?checkin=2025-12-01&checkout=2025-12-20&adults=2&children=2",
+    "html_url": "https://www.searchapi.io/api/v1/searches/search_W75dANvqloTdLgXXA4blrDJ3.html",
+    "json_url": "https://www.searchapi.io/api/v1/searches/search_W75dANvqloTdLgXXA4blrDJ3"
+  },
+  "search_parameters": {
+    "engine": "airbnb",
+    "airbnb_domain": "airbnb.com",
+    "q": "London, UK",
+    "check_in_date": "2025-12-01",
+    "check_out_date": "2025-12-20",
+    "adults": "2",
+    "children": "2"
+  },
+  "search_information": {
+    "query_displayed": "Homes in London",
+    "results": "Over 1,000 homes in London",
+    "time_period": "Dec 1 – 20",
+    "check_in_date": "2025-12-01",
+    "check_out_date": "2025-12-20",
+    "guests": "4 guests",
+    "adults": 2,
+    "children": 2
+  },
+  "properties": [
+    {
+      "position": 1,
+      "id": "1489255686196165058",
+      "title": "City and Airport in 30min",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/1489255686196165058",
+      "booking_link": "https://www.airbnb.com/rooms/1489255686196165058?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE0ODkyNTU2ODYxOTYxNjUwNTgifQ==",
+      "price": {
+        "total_price": "$4,005",
+        "extracted_total_price": 4005.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$6,843",
+        "extracted_original_price": 6843.0,
+        "price_per_qualifier": "19 nights x $360.13",
+        "extracted_price_per_qualifier": 360.13,
+        "breakdown": [
+          {
+            "description": "19 nights x $360.13",
+            "price": "$6,842.45",
+            "extracted_price": 6842.45
+          },
+          {
+            "description": "Price after discount",
+            "price": "$4,004.42",
+            "extracted_price": 4004.42
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "2 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.50553,
+        "longitude": -0.27967
+      },
+      "badges": [
+        "Superhost"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ4OTI1NTY4NjE5NjE2NTA1OA==/original/934c847b-0731-46f4-8d7a-f15f9bbf6501.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ4OTI1NTY4NjE5NjE2NTA1OA==/original/f0a309db-f403-4a79-b063-9f0907294602.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1489255686196165058/original/4d554415-6cb1-4609-9a5e-0b8893de332a.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1489255686196165058/original/3d976e19-1856-4a20-9e85-331738f3591a.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1489255686196165058/original/2abe1157-11ca-466f-9f13-b0c763a9b3b1.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ4OTI1NTY4NjE5NjE2NTA1OA==/original/b8a16947-eac6-41fe-a79a-29fee781fef0.jpeg"
+      ]
+    },
+    {
+      "position": 2,
+      "id": "39948067",
+      "title": "Luxury Staycation 2 bed/2 bath St Albans-parking",
+      "description": "Apartment in Hertfordshire",
+      "link": "https://www.airbnb.com/rooms/39948067",
+      "booking_link": "https://www.airbnb.com/rooms/39948067?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjM5OTQ4MDY3In0=",
+      "rating": 4.89,
+      "reviews": 53,
+      "price": {
+        "total_price": "$3,700",
+        "extracted_total_price": 3700.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$4,693",
+        "extracted_original_price": 4693.0,
+        "price_per_qualifier": "19 nights x $246.99",
+        "extracted_price_per_qualifier": 246.99,
+        "breakdown": [
+          {
+            "description": "19 nights x $246.99",
+            "price": "$4,692.73",
+            "extracted_price": 4692.73
+          },
+          {
+            "description": "Price after discount",
+            "price": "$3,699.55",
+            "extracted_price": 3699.55
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "3 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.75175,
+        "longitude": -0.32105
+      },
+      "badges": [
+        "Superhost"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/74f38a38-27cc-4da4-ad0b-521ab5ddfce7.jpg",
+        "https://a0.muscache.com/im/pictures/7387cfb9-ccae-4a08-97af-b6a96161f88e.jpg",
+        "https://a0.muscache.com/im/pictures/b7955abf-0983-4c32-a943-52cf8eb90c03.jpg",
+        "https://a0.muscache.com/im/pictures/4f2855f5-42ee-4bd4-a46e-ee2d586fdb41.jpg",
+        "https://a0.muscache.com/im/pictures/8c01428b-5ea7-4ada-8c42-d2f8f167d214.jpg",
+        "https://a0.muscache.com/im/pictures/fd8d8109-35e1-426c-8141-0cf49da1a1ed.jpg"
+      ]
+    },
+    {
+      "position": 3,
+      "id": "1539285309248294015",
+      "title": "Heart of city - Oxford Street",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/1539285309248294015",
+      "booking_link": "https://www.airbnb.com/rooms/1539285309248294015?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE1MzkyODUzMDkyNDgyOTQwMTUifQ==",
+      "rating": 5.0,
+      "reviews": 7,
+      "price": {
+        "total_price": "$9,506",
+        "extracted_total_price": 9506.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$10,408",
+        "extracted_original_price": 10408.0,
+        "price_per_qualifier": "19 nights x $547.74",
+        "extracted_price_per_qualifier": 547.74,
+        "breakdown": [
+          {
+            "description": "19 nights x $547.74",
+            "price": "$10,407.07",
+            "extracted_price": 10407.07
+          },
+          {
+            "description": "Price after discount",
+            "price": "$9,505.32",
+            "extracted_price": 9505.32
+          }
+        ]
+      },
+      "accommodations": [
+        "1 bedroom",
+        "3 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.51476,
+        "longitude": -0.14273
+      },
+      "badges": [
+        "Guest favorite"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1539285309248294015/original/0a4f7473-4112-42b5-b07f-a36f1410f33e.png",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1539285309248294015/original/b4d4e911-c707-496a-a016-6f0a08336f2f.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1539285309248294015/original/517a8cf8-4eb3-4e0b-9e4b-72df8b819fc9.png",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1539285309248294015/original/558c69c2-19b1-4d7d-b7b8-3c308fad754c.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1539285309248294015/original/28e0c47e-7c8d-4488-b573-ac012ca76521.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1539285309248294015/original/46706380-b192-44c1-b1c1-b3f6cf7dfe88.png"
+      ]
+    },
+    {
+      "position": 4,
+      "id": "53402088",
+      "title": "Modern 2-bed / 2-bath duplex apartment (sleeps 5)",
+      "description": "Condo in Perivale",
+      "link": "https://www.airbnb.com/rooms/53402088",
+      "booking_link": "https://www.airbnb.com/rooms/53402088?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjUzNDAyMDg4In0=",
+      "rating": 4.93,
+      "reviews": 40,
+      "price": {
+        "total_price": "$4,237",
+        "extracted_total_price": 4237.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$4,627",
+        "extracted_original_price": 4627.0,
+        "price_per_qualifier": "19 nights x $243.48",
+        "extracted_price_per_qualifier": 243.48,
+        "breakdown": [
+          {
+            "description": "19 nights x $243.48",
+            "price": "$4,626.07",
+            "extracted_price": 4626.07
+          },
+          {
+            "description": "Price after discount",
+            "price": "$4,236.19",
+            "extracted_price": 4236.19
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "2 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.53475,
+        "longitude": -0.32004
+      },
+      "badges": [
+        "Superhost"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/miso/Hosting-53402088/original/a0f1b272-35ed-4b1a-ad81-c53b24133369.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-53402088/original/0be535c6-71a0-4c16-bb61-852aaf55856c.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-53402088/original/569507bf-e49b-4bf8-bb0c-36d0e525684f.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-53402088/original/11806c88-6418-492d-8d33-3f1fdbac37a1.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-53402088/original/4bfc233d-500d-40b8-a7f0-62265a15f189.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-53402088/original/ec6cae25-5cb5-4781-a828-993984d28d58.jpeg"
+      ]
+    },
+    {
+      "position": 5,
+      "id": "1503613349569806296",
+      "title": "Cosy 2-bed|Save on Long stay|Sleeps 6-Instant Book",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/1503613349569806296",
+      "booking_link": "https://www.airbnb.com/rooms/1503613349569806296?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE1MDM2MTMzNDk1Njk4MDYyOTYifQ==",
+      "price": {
+        "total_price": "$3,733",
+        "extracted_total_price": 3733.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$4,086",
+        "extracted_original_price": 4086.0,
+        "price_per_qualifier": "19 nights x $215.01",
+        "extracted_price_per_qualifier": 215.01,
+        "breakdown": [
+          {
+            "description": "19 nights x $215.01",
+            "price": "$4,085.26",
+            "extracted_price": 4085.26
+          },
+          {
+            "description": "Price after discount",
+            "price": "$3,732.74",
+            "extracted_price": 3732.74
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "5 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.6528,
+        "longitude": -0.1992
+      },
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1503613349569806296/original/88e95e06-a25d-49cf-9152-41dd6a422d9b.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1503613349569806296/original/1447cc39-6601-412e-8595-d065e0a308f4.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1503613349569806296/original/694d93cd-ad09-4d3c-8836-93e7f39c76cf.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1503613349569806296/original/0fde352a-b44f-4074-acb2-b298cec8d403.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1503613349569806296/original/76236605-c15a-4c71-9d7b-8ef50b2b4101.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1503613349569806296/original/d20caf0e-15fe-4398-801f-6618c08d366c.jpeg"
+      ]
+    },
+    {
+      "position": 6,
+      "id": "1501531147527269878",
+      "title": "Watford | Parking | Decamp | Black Friday Deals",
+      "description": "Home in Hertfordshire",
+      "link": "https://www.airbnb.com/rooms/1501531147527269878",
+      "booking_link": "https://www.airbnb.com/rooms/1501531147527269878?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE1MDE1MzExNDc1MjcyNjk4NzgifQ==",
+      "price": {
+        "total_price": "$3,000",
+        "extracted_total_price": 3000.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "price_per_qualifier": "19 nights x $170.95",
+        "extracted_price_per_qualifier": 170.95,
+        "breakdown": [
+          {
+            "description": "19 nights x $170.95",
+            "price": "$3,248.14",
+            "extracted_price": 3248.14
+          },
+          {
+            "description": "Price after discount",
+            "price": "$2,999.94",
+            "extracted_price": 2999.94
+          }
+        ]
+      },
+      "accommodations": [
+        "3 bedrooms",
+        "7 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.65278,
+        "longitude": -0.41054
+      },
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1501531147527269878/original/79cb4618-7b56-47f9-851a-0c9e4b0befd7.png",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1501531147527269878/original/bf30fd0d-cf8d-45c1-9a4c-c00360edd728.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1501531147527269878/original/f422c24e-2390-4d9e-8e28-3cefccad2057.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1501531147527269878/original/a7cd6679-db18-45cd-8160-2166049124a4.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1501531147527269878/original/b7ddc452-ba8b-4ddc-9a96-ff9e5a1d18c1.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1501531147527269878/original/04d1ccde-3f84-4e9f-960d-3ace006e2da1.jpeg"
+      ]
+    },
+    {
+      "position": 7,
+      "id": "1492288548542187540",
+      "title": "Harlow 2BR • Parking • Contractors • Long Stays",
+      "description": "Apartment in Harlow",
+      "link": "https://www.airbnb.com/rooms/1492288548542187540",
+      "booking_link": "https://www.airbnb.com/rooms/1492288548542187540?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE0OTIyODg1NDg1NDIxODc1NDAifQ==",
+      "price": {
+        "total_price": "$2,460",
+        "extracted_total_price": 2460.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "price_per_qualifier": "19 nights x $131.92",
+        "extracted_price_per_qualifier": 131.92,
+        "breakdown": [
+          {
+            "description": "19 nights x $131.92",
+            "price": "$2,506.40",
+            "extracted_price": 2506.4
+          },
+          {
+            "description": "Price after discount",
+            "price": "$2,459.68",
+            "extracted_price": 2459.68
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "3 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.76851361626156,
+        "longitude": 0.09750029993193425
+      },
+      "badges": [
+        "Superhost"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1492288548542187540/original/3e789f78-fa03-4a73-bdb8-3b5ddd3290ce.png",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1492288548542187540/original/ca7734ee-53b0-4c2d-b7c4-42619411536d.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1492288548542187540/original/3a8f745d-82cd-42ba-a564-907053529d73.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1492288548542187540/original/9c78b393-1944-471f-a611-d3ecdbb31c44.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1492288548542187540/original/da1ad68f-eb40-4080-8227-a0db13bda772.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1492288548542187540/original/2129e51a-ca2f-433e-b09d-f71a0f7c4d8b.jpeg"
+      ]
+    },
+    {
+      "position": 8,
+      "id": "865390371648046402",
+      "title": "| Enchanting Living | BM Homes | Creed Stay",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/865390371648046402",
+      "booking_link": "https://www.airbnb.com/rooms/865390371648046402?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6Ijg2NTM5MDM3MTY0ODA0NjQwMiJ9",
+      "rating": 4.83,
+      "reviews": 124,
+      "price": {
+        "total_price": "$4,131",
+        "extracted_total_price": 4131.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$6,049",
+        "extracted_original_price": 6049.0,
+        "price_per_qualifier": "19 nights x $318.36",
+        "extracted_price_per_qualifier": 318.36,
+        "breakdown": [
+          {
+            "description": "19 nights x $318.36",
+            "price": "$6,048.84",
+            "extracted_price": 6048.84
+          },
+          {
+            "description": "Price after discount",
+            "price": "$4,130.70",
+            "extracted_price": 4130.7
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "3 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.59725877275616,
+        "longitude": -0.1870302905685069
+      },
+      "badges": [
+        "Superhost"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/miso/Hosting-865390371648046402/original/0b31d248-5b24-4f0c-a663-99b3df12d8dc.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-865390371648046402/original/d1f54455-1081-4ce0-b2d4-d5856656ded3.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-865390371648046402/original/cf8d9c44-f7e5-4158-8ea2-bfa83a19e33b.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-865390371648046402/original/35efc23b-2a9b-4580-9c5d-621f49bff191.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-865390371648046402/original/691bde30-6ab6-41aa-9bbc-6847ac4f7394.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-865390371648046402/original/41e68567-7119-4b4d-b17c-a153fc069f6a.jpeg"
+      ]
+    },
+    {
+      "position": 9,
+      "id": "46193446",
+      "title": "Shoreditch Parkside 2 Foam Beds 1 Bath 850sqft",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/46193446",
+      "booking_link": "https://www.airbnb.com/rooms/46193446?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjQ2MTkzNDQ2In0=",
+      "rating": 4.96,
+      "reviews": 139,
+      "price": {
+        "total_price": "$7,969",
+        "extracted_total_price": 7969.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "price_per_qualifier": "19 nights x $439.90",
+        "extracted_price_per_qualifier": 439.9,
+        "breakdown": [
+          {
+            "description": "19 nights x $439.90",
+            "price": "$8,358.17",
+            "extracted_price": 8358.17
+          },
+          {
+            "description": "Price after discount",
+            "price": "$7,968.85",
+            "extracted_price": 7968.85
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "2 king beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.5241,
+        "longitude": -0.0605
+      },
+      "badges": [
+        "Guest favorite"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-46193446/original/a393852f-c208-4d0f-8f56-62a9b478e605.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-46193446/original/8755106e-df77-4662-80c8-c50ea16caab2.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-46193446/original/b91fd218-4406-40e3-ab98-075396d38ce9.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-46193446/original/57afe53b-5bbd-41ba-ba6d-532ed5926495.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-46193446/original/336b1a1e-2a0e-4f32-8979-b1d7144e65af.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-46193446/original/d9c6117b-b65e-49e7-8c41-3fe599f67b7e.jpeg"
+      ]
+    },
+    {
+      "position": 10,
+      "id": "684142689535363883",
+      "title": "2 bedroom house with parking  in Borehamwood",
+      "description": "Home in Hertfordshire",
+      "link": "https://www.airbnb.com/rooms/684142689535363883",
+      "booking_link": "https://www.airbnb.com/rooms/684142689535363883?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjY4NDE0MjY4OTUzNTM2Mzg4MyJ9",
+      "rating": 4.92,
+      "reviews": 36,
+      "price": {
+        "total_price": "$3,557",
+        "extracted_total_price": 3557.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$4,073",
+        "extracted_original_price": 4073.0,
+        "price_per_qualifier": "19 nights x $187.16",
+        "extracted_price_per_qualifier": 187.16,
+        "breakdown": [
+          {
+            "description": "19 nights x $187.16",
+            "price": "$3,556.10",
+            "extracted_price": 3556.1
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "2 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.666,
+        "longitude": -0.258
+      },
+      "badges": [
+        "Guest favorite"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/miso/Hosting-684142689535363883/original/c9345caa-5a91-4f96-93d4-ad82b3917490.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-684142689535363883/original/8309d805-ada4-48bc-9e98-254262ebae0c.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-684142689535363883/original/d85ae19a-1abc-459e-8797-1666f8ab42d1.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-684142689535363883/original/af3aa065-31c1-4a19-940f-f8a047a60cef.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-684142689535363883/original/7f33477e-716d-41c2-965e-b2e0354cab0e.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-684142689535363883/original/f03a5f4a-e880-4e09-b12a-eeabd05fd568.jpeg"
+      ]
+    },
+    {
+      "position": 11,
+      "id": "1198592509483626286",
+      "title": "Modern, Spacious 3 Bedroom home Watford Junction",
+      "description": "Home in Hertfordshire",
+      "link": "https://www.airbnb.com/rooms/1198592509483626286",
+      "booking_link": "https://www.airbnb.com/rooms/1198592509483626286?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjExOTg1OTI1MDk0ODM2MjYyODYifQ==",
+      "rating": 4.9,
+      "reviews": 29,
+      "price": {
+        "total_price": "$3,387",
+        "extracted_total_price": 3387.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$3,882",
+        "extracted_original_price": 3882.0,
+        "price_per_qualifier": "19 nights x $204.31",
+        "extracted_price_per_qualifier": 204.31,
+        "breakdown": [
+          {
+            "description": "19 nights x $204.31",
+            "price": "$3,881.90",
+            "extracted_price": 3881.9
+          },
+          {
+            "description": "Price after discount",
+            "price": "$3,386.75",
+            "extracted_price": 3386.75
+          }
+        ]
+      },
+      "accommodations": [
+        "3 bedrooms",
+        "5 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.6586,
+        "longitude": -0.3908
+      },
+      "badges": [
+        "Superhost"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1198592509483626286/original/36658d2b-0a77-4b57-91e3-6171fd85ce3c.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1198592509483626286/original/02d8ccc6-20da-4df2-9a9d-36f49a6389e1.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1198592509483626286/original/dc9309fb-4484-45a1-82a2-5e4c00351055.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1198592509483626286/original/32d883ca-c8ae-437a-a5b0-19c166c02921.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1198592509483626286/original/9ca56eff-0625-437d-ac40-bfb7bdb5fe64.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1198592509483626286/original/8b93ac12-4310-4212-8885-ecbbf82de255.jpeg"
+      ]
+    },
+    {
+      "position": 12,
+      "id": "1562977671064917394",
+      "title": "Spacious East Acton 2-Bed, 2-Bath",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/1562977671064917394",
+      "booking_link": "https://www.airbnb.com/rooms/1562977671064917394?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE1NjI5Nzc2NzEwNjQ5MTczOTQifQ==",
+      "price": {
+        "total_price": "$4,350",
+        "extracted_total_price": 4350.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "price_per_qualifier": "19 nights x $228.94",
+        "extracted_price_per_qualifier": 228.94,
+        "breakdown": [
+          {
+            "description": "19 nights x $228.94",
+            "price": "$4,349.83",
+            "extracted_price": 4349.83
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "2 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.51422185621997,
+        "longitude": -0.2489171058692957
+      },
+      "badges": [
+        "Superhost"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1562977671064917394/original/77c1e9cb-b763-4930-b3ad-ff9aeb92870b.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1562977671064917394/original/b5471cb0-d363-4ad6-a9ba-dc4f4cd53391.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1562977671064917394/original/d3414633-d729-46ce-8719-869038f2a67d.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1562977671064917394/original/bae93c01-4d29-47b6-9808-83ed960a8dea.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1562977671064917394/original/f554cdb9-8305-4b4e-bc84-45b1d1b2d197.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1562977671064917394/original/800771c4-5d0e-47bd-a248-83a40814bb7d.jpeg"
+      ]
+    },
+    {
+      "position": 13,
+      "id": "1212674747588902622",
+      "title": "3 Bed Home | City & Station l Parking l London",
+      "description": "Home in London",
+      "link": "https://www.airbnb.com/rooms/1212674747588902622",
+      "booking_link": "https://www.airbnb.com/rooms/1212674747588902622?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjEyMTI2NzQ3NDc1ODg5MDI2MjIifQ==",
+      "rating": 5.0,
+      "reviews": 16,
+      "price": {
+        "total_price": "$4,467",
+        "extracted_total_price": 4467.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$5,511",
+        "extracted_original_price": 5511.0,
+        "price_per_qualifier": "19 nights x $235.07",
+        "extracted_price_per_qualifier": 235.07,
+        "breakdown": [
+          {
+            "description": "19 nights x $235.07",
+            "price": "$4,466.41",
+            "extracted_price": 4466.41
+          }
+        ]
+      },
+      "accommodations": [
+        "3 bedrooms",
+        "5 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.3637,
+        "longitude": -0.12
+      },
+      "badges": [
+        "Guest favorite"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIxMjY3NDc0NzU4ODkwMjYyMg%3D%3D/original/b66371e0-9a17-422c-9ab8-90c009f1e08c.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIxMjY3NDc0NzU4ODkwMjYyMg==/original/1e190915-45d4-44bd-b16d-ac0e232634b1.png",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIxMjY3NDc0NzU4ODkwMjYyMg%3D%3D/original/564e4204-0037-4c6d-b094-8be8c9ca06cd.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIxMjY3NDc0NzU4ODkwMjYyMg%3D%3D/original/ceea4c3c-4033-4448-8176-48beabfb0914.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIxMjY3NDc0NzU4ODkwMjYyMg%3D%3D/original/b5befb30-0b72-4026-bddc-cc488c1b6d0e.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIxMjY3NDc0NzU4ODkwMjYyMg%3D%3D/original/1dc46ec4-b747-4a16-92ed-3bbdafcd7aa6.jpeg"
+      ]
+    },
+    {
+      "position": 14,
+      "id": "43735314",
+      "title": "Central Bayswater 4 Bed House 1 min to Hyde Park",
+      "description": "Home in London",
+      "link": "https://www.airbnb.com/rooms/43735314",
+      "booking_link": "https://www.airbnb.com/rooms/43735314?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjQzNzM1MzE0In0=",
+      "rating": 4.97,
+      "reviews": 36,
+      "price": {
+        "total_price": "$14,304",
+        "extracted_total_price": 14304.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "price_per_qualifier": "19 nights x $801.69",
+        "extracted_price_per_qualifier": 801.69,
+        "breakdown": [
+          {
+            "description": "19 nights x $801.69",
+            "price": "$15,232.07",
+            "extracted_price": 15232.07
+          },
+          {
+            "description": "Price after discount",
+            "price": "$14,303.92",
+            "extracted_price": 14303.92
+          }
+        ]
+      },
+      "accommodations": [
+        "4 bedrooms",
+        "4 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.51163,
+        "longitude": -0.18543
+      },
+      "badges": [
+        "Guest favorite"
+      ],
+      "images": [
+        "https://a0.muscache.com/im/pictures/miso/Hosting-43735314/original/8f28bc5d-b5a8-45fb-bf35-fffd0ac63eb0.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-43735314/original/5da030f0-73b8-47ca-ae9b-6fd752d522be.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-43735314/original/7c875485-061f-4784-859c-949c9563130d.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-43735314/original/6fc813c1-6543-4390-b986-12edaa79aa49.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-43735314/original/e56e9e71-020f-44f1-aa26-3e419b23a28b.jpeg",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-43735314/original/1b0a7ecb-a3c4-402d-866c-3f5886c6576e.jpeg"
+      ]
+    },
+    {
+      "position": 15,
+      "id": "1486973411216930064",
+      "title": "3 Bed 3 Bath Luxury Penthouse With River Views",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/1486973411216930064",
+      "booking_link": "https://www.airbnb.com/rooms/1486973411216930064?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE0ODY5NzM0MTEyMTY5MzAwNjQifQ==",
+      "price": {
+        "total_price": "$6,378",
+        "extracted_total_price": 6378.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$7,050",
+        "extracted_original_price": 7050.0,
+        "price_per_qualifier": "19 nights x $371.04",
+        "extracted_price_per_qualifier": 371.04,
+        "breakdown": [
+          {
+            "description": "19 nights x $371.04",
+            "price": "$7,049.85",
+            "extracted_price": 7049.85
+          },
+          {
+            "description": "Price after discount",
+            "price": "$6,377.61",
+            "extracted_price": 6377.61
+          }
+        ]
+      },
+      "accommodations": [
+        "3 bedrooms",
+        "3 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.50156,
+        "longitude": -0.01911
+      },
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1486973411216930064/original/a75b3d58-8aa4-4fb0-9795-acf5f5d346b4.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1486973411216930064/original/99ab347d-273c-4ca8-a941-559d84ce9fe9.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1486973411216930064/original/b553bafd-cad6-4863-9b11-f42dca819a18.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1486973411216930064/original/d6999961-67c2-4e51-82a7-20c887a74eff.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1486973411216930064/original/cffae9d4-e0f8-4600-a247-2c4c257aeff1.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1486973411216930064/original/3fec9e14-f3a5-492b-bfdf-85ce18ade32f.jpeg"
+      ]
+    },
+    {
+      "position": 16,
+      "id": "38096030",
+      "title": "2 Bed, 2 Min Luton Train St & 10 Min LTN Airport.",
+      "description": "Condo in Luton",
+      "link": "https://www.airbnb.com/rooms/38096030",
+      "booking_link": "https://www.airbnb.com/rooms/38096030?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjM4MDk2MDMwIn0=",
+      "rating": 4.8,
+      "reviews": 5,
+      "price": {
+        "total_price": "$2,581",
+        "extracted_total_price": 2581.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "price_per_qualifier": "19 nights x $141.76",
+        "extracted_price_per_qualifier": 141.76,
+        "breakdown": [
+          {
+            "description": "19 nights x $141.76",
+            "price": "$2,693.37",
+            "extracted_price": 2693.37
+          },
+          {
+            "description": "Price after discount",
+            "price": "$2,580.07",
+            "extracted_price": 2580.07
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "3 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.88168,
+        "longitude": -0.41493
+      },
+      "images": [
+        "https://a0.muscache.com/im/pictures/982cc29a-c9f0-400b-9ea5-aec34aa89ece.jpg",
+        "https://a0.muscache.com/im/pictures/2fd88903-3f9b-4a4e-b8aa-fb31d48a3863.jpg",
+        "https://a0.muscache.com/im/pictures/e3e54c58-db62-40ad-9336-1cc9ba784dd7.jpg",
+        "https://a0.muscache.com/im/pictures/04b5c260-e1f1-4f19-97e7-0e27feeafe23.jpg",
+        "https://a0.muscache.com/im/pictures/21cf4b0b-4edd-450f-8d3b-8e6d34efaf47.jpg",
+        "https://a0.muscache.com/im/pictures/167cf4d1-165d-4b3f-8a09-99f7487b070d.jpg"
+      ]
+    },
+    {
+      "position": 17,
+      "id": "1552318989292163804",
+      "title": "Bright 2Bed/2Bath Flat - 2 mins to Tube & Parking",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/1552318989292163804",
+      "booking_link": "https://www.airbnb.com/rooms/1552318989292163804?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE1NTIzMTg5ODkyOTIxNjM4MDQifQ==",
+      "price": {
+        "total_price": "$3,846",
+        "extracted_total_price": 3846.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$4,768",
+        "extracted_original_price": 4768.0,
+        "price_per_qualifier": "19 nights x $250.90",
+        "extracted_price_per_qualifier": 250.9,
+        "breakdown": [
+          {
+            "description": "19 nights x $250.90",
+            "price": "$4,767.01",
+            "extracted_price": 4767.01
+          },
+          {
+            "description": "Price after discount",
+            "price": "$3,845.38",
+            "extracted_price": 3845.38
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "4 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.59332,
+        "longitude": -0.25024
+      },
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1552318989292163804/original/e34bacd6-f2c4-446c-a829-0d5494f7536e.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1552318989292163804/original/b239266c-0072-4fab-bfc2-874e98996452.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1552318989292163804/original/0a37b7a9-1004-4ccf-8305-a8b890e03ce8.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1552318989292163804/original/f8b51a1b-198f-45ec-8b9d-067679d803b9.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1552318989292163804/original/67546c7e-cdd7-4cd8-938a-fc259638f944.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1552318989292163804/original/c589a8d3-1ee1-4396-a563-e90dddf92127.jpeg"
+      ]
+    },
+    {
+      "position": 18,
+      "id": "1186355129917621503",
+      "title": "Duplex 3+1 by hyde park",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/1186355129917621503",
+      "booking_link": "https://www.airbnb.com/rooms/1186355129917621503?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjExODYzNTUxMjk5MTc2MjE1MDMifQ==",
+      "rating": 5.0,
+      "reviews": 4,
+      "price": {
+        "total_price": "$15,660",
+        "extracted_total_price": 15660.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$17,169",
+        "extracted_original_price": 17169.0,
+        "price_per_qualifier": "19 nights x $903.61",
+        "extracted_price_per_qualifier": 903.61,
+        "breakdown": [
+          {
+            "description": "19 nights x $903.61",
+            "price": "$17,168.57",
+            "extracted_price": 17168.57
+          },
+          {
+            "description": "Price after discount",
+            "price": "$15,659.02",
+            "extracted_price": 15659.02
+          }
+        ]
+      },
+      "accommodations": [
+        "3 bedrooms",
+        "4 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.5124,
+        "longitude": -0.1744
+      },
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1186355129917621503/original/7dcd6531-dda0-4a84-b239-ebeaac876eaf.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1186355129917621503/original/e18446d3-20d7-4982-8d51-8a6f4acebe5d.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1186355129917621503/original/5681eff8-c3fd-4fdf-92b4-d14142da1899.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1186355129917621503/original/71361378-17dc-4788-817d-d8b9f75144ee.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1186355129917621503/original/39546b31-0870-46f8-9408-cebbaa64868c.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1186355129917621503/original/51133cc6-2246-4f89-bc2a-66b1ef6ca49c.jpeg"
+      ]
+    },
+    {
+      "position": 19,
+      "id": "1505725098039181942",
+      "title": "Two Bedroom Flat in London",
+      "description": "Apartment in London",
+      "link": "https://www.airbnb.com/rooms/1505725098039181942",
+      "booking_link": "https://www.airbnb.com/rooms/1505725098039181942?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjE1MDU3MjUwOTgwMzkxODE5NDIifQ==",
+      "price": {
+        "total_price": "$2,989",
+        "extracted_total_price": 2989.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "price_per_qualifier": "19 nights x $164.46",
+        "extracted_price_per_qualifier": 164.46,
+        "breakdown": [
+          {
+            "description": "19 nights x $164.46",
+            "price": "$3,124.72",
+            "extracted_price": 3124.72
+          },
+          {
+            "description": "Price after discount",
+            "price": "$2,988.28",
+            "extracted_price": 2988.28
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "2 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.61467,
+        "longitude": -0.14825
+      },
+      "images": [
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1505725098039181942/original/3141643d-25d5-4893-9a0c-c44e338cae1f.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1505725098039181942/original/4baf1b8f-169c-43c8-b40e-29f51a4c3d46.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1505725098039181942/original/3e731228-c76e-4bfd-b7c7-e118c9bb8671.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1505725098039181942/original/0bff7cd6-280b-4d0a-bc18-d23a4e92aecb.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1505725098039181942/original/f81e5dc4-c0c9-4de6-881f-48f7c7419ae5.jpeg",
+        "https://a0.muscache.com/im/pictures/hosting/Hosting-1505725098039181942/original/d3e5ede1-ffc2-4091-941b-a7466f9ff94e.jpeg"
+      ]
+    },
+    {
+      "position": 20,
+      "id": "20987615",
+      "title": "canning town house",
+      "description": "Townhouse in London",
+      "link": "https://www.airbnb.com/rooms/20987615",
+      "booking_link": "https://www.airbnb.com/rooms/20987615?check_in=2025-12-01&check_out=2025-12-20&adults=2&children=2&infants=0&pets=0&federated_search_id=6e796879-66c3-4425-922c-621d3abf4686",
+      "booking_token": "eyJjaGVja19pbiI6IjIwMjUtMTItMDEiLCJjaGVja19vdXQiOiIyMDI1LTEyLTIwIiwiYWR1bHRzIjoiMiIsImNoaWxkcmVuIjoiMiIsImluZmFudHMiOjAsInBldHMiOjAsImZlZGVyYXRlZF9zZWFyY2hfaWQiOiI2ZTc5Njg3OS02NmMzLTQ0MjUtOTIyYy02MjFkM2FiZjQ2ODYiLCJwcm9wZXJ0eV9pZCI6IjIwOTg3NjE1In0=",
+      "rating": 4.48,
+      "reviews": 25,
+      "price": {
+        "total_price": "$4,540",
+        "extracted_total_price": 4540.0,
+        "qualifier": "for 19 nights",
+        "extracted_qualifier": 19,
+        "original_price": "$5,800",
+        "extracted_original_price": 5800.0,
+        "price_per_qualifier": "19 nights x $305.24",
+        "extracted_price_per_qualifier": 305.24,
+        "breakdown": [
+          {
+            "description": "19 nights x $305.24",
+            "price": "$5,799.63",
+            "extracted_price": 5799.63
+          },
+          {
+            "description": "Price after discount",
+            "price": "$4,539.66",
+            "extracted_price": 4539.66
+          }
+        ]
+      },
+      "accommodations": [
+        "2 bedrooms",
+        "2 beds"
+      ],
+      "gps_coordinates": {
+        "latitude": 51.50966,
+        "longitude": 0.0153
+      },
+      "images": [
+        "https://a0.muscache.com/im/pictures/fe06a917-23d2-4198-a2cd-15cf0f3b2328.jpg",
+        "https://a0.muscache.com/im/pictures/1c732caf-ede5-4e9c-8e78-d11567367979.jpg",
+        "https://a0.muscache.com/im/pictures/9c67eb43-4a16-4886-bdee-69a47f7c4e70.jpg",
+        "https://a0.muscache.com/im/pictures/2634c046-ddfb-43b8-92be-24f94613df25.jpg",
+        "https://a0.muscache.com/im/pictures/3385ea20-8d57-4a80-9fc9-aa796b08d483.jpg",
+        "https://a0.muscache.com/im/pictures/c084bd01-58a5-4c7c-9480-95b76386c77a.jpg"
+      ]
+    }
+  ],
+  "pagination": {
+    "next_page_token": "eyJmZWRlcmF0ZWRfc2VhcmNoX2lkIjoiNmU3OTY4NzktNjZjMy00NDI1LTkyMmMtNjIxZDNhYmY0Njg2IiwiZmVkZXJhdGVkX3NlYXJjaF9zZXNzaW9uX2lkIjoiMjQwMDg1MTctMDkwMC00NDQyLTk1NDItN2ZlNDA4ZWE5MzBkIiwiY3Vyc29yIjoiZXlKelpXTjBhVzl1WDI5bVpuTmxkQ0k2TUN3aWFYUmxiWE5mYjJabWMyVjBJam94T0N3aWRtVnljMmx2YmlJNk1YMD0ifQ=="
+  }
+}
