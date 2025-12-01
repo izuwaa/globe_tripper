@@ -32,10 +32,10 @@ Globe Tripper is structured as a small agentic system with shared state and orch
 - **Intake / Concierge layer**
   - `dispatcher_agent` (`src/agents/dispatcher_agent.py`) – first‑line intake agent. Talks to the user, calls tools like `update_trip_plan`, `resolve_airports`, and `mark_ready_for_planning`, and decides when intake is “good enough” to move into planning.
 
-- **Planning layer**
+<!-- - **Planning layer**
   - `planner_root_agent` & `parallel_planner_agent` (`src/agents/parallel_planner_agent.py`) – orchestrators.  
     - `planner_root_agent` is a coordinator agent that calls other agents as tools.  
-    - `parallel_planner_agent` is a `ParallelAgent` that runs multiple domain agents concurrently (currently visa + flights, with room to add more).
+    - `parallel_planner_agent` is a `ParallelAgent` that runs multiple domain agents concurrently (currently visa + flights, with room to add more). -->
 
 - **Domain specialist agents**
   - `visa_agent` (`src/agents/visa_agent.py`) – derives visa requirements and visa search tasks based on planner state, then applies search results back.  
