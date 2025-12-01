@@ -2,6 +2,10 @@
 
 Globe Tripper is an AI travel concierge that coordinates a team of specialist agents to plan complex, mostly international trips end‑to‑end. It is built on top of the Google Agent Development Kit (ADK) and organized around a shared planner state, domain‑specific states (visa, flights, accommodation, activities), and a small set of orchestrator agents.
 
+![High‑level design](../high_level_design.png)
+
+![Detailed architecture](../Architecture.png)
+
 For the narrative and business context behind the project, see `about-this-agent.md`. For a practical “how to run it” guide, see `README.md`.
 
 ---
@@ -56,4 +60,3 @@ If you are exploring or extending the system:
 - Start with `docs/agents/dispatcher.md` to understand how intake works.  
 - Then read `docs/agents/planner.md` for how the planner/parallel planner are intended to orchestrate visa, flights, and beyond.  
 - Use the tests in `tests/` and the pipelines in `run.py` as concrete examples of how agents and tools are wired together.
-
