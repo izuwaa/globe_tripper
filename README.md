@@ -4,7 +4,7 @@ Globe Tripper is an AI‑powered travel concierge that plans complex, mostly int
 
 For a business‑ and product‑focused narrative of why this exists and what opportunity it targets, see `about-this-agent.md`.
 
-![High‑level design of Globe Tripper](high_level_design.png)
+<!-- ![High‑level design of Globe Tripper](high_level_design.png) -->
 
 ---
 
