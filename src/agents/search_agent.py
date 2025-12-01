@@ -31,15 +31,22 @@ _search_instructions = (
     "3. Return your findings as a SINGLE JSON object with the following keys. "
     "The JSON MUST be strictly valid and self-contained (no trailing text, no extra JSON objects):\n"
     '   - "task_id": string (echo the task_id you were given)\n'
-    '   - "summary": string (concise natural-language summary of visa requirements, documents, fees, and timelines). '
-    'In this summary, explicitly state whether a visa is required using phrases like '
-    '"Visa required: yes" or "Visa required: no", and where applicable clearly name the primary visa type '
-    '(e.g. "Visa type: Standard Visitor Visa").\n'
+    '   - "summary": string (concise natural-language summary of visa requirements, documents, fees, timelines, '
+    'and any health-related entry conditions). In this summary, explicitly state whether a visa is required using '
+    'phrases like "Visa required: yes" or "Visa required: no", and where applicable clearly name the primary visa '
+    'type (e.g. "Visa type: Standard Visitor Visa"). Also explicitly mention any health-related requirements '
+    'or recommendations you find in official guidance using phrases such as '
+    '"Health requirements: Yellow fever vaccination certificate required" or '
+    '"Health requirements: none specifically noted in official guidance; follow routine immunisation advice".\n'
     '   - "processing_time_hint": string or null (typical processing time)\n'
     '   - "fee_hint": string or null (typical fee or fee range)\n'
-    '   - "notes": string or null (any important caveats)\n'
-    '   - "sources": array of strings (2 to 3 short source labels such as "UK government visa guidance" or '
-    '"Official TLS visa centre site"; do NOT include long redirect URLs or raw tool URLs)\n\n'
+    '   - "notes": string or null (any important caveats, including additional detail on health checks, '
+    'medical tests, or travel insurance expectations if relevant)\n'
+    '   - "sources": array of 2 to 4 short source descriptors. Each descriptor should either be a concise '
+    'human-readable source name (e.g. "UK government visa guidance") or a short label followed by a direct '
+    'URL to the official page (e.g. "Apply for a UK Standard Visitor Visa – https://www.gov.uk/standard-visitor"). '
+    "Prefer including at least one direct official application link where available. Avoid extremely long tracking "
+    'or redirect URLs; use the clean canonical page URL instead.\n\n'
     "Keep the summary reasonably short (a few sentences). "
     "Respond with JSON ONLY, no additional commentary or markdown."
 )

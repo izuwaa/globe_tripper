@@ -17,6 +17,8 @@ from src.state.state_utils import (
     save_flight_state,
     get_accommodation_state,
     save_accommodation_state,
+    get_activity_state,
+    save_activity_state,
 )
 from src.state.visa_state import (
     VisaState,
@@ -38,6 +40,14 @@ from src.state.accommodation_state import (
     AccommodationOption,
     TravelerAccommodationChoice,
 )
+from src.state.activity_state import (
+    ActivityState,
+    ActivitySearchTask,
+    ActivitySearchResult,
+    ActivityOption,
+    DayItineraryItem,
+)
+from src.utils.costs import compute_cost_summary_from_state
 
 
 logger = logging.getLogger(__name__)
@@ -637,6 +647,38 @@ def read_accommodation_search_state(tool_context: ToolContext) -> Dict[str, Any]
     }
 
 
+def compute_cost_summary(tool_context: ToolContext) -> Dict[str, Any]:
+    """
+    Tool wrapper around compute_cost_summary_from_state.
+
+    This allows agents to quickly retrieve an aggregated view of:
+      - Flight and accommodation costs per currency.
+      - Simple visa fee hints (as text).
+      - The user's budget_mode and total_budget.
+    """
+    planner_state = get_planner_state(tool_context)
+    visa_state = get_visa_state(tool_context)
+    flight_state = get_flight_state(tool_context)
+    accommodation_state = get_accommodation_state(tool_context)
+
+    summary = compute_cost_summary_from_state(
+        planner_state=planner_state,
+        visa_state=visa_state,
+        flight_state=flight_state,
+        accommodation_state=accommodation_state,
+    )
+
+    logger.info(
+        "[Tool] compute_cost_summary completed",
+        extra={
+            "num_currencies": len(summary.get("currency_totals") or {}),
+            "has_budget": summary.get("budget", {}).get("total_budget") is not None,
+        },
+    )
+
+    return {"status": "success", **summary}
+
+
 def record_visa_search_result(
     tool_context: ToolContext,
     task_id: str,
@@ -970,7 +1012,7 @@ def derive_accommodation_search_tasks(tool_context: ToolContext) -> Dict[str, An
     planner_end_date = planner_state.trip_details.end_date
     travelers = planner_state.demographics.travelers or []
 
-    if not destination or not travelers:
+    if not travelers:
         logger.info(
             "[Tool] derive_accommodation_search_tasks skipped – missing destination or travelers",
         )
@@ -982,6 +1024,12 @@ def derive_accommodation_search_tasks(tool_context: ToolContext) -> Dict[str, An
     # concrete flight choices with arrival/departure datetimes.
     check_in_date = planner_start_date
     check_out_date = planner_end_date
+
+    # Prefer a city-level location for accommodation searches. If the planner
+    # destination is very broad (e.g. just "UK") but we have a concrete
+    # destination airport code from flight planning, infer a likely base city
+    # from that airport (for example, LHR -> "London, UK").
+    accommodation_location = destination
 
     flight_state = get_flight_state(tool_context)
     arrival_dates: List[str] = []
@@ -1010,6 +1058,35 @@ def derive_accommodation_search_tasks(tool_context: ToolContext) -> Dict[str, An
         check_in_date = min(arrival_dates)
     if departure_dates:
         check_out_date = max(departure_dates)
+
+    # Guard against inverted date windows (e.g. arrival after planner end date).
+    if (
+        check_in_date
+        and check_out_date
+        and check_in_date > check_out_date
+    ):
+        if planner_start_date and planner_end_date and planner_start_date <= planner_end_date:
+            check_in_date = planner_start_date
+            check_out_date = planner_end_date
+        else:
+            check_out_date = check_in_date
+
+    # Infer base city from flight destination when destination is missing or very broad.
+    # This keeps accommodation queries anchored to a realistic city (e.g. "London, UK").
+    if not accommodation_location or accommodation_location.strip().upper() in {"UK", "UNITED KINGDOM"}:
+        # Look at any flight search task to see the destination city/airport code.
+        if flight_state.search_tasks:
+            dest_code = flight_state.search_tasks[0].destination_city
+            if dest_code:
+                code = dest_code.strip().upper()
+                # Simple mappings for common UK airports; extend as needed.
+                london_airports = {"LHR", "LGW", "LCY", "STN", "LTN", "SEN"}
+                if code in london_airports:
+                    accommodation_location = "London, UK"
+
+    # Fall back to the original destination string if no better inference is available.
+    if not accommodation_location:
+        accommodation_location = destination
 
     pref = planner_state.preferences
     budget_mode = pref.budget_mode
@@ -1042,7 +1119,7 @@ def derive_accommodation_search_tasks(tool_context: ToolContext) -> Dict[str, An
 
     prompt_lines = [
         "Search for suitable accommodation options for the following trip context:",
-        f"- Destination: {destination}",
+        f"- Destination: {accommodation_location}",
         f"- Check-in date: {check_in_date or 'UNKNOWN'}",
         f"- Check-out date: {check_out_date or 'UNKNOWN'}",
         f"- Budget mode: {budget_mode or 'unspecified'}",
@@ -1086,7 +1163,7 @@ def derive_accommodation_search_tasks(tool_context: ToolContext) -> Dict[str, An
     task = AccommodationSearchTask(
         task_id=task_id,
         traveler_indexes=traveler_indexes,
-        location=destination,
+        location=accommodation_location,
         check_in_date=check_in_date,
         check_out_date=check_out_date,
         budget_mode=budget_mode,
@@ -1105,7 +1182,7 @@ def derive_accommodation_search_tasks(tool_context: ToolContext) -> Dict[str, An
     logger.info(
         "[Tool] derive_accommodation_search_tasks completed",
         extra={
-            "destination": destination,
+            "destination": accommodation_location,
             "num_travelers": len(travelers),
             "task_id": task_id,
         },
@@ -1113,7 +1190,7 @@ def derive_accommodation_search_tasks(tool_context: ToolContext) -> Dict[str, An
 
     print(
         f"[Tool] derive_accommodation_search_tasks created 1 accommodation task "
-        f"for destination={destination} travelers={traveler_indexes}"
+        f"for destination={accommodation_location} travelers={traveler_indexes}"
     )
 
     return {
@@ -1142,8 +1219,6 @@ def apply_flight_search_results(tool_context: ToolContext) -> Dict[str, Any]:
         parts: List[str] = []
         if result.summary:
             parts.append(result.summary.strip())
-        if result.best_price_hint:
-            parts.append(f"Price hint: {result.best_price_hint}")
         if result.best_time_hint:
             parts.append(f"Time hint: {result.best_time_hint}")
         if result.recommended_option_label:
@@ -2105,6 +2180,445 @@ def searchapi_google_flights_calendar(
     }
 
 
+def derive_activity_search_tasks(tool_context: ToolContext) -> Dict[str, Any]:
+    """
+    Build ActivitySearchTask objects based on the current PlannerState.
+
+    For a first iteration, we create a single task that covers the full trip
+    window and all travelers, using destination / dates / interests from
+    PlannerState.
+    """
+    planner_state = get_planner_state(tool_context)
+    activity_state = get_activity_state(tool_context)
+
+    destination = planner_state.trip_details.destination
+    planner_start_date = planner_state.trip_details.start_date
+    planner_end_date = planner_state.trip_details.end_date
+    travelers = planner_state.demographics.travelers or []
+
+    if not destination or not planner_start_date or not planner_end_date or not travelers:
+        logger.info(
+            "[Tool] derive_activity_search_tasks skipped – missing destination, dates, or travelers",
+        )
+        return {
+            "status": "skipped",
+            "reason": "missing_destination_dates_or_travelers",
+        }
+
+    traveler_indexes = list(range(len(travelers)))
+
+    # Default to planner start/end dates, but if we have concrete flight choices
+    # with arrival/departure datetimes, tighten the activity window to the
+    # actual on-the-ground days.
+    date_start = planner_start_date
+    date_end = planner_end_date
+
+    flight_state = get_flight_state(tool_context)
+    arrival_dates: List[str] = []
+    departure_dates: List[str] = []
+
+    for choice in flight_state.traveler_flights or []:
+        if choice.traveler_index not in traveler_indexes:
+            continue
+
+        option = choice.chosen_option
+        if option is None and choice.other_options:
+            option = choice.other_options[0]
+        if option is None:
+            continue
+
+        if option.outbound_arrival and len(option.outbound_arrival) >= 10:
+            arrival_dates.append(option.outbound_arrival[:10])
+
+        dep_str = option.return_departure or option.return_arrival
+        if dep_str and len(dep_str) >= 10:
+            departure_dates.append(dep_str[:10])
+
+    if arrival_dates:
+        date_start = min(arrival_dates)
+    if departure_dates:
+        date_end = max(departure_dates)
+
+    # Guard against inverted activity windows (e.g. arrival after planner end date).
+    if (
+        date_start
+        and date_end
+        and date_start > date_end
+    ):
+        if planner_start_date and planner_end_date and planner_start_date <= planner_end_date:
+            date_start = planner_start_date
+            date_end = planner_end_date
+        else:
+            date_end = date_start
+    pref = planner_state.preferences
+
+    interests = pref.interests or []
+    must_do = pref.must_do or []
+    nice_to_have = pref.nice_to_have or []
+
+    task_id = f"activities_{len(activity_state.search_tasks)}"
+
+    prompt_lines: List[str] = [
+        "Search for typical activities, attractions, and food experiences for the following trip context:",
+        f"- Destination: {destination}",
+        f"- Dates: {date_start or planner_start_date} to {date_end or planner_end_date}",
+        f"- Travelers covered (indexes): {traveler_indexes}",
+        f"- Budget mode: {pref.budget_mode or 'unspecified'}",
+    ]
+
+    if interests:
+        prompt_lines.append(f"- Interests: {interests}")
+    if must_do:
+        prompt_lines.append(f"- Must-do items: {must_do}")
+    if nice_to_have:
+        prompt_lines.append(f"- Nice-to-have themes: {nice_to_have}")
+    if pref.daily_rhythm:
+        prompt_lines.append(f"- Daily rhythm: {pref.daily_rhythm}")
+    if pref.mobility_constraints:
+        prompt_lines.append(f"- Mobility constraints: {pref.mobility_constraints}")
+
+    prompt_lines.append(
+        "- Focus on activities that would realistically fit into a family-friendly itinerary. "
+        "Include indoor and outdoor options, and a mix of paid and free experiences where possible."
+    )
+
+    prompt = "\n".join(prompt_lines)
+
+    task = ActivitySearchTask(
+        task_id=task_id,
+        traveler_indexes=traveler_indexes,
+        location=destination,
+        date_start=date_start,
+        date_end=date_end,
+        interests=list(interests),
+        must_do=list(must_do),
+        nice_to_have=list(nice_to_have),
+        budget_mode=pref.budget_mode,
+        prompt=prompt,
+        purpose="activity_options_lookup",
+    )
+
+    activity_state.search_tasks.append(task)
+    save_activity_state(tool_context, activity_state)
+
+    logger.info(
+        "[Tool] derive_activity_search_tasks completed",
+        extra={
+            "destination": destination,
+            "start_date": date_start,
+            "end_date": date_end,
+            "task_id": task_id,
+        },
+    )
+
+    print(
+        f"[Tool] derive_activity_search_tasks created 1 activity task "
+        f"for destination={destination} travelers={traveler_indexes}"
+    )
+
+    return {
+        "status": "success",
+        "task_id": task_id,
+    }
+
+
+def record_activity_search_result(
+    tool_context: ToolContext,
+    task_id: str,
+    summary: str,
+    options: Optional[List[Dict[str, Any]]] = None,
+    budget_hint: Optional[str] = None,
+    family_friendly_hint: Optional[str] = None,
+    neighborhood_hint: Optional[str] = None,
+    query: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Persist a normalized ActivitySearchResult into ActivityState for a given task_id.
+
+    This tool is intended to be used by an activity-focused agent that has
+    called google_search (or other tools) and normalized the raw results.
+    """
+    activity_state = get_activity_state(tool_context)
+
+    matching_task = next(
+        (t for t in activity_state.search_tasks if t.task_id == task_id),
+        None,
+    )
+    if matching_task is None:
+        logger.warning(
+            "[Tool] record_activity_search_result called with unknown task_id",
+            extra={"task_id": task_id},
+        )
+        return {"status": "error", "reason": "unknown_task_id", "task_id": task_id}
+
+    option_models: List[ActivityOption] = []
+    for opt in options or []:
+        if not isinstance(opt, dict):
+            continue
+        try:
+            option_models.append(ActivityOption(**opt))
+        except Exception as exc:
+            logger.warning(
+                "[Tool] record_activity_search_result could not parse option",
+                extra={"task_id": task_id, "option": opt, "error": str(exc)},
+            )
+
+    result = ActivitySearchResult(
+        task_id=task_id,
+        query=query,
+        options=option_models,
+        summary=summary,
+        budget_hint=budget_hint,
+        family_friendly_hint=family_friendly_hint,
+        neighborhood_hint=neighborhood_hint,
+    )
+
+    activity_state.search_results.append(result)
+    save_activity_state(tool_context, activity_state)
+
+    logger.info(
+        "[Tool] record_activity_search_result completed",
+        extra={
+            "task_id": task_id,
+            "num_results_total": len(activity_state.search_results),
+        },
+    )
+
+    print(f"[Activity Result Tool] Recorded ActivitySearchResult for task_id={task_id}")
+
+    return {
+        "status": "success",
+        "task_id": task_id,
+        "num_results_total": len(activity_state.search_results),
+    }
+
+
+def apply_activity_search_results(tool_context: ToolContext) -> Dict[str, Any]:
+    """
+    Apply ActivitySearchResult entries back into ActivityState by deriving
+    a coarse day-by-day itinerary.
+
+    This is intentionally simple: it spreads activities across the trip days
+    and fills morning / afternoon / evening slots where possible.
+    """
+    activity_state = get_activity_state(tool_context)
+    planner_state = get_planner_state(tool_context)
+
+    if not activity_state.search_results:
+        logger.info(
+            "[Tool] apply_activity_search_results skipped – no search_results present",
+        )
+        return {"status": "skipped", "reason": "no_search_results"}
+
+    # Derive the date range for the itinerary. Prefer the first ActivitySearchTask's
+    # date_start/date_end when available; otherwise fall back to the trip dates.
+    start_date_str: Optional[str] = None
+    end_date_str: Optional[str] = None
+    if activity_state.search_tasks:
+        first_task = activity_state.search_tasks[0]
+        start_date_str = first_task.date_start
+        end_date_str = first_task.date_end
+    start_date_str = start_date_str or planner_state.trip_details.start_date
+    end_date_str = end_date_str or planner_state.trip_details.end_date
+
+    days: List[str] = []
+    if start_date_str and end_date_str:
+        try:
+            start_dt = date.fromisoformat(start_date_str)
+            end_dt = date.fromisoformat(end_date_str)
+            current = start_dt
+            while current <= end_dt:
+                days.append(current.isoformat())
+                current = current.fromordinal(current.toordinal() + 1)
+        except Exception:
+            # If date parsing fails, fall back to a single pseudo-day.
+            days = [start_date_str]
+    else:
+        days = [start_date_str or "0000-00-00"]
+
+    # Flatten all options across tasks.
+    all_options: List[ActivityOption] = []
+    for result in activity_state.search_results:
+        all_options.extend(result.options or [])
+
+    if not all_options:
+        logger.info(
+            "[Tool] apply_activity_search_results found no options to schedule",
+        )
+        return {"status": "skipped", "reason": "no_options"}
+
+    # Simple round-robin assignment of activities to (day, slot).
+    slots: List[str] = ["morning", "afternoon", "evening"]
+    items: List[DayItineraryItem] = []
+
+    traveler_indexes = list(range(len(planner_state.demographics.travelers or [])))
+
+    opt_index = 0
+    for day in days:
+        for slot in slots:
+            if opt_index >= len(all_options):
+                break
+            opt = all_options[opt_index]
+            opt_index += 1
+
+            items.append(
+                DayItineraryItem(
+                    date=day,
+                    slot=slot,  # type: ignore[arg-type]
+                    traveler_indexes=traveler_indexes,
+                    task_id="*",
+                    activity=opt,
+                    notes=None,
+                )
+            )
+
+    activity_state.day_plan = items
+
+    lines: List[str] = []
+    for item in items:
+        lines.append(f"{item.date} {item.slot}: {item.activity.name}")
+    if lines:
+        activity_state.overall_summary = "\n".join(lines)
+
+    save_activity_state(tool_context, activity_state)
+
+    logger.info(
+        "[Tool] apply_activity_search_results completed",
+        extra={
+            "num_tasks": len(activity_state.search_tasks),
+            "num_results": len(activity_state.search_results),
+            "num_itinerary_items": len(items),
+        },
+    )
+
+    print("[Tool] apply_activity_search_results updated ActivityState.day_plan")
+
+    return {
+        "status": "success",
+        "num_tasks": len(activity_state.search_tasks),
+        "num_results": len(activity_state.search_results),
+        "num_itinerary_items": len(items),
+    }
+
+
+def record_day_itinerary(
+    tool_context: ToolContext,
+    items: List[Dict[str, Any]],
+    overall_summary: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Persist a day-by-day itinerary into ActivityState.day_plan.
+
+    This function APPENDS new items to any existing ActivityState.day_plan
+    entries instead of replacing them, so that callers can build itineraries
+    incrementally (for example, planning a few days at a time).
+
+    To keep things simple and robust for LLMs, each element in `items` should
+    be a small object with just the key details:
+
+      - date: ISO date string (required)
+      - slot: 'morning' | 'afternoon' | 'evening' (required)
+      - task_id: string (optional, '*' is fine if ambiguous)
+      - name: short name of the activity, e.g. "Hyde Park Winter Wonderland" (required)
+      - notes: optional short string with any important details
+
+    You may optionally include:
+      - traveler_indexes: list[int]      (if omitted, all travelers are used)
+      - neighborhood: string             (optional)
+      - city: string                     (optional)
+      - url: string                      (optional)
+
+    The tool will turn each item into a DayItineraryItem + ActivityOption, and
+    will not attempt to look anything up from search_results.
+    """
+    planner_state = get_planner_state(tool_context)
+    activity_state = get_activity_state(tool_context)
+
+    # Start from any existing day_plan so multiple calls can add to it.
+    existing_items: List[DayItineraryItem] = list(activity_state.day_plan or [])
+    new_items: List[DayItineraryItem] = []
+    for raw in items or []:
+        if not isinstance(raw, dict):
+            logger.warning(
+                "[Tool] record_day_itinerary could not parse item (not a dict)",
+                extra={"item": raw},
+            )
+            continue
+        try:
+            date_str = raw.get("date")
+            slot_raw = raw.get("slot")
+            name = raw.get("name") or raw.get("title") or raw.get("label")
+
+            if not isinstance(date_str, str) or not isinstance(slot_raw, str):
+                raise ValueError("missing or invalid date/slot")
+            if not isinstance(name, str) or not name.strip():
+                raise ValueError("missing activity name")
+
+            slot_normalized = slot_raw.strip().lower()
+            if slot_normalized not in ("morning", "afternoon", "evening"):
+                raise ValueError(f"invalid slot value: {slot_raw!r}")
+
+            task_id = raw.get("task_id") or "*"
+
+            traveler_indexes = raw.get("traveler_indexes")
+            if not traveler_indexes:
+                traveler_indexes = list(range(len(planner_state.demographics.travelers or [])))
+
+            activity_model = ActivityOption(
+                name=name.strip(),
+                category=raw.get("category"),
+                location_label=raw.get("location_label"),
+                neighborhood=raw.get("neighborhood"),
+                city=raw.get("city"),
+                country=raw.get("country"),
+                url=raw.get("url"),
+                notes=raw.get("notes"),
+            )
+
+            item = DayItineraryItem(
+                date=date_str,
+                slot=slot_normalized,  # type: ignore[arg-type]
+                traveler_indexes=list(traveler_indexes),
+                task_id=task_id,
+                activity=activity_model,
+                notes=raw.get("notes"),
+            )
+            new_items.append(item)
+        except Exception as exc:
+            logger.warning(
+                "[Tool] record_day_itinerary could not parse item",
+                extra={"item": raw, "error": str(exc)},
+            )
+
+    all_items = existing_items + new_items
+    activity_state.day_plan = all_items
+
+    if overall_summary is not None:
+        activity_state.overall_summary = overall_summary
+    else:
+        lines: List[str] = []
+        for item in all_items:
+            lines.append(f"{item.date} {item.slot}: {item.activity.name}")
+        if lines:
+            activity_state.overall_summary = "\n".join(lines)
+
+    save_activity_state(tool_context, activity_state)
+
+    logger.info(
+        "[Tool] record_day_itinerary completed",
+        extra={
+            "num_items": len(new_items),
+        },
+    )
+
+    print("[Itinerary Tool] Recorded day-by-day itinerary into ActivityState.day_plan")
+
+    return {
+        "status": "success",
+        "num_itinerary_items": len(new_items),
+    }
+
+
 def resolve_airports(
     tool_context: ToolContext,
     location: str,
@@ -2522,23 +3036,53 @@ def searchapi_google_hotels_properties(
             if not isinstance(hotel, dict):
                 continue
 
+            # SearchAPI.io Google Hotels responses can expose pricing either under a
+            # generic "pricing" object or as "price_per_night"/"total_price" blocks.
             pricing = hotel.get("pricing") or {}
+            price_per_night = hotel.get("price_per_night") or {}
+            total_price = hotel.get("total_price") or {}
+
+            currency_value = (
+                pricing.get("currency")
+                or price_per_night.get("currency")
+                or currency
+            )
+
+            nightly = (
+                price_per_night.get("extracted_price")
+                or pricing.get("price")
+                or price_per_night.get("price")
+            )
+            total = (
+                total_price.get("extracted_price")
+                or pricing.get("total_price")
+                or nightly
+            )
+
+            # Location fields may be nested under "location" or surfaced at the top level.
             location = hotel.get("location") or {}
+            city = location.get("city") or hotel.get("city")
+            country = location.get("country") or hotel.get("country")
+            neighborhood = location.get("neighborhood")
+            location_label = neighborhood or location.get("address") or city
 
             options.append(
                 {
                     "provider": "google_hotels",
                     "name": hotel.get("name"),
                     "description": hotel.get("description"),
-                    "location_label": location.get("neighborhood") or location.get("address"),
-                    "neighborhood": location.get("neighborhood"),
-                    "city": location.get("city"),
-                    "country": location.get("country"),
-                    "currency": pricing.get("currency") or currency,
-                    "nightly_price_low": pricing.get("price"),
-                    "nightly_price_high": pricing.get("price"),
+                    "location_label": location_label,
+                    "neighborhood": neighborhood,
+                    "city": city,
+                    "country": country,
+                    "currency": currency_value,
+                    "nightly_price_low": nightly,
+                    "nightly_price_high": nightly,
+                    "total_price_low": total,
+                    "total_price_high": total,
                     "rating": hotel.get("rating"),
-                    "rating_count": hotel.get("rating_count"),
+                    # Some schemas use "reviews" instead of "rating_count".
+                    "rating_count": hotel.get("rating_count") or hotel.get("reviews"),
                     "max_guests": hotel.get("max_guests"),
                     "amenities": hotel.get("amenities") or [],
                     "url": hotel.get("link") or hotel.get("url"),
@@ -2765,8 +3309,9 @@ def build_visa_search_prompt(
 
     prompt = (
         "You are an expert at generating visa requirements, costs, required documents, "
-        "and processing timelines. Only use official government or approved visa "
-        "application centre websites so that guidance is up to date.\n\n"
+        "processing timelines, and any health-related entry conditions (such as mandatory "
+        "or recommended vaccinations or medical tests). Only use official government or "
+        "approved visa application centre websites so that guidance is up to date.\n\n"
         f"Traveler context:\n"
         f"- Traveler index: {traveler_index}\n"
         f"- Role: {role}\n"
@@ -2779,6 +3324,8 @@ def build_visa_search_prompt(
         "- Recommended visa type.\n"
         "- Typical processing time and approximate fees.\n"
         "- Key supporting documents.\n"
+        "- Any health-related entry requirements (e.g. mandatory or recommended vaccines, "
+        "medical tests, or health insurance conditions).\n"
         "- Where and how to apply."
     )
 

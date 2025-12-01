@@ -30,6 +30,9 @@ htmlcov/
 
 # Logs & local outputs
 Output.logs/
+debug.logs/
+Output.logs
+debug.logs
 *.log
 
 # Local scratch (optional; remove if you want tracked)

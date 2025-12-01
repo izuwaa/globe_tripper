@@ -8,26 +8,26 @@ dispatcher:
   provider: "gemini"
   model: "gemini-2.5-flash"
   temperature: 0.0
-  max_tokens: 1000
+  max_tokens: 3000
 
 
 visa:
   provider: "gemini"
   model: "gemini-2.5-flash-lite"
   temperature: 0.0
-  max_tokens: 1000
+  max_tokens: 3000
 
 flight:
   provider: "gemini"
   model: "gemini-2.5-flash-lite"
   temperature: 0.0
-  max_tokens: 1000
+  max_tokens: 3000
 
 search:
   provider: "gemini"
   model: "gemini-2.5-flash-lite"
   temperature: 0.0
-  max_tokens: 1000
+  max_tokens: 3000
 
 
 

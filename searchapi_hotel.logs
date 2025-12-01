@@ -1,0 +1,3457 @@
+{
+  "search_metadata": {
+    "id": "search_KMjqpW46ERuRX79OmenbZ3LV",
+    "status": "Success",
+    "created_at": "2025-12-01T03:28:39Z",
+    "request_time_taken": 1.21,
+    "parsing_time_taken": 0.01,
+    "total_time_taken": 1.22,
+    "request_url": "https://www.google.com/travel/search?q=UK",
+    "html_url": "https://www.searchapi.io/api/v1/searches/search_KMjqpW46ERuRX79OmenbZ3LV.html",
+    "json_url": "https://www.searchapi.io/api/v1/searches/search_KMjqpW46ERuRX79OmenbZ3LV"
+  },
+  "search_parameters": {
+    "engine": "google_hotels",
+    "q": "UK",
+    "check_in_date": "2025-12-05",
+    "check_out_date": "2025-12-20",
+    "currency": "USD",
+    "hl": "en",
+    "gl": "us",
+    "adults": 2,
+    "property_type": "hotel"
+  },
+  "search_information": {
+    "total_results": 1626
+  },
+  "properties": [
+    {
+      "type": "hotel",
+      "property_token": "ChgI0dHEnKS6kOCTARoLL2cvMXR0ZG54M3QQAQ",
+      "data_id": "0x89c22efcc3b4723d:0x93c041d2439128d1",
+      "name": "Red Roof Inn Tinton Falls - Jersey Shore",
+      "link": "https://www.redroof.com/property/nj/tinton-falls/RRI211?utm_source=GMB&utm_medium=Google&utm_campaign=GMB_Performance_RRI211",
+      "description": "Unpretentious budget hotel offering complimentary perks such as Wi-Fi, coffee & parking.",
+      "gps_coordinates": {
+        "latitude": 40.2838791,
+        "longitude": -74.08109619999999
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$73",
+        "extracted_price": 73,
+        "price_before_taxes": "$64",
+        "extracted_price_before_taxes": 64
+      },
+      "total_price": {
+        "price": "$1,095",
+        "extracted_price": 1095,
+        "price_before_taxes": "$956",
+        "extracted_price_before_taxes": 956
+      },
+      "deal": "25% less than usual",
+      "deal_description": "Deal",
+      "nearby_places": [
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 15 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 37 min"
+            }
+          ]
+        },
+        {
+          "name": "Cobalt Cafe & Lounge",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "5 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "2-star hotel",
+      "extracted_hotel_class": 2,
+      "rating": 3.2,
+      "reviews": 684,
+      "reviews_histogram": {
+        "5": 184,
+        "4": 135,
+        "3": 129,
+        "2": 75,
+        "1": 161
+      },
+      "location_rating": 3.0,
+      "proximity_to_things_to_do_rating": 3.5,
+      "airport_access_rating": 3.2,
+      "reviews_breakdown": [
+        {
+          "name": "Sleep",
+          "description": "Sleep",
+          "total": 115,
+          "positive": 18,
+          "neutral": 10,
+          "negative": 87
+        },
+        {
+          "name": "Safety",
+          "description": "Safety",
+          "total": 32,
+          "positive": 10,
+          "neutral": 4,
+          "negative": 18
+        },
+        {
+          "name": "Pets",
+          "description": "Pets",
+          "total": 34,
+          "positive": 15,
+          "neutral": 5,
+          "negative": 14
+        },
+        {
+          "name": "TV",
+          "description": "Room entertainment",
+          "total": 15,
+          "positive": 5,
+          "neutral": 2,
+          "negative": 8
+        },
+        {
+          "name": "Parking",
+          "description": "Parking",
+          "total": 17,
+          "positive": 6,
+          "neutral": 1,
+          "negative": 10
+        },
+        {
+          "name": "Location",
+          "description": "Location",
+          "total": 38,
+          "positive": 28,
+          "neutral": 3,
+          "negative": 7
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Free parking",
+        "Air conditioning",
+        "Pet-friendly",
+        "Accessible",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOjw5lzG43PmII3vByjIWR8ScClBi44bYx2Y7R3=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOjw5lzG43PmII3vByjIWR8ScClBi44bYx2Y7R3=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMiAZXB8KnYAV0X2z7gdUYROPpvezWHCIzLyg1m=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMiAZXB8KnYAV0X2z7gdUYROPpvezWHCIzLyg1m=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipP5XQHr5d5wvSWFoevd5RJfqB29q8f4oQnQVpWJ=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipP5XQHr5d5wvSWFoevd5RJfqB29q8f4oQnQVpWJ=s10000"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/cIeP4i5jQlvwidy50wKi8KE_8sbBy4ww4hWUPobRc8cJcI4Gmz8TIwp3tCkUjcoOegpEQu7xjGqt3kkex3K3EEqx1UQKAYEjQVqCPWN0emXHw1NJBpT8ZCJ7JEENrlgnKsX35Q-RR7LORiDNHD-1hJV9sM9rAA=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/40/405259/405259a_hb_a_009.jpg"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/FbgCIwCe-MyXw30OC-2RyMEHIwC18ZGxrYpYz9f-LTH3iICxMy3J1Ynwg4qWWWH84zI78PwQQmaJsVq0dhvZQFVOXZwgAVlPDteBqj_nU_bEXG52RPYMdpaZ-aIHBfVXBWobUJTAt28lq9niv-AEpqrIGCTWuA=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/40/405259/405259a_hb_ro_030.jpg"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/QsmWcmR8WTVtyxSiRfp3yxJYDYULjAcyNrj0218hhwe1U47jw9N1-HgHy7CC2iKnOHhl2aTRU50HkNKutrw_pa8Im0Zg2ZWg3AUh_I0CEY40kVrVCWMkI749FyfRfWKX1qOop9WgJIhUHeElSDYQA01mAVmHGv4=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/48/489398/489398a_hb_l_004.jpg"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/J3hsNkHujux3XUVMmkClYqQcpbsD_z_CFJknj62XuUSnNrw_I7mqsEEWIJEDTCFxy7d8rGnmGMVnstEFXyOIS_HAB_iUXo8qfF_FYkDnlq2i0r-BTR4HlRlWbZ8agizGCNcao3CQUwu_g8liv9hIOGy0WrM2_s8=s287-w287-h192-n-k-no-v1",
+          "original": "https://cdn.worldota.net/t/1024x768/content/de/3a/de3a6d9612141be4fdfecb6672396c6d6676a1ff.JPEG"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/kfNA4g1BAFJ8QxM0NqmrN2vpf88RHEooFWYSl7JEaF2wTAFy6E2h0f7WBeN5nsvLig-DFAlkAFdoi9m76W85Ub7sCCUndXws_5eIhxa1R8p3hZGTznsP-ty_NDbzgeAK9nWFsocuftLOhGGJYCuxMbqKTNMRDLY=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/40/405259/405259a_hb_l_005.jpg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPQXpuTKQE0MnEjcWQ6oQBH9fQ5BhSSQ6wUtMu8=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPQXpuTKQE0MnEjcWQ6oQBH9fQ5BhSSQ6wUtMu8=s10000"
+        }
+      ]
+    },
+    {
+      "type": "vacation_rental",
+      "property_token": "ChkQoevzsJCQuNxWGg0vZy8xMXhmcHRxa3J0EAI",
+      "name": "Belmar/lake Como-Tranquility 3 BR Apartment with Jacuzzi tub , \nBalcony&Terrace",
+      "gps_coordinates": {
+        "latitude": 40.17034530639648,
+        "longitude": -74.03061676025391
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "price_per_night": {
+        "price": "$245",
+        "extracted_price": 245,
+        "price_before_taxes": "$245",
+        "extracted_price_before_taxes": 245
+      },
+      "total_price": {
+        "price": "$3,674",
+        "extracted_price": 3674,
+        "price_before_taxes": "$3,674",
+        "extracted_price_before_taxes": 3674
+      },
+      "nearby_places": [
+        {
+          "name": "Rt-71 at 18th Ave#",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "10 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 30 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 40 min"
+            }
+          ]
+        },
+        {
+          "name": "La Sierra Restaurant and Bar",
+          "transportations": [
+            {
+              "duration": "5 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "10 min"
+            }
+          ]
+        }
+      ],
+      "offers": [
+        {
+          "source": "Bluepillow.com",
+          "logo": "https://www.gstatic.com/travel-hotels/branding/190ff319-d0fd-4c45-bfc8-bad6f5f395f2.png",
+          "num_guests": 2,
+          "price_per_night": {
+            "price_before_taxes": "$245",
+            "extracted_price_before_taxes": 245.0
+          }
+        }
+      ],
+      "rating": 5,
+      "reviews": 36,
+      "location_rating": 3.7,
+      "proximity_to_transit_rating": 3.9,
+      "airport_access_rating": 2.8,
+      "amenities": [
+        "Air conditioning",
+        "Balcony",
+        "Kid-friendly",
+        "Heating",
+        "Hot tub",
+        "Kitchen",
+        "Microwave",
+        "Oven stove",
+        "Patio",
+        "Smoke-free",
+        "Cable TV",
+        "Washer",
+        "Free parking",
+        "Free Wi-Fi"
+      ],
+      "excluded_amenities": [
+        "No indoor pool",
+        "No outdoor pool",
+        "Not pet-friendly"
+      ],
+      "essential_info": [
+        "Entire apartment",
+        "Sleeps 6",
+        "3 bedrooms",
+        "1 bathroom",
+        "3 beds"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/khpFGgPKCYDoGkOCKCkXtBejaIebw0UofvbXnIPRuXAypj_BhVzpbDkcyJQwK2E6eGdupgUjdymPdkV7npUUaaK3QfKn8BV3CXOydKCDiDbb0qXgOvs8z05Tl7P7Oit5MpaYu9IpkptxN3HjpGKV1LmZLgf4Ry4=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/110000000/109660000/109652400/109652361/ba9e83a7.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/OhV0Hty7Qvp6R1CzZE2dP9ac7BJd6vwMw54W0qqaf88OPyaBz006nBxIN8JeD0fNqItjAzsx2q1BAjZihEkSGlZmPZcBrG_XQC3MvyLscvEpvTZNgw1Vmk9xPqFmsc9ANWTCOxpfeK6TC_w9PVua0G-PNXIieFU=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/110000000/109660000/109652400/109652361/58c8bf46.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/LVUToDhPp_dp4z5Qmlh-gcxxT11g4u52kOK2rRQnSmrE4CPHr_Jbk_CE63-G9_q5BO0s2mat0hLwtOx__esi9P9ksTfQjOmompRCJCB3T2J0-ae12QuEDKYCVKG8Lskg1UMcWfJ92U3EAJ_Omvaxf3Lwy-tdLg=s287-w287-h192-n-k-no-v1",
+          "original": "https://images.trvl-media.com/lodging/110000000/109660000/109652400/109652361/2f1f1025_z.jpg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/lsxtO5yg6CCUd7gGkji8UigGZL87gL028d-bUeMnJVFDq3Qex3rmkd-i8R8SNk54v0uq8abxdKna3eEXLbaPg8MIWFjem0oydb-K8ncJ_tZcD9gd3BHKYhw8xgt6IVI44Rp-YvLJscfOM56rggrfxN0zXJlS1w=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/110000000/109660000/109652400/109652361/d9c47eeb.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/kgvpTTwQ6OTE9y2hKEo3YeKqc8lsLoPmyMUYJ_zksooiMYoiacKqF4S5dneJU9y-4R95DM9qCjg3Avrr6HGueiD5ufRaTNdk3qGbUf-uzg5xyH2L1rXkKziXeq3_sVpohNT0td4prbQM_rpTrw22MifEQ8PDH04=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/110000000/109660000/109652400/109652361/58d1e6ad.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/2Kp-6K9lFuvkGmpgxKtXOtF_S6_akaZDWBEE3l78kv1OueFV59eOduovTvQSUTPKQIEqaqOwiOFbTKFhlKVDWqNyYH5U72ouNu5U3kjtaQQy4abBILhnXVtTC4WMY0ZFEO_f1v61TOD9DWIYrhclJJrEjcuthe4=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/110000000/109660000/109652400/109652361/59b38eda.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/w6oaAFdwJoR2xgAGRNxewHSpHt3StjlujXzTfB8-E0DkHpPtaZA6pdQB_GqtW1IiPalx8sm7M_UD-TjzF3R8l59_etwIIlPWX9s15wSBzEif9LjSynlKeD5LWPYyyELdg9nVAvxlQggccogn1q2tpQnaPIlgRQ=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/110000000/109660000/109652400/109652361/0a14a2d0.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/5nF13xWxj7mAM9mhjcjFlSjD-RjL29QpqD-3u3iibiOnygasnKtF4KYLIfCG02LK4kS2d4lr9QGHmZN_y5j8OuG-qNryGayDBBG2MN98cCFyhJAxTOAPC66_diZGIJBMh1SNZZ6yGoJjPef_ruKDAF72vVkHxTM=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/110000000/109660000/109652400/109652361/19e414f1.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/1eti5dHb38ekQBasiHfK2jjOLYEMtv5-rGtqCtIyWZif4XDxsITDrkTu1qMn4jShyTcl-5OJhXW32NIFBrdyZS6JgsuhzQ3v_u_49nmQLp6ejC8aGxHLUmM2i66C4k5P7RPw3TUND32Sk12l3kTe_QU_4BtWT-U=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/110000000/109660000/109652400/109652361/7b1c81c9.jpg"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcIrNrtxbK66MlEGgsvZy8xdGZ3cXhxcBAB",
+      "data_id": "0x89c3dc05d855a6ff:0x4493a1d328bb6d2c",
+      "name": "Staybridge Suites Cranbury-South Brunswick by IHG",
+      "link": "https://www.ihg.com/hotels/us/en/reservation?cm_mmc=GoogleMaps-_-SB-_-US-_-JMBCR",
+      "description": "Modest quarters with kitchens in a casual all-suite hotel offering an outdoor pool & free breakfast.",
+      "gps_coordinates": {
+        "latitude": 40.31912,
+        "longitude": -74.5057107
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$113",
+        "extracted_price": 113,
+        "price_before_taxes": "$98",
+        "extracted_price_before_taxes": 98
+      },
+      "total_price": {
+        "price": "$1,697",
+        "extracted_price": 1697,
+        "price_before_taxes": "$1,476",
+        "extracted_price_before_taxes": 1476
+      },
+      "nearby_places": [
+        {
+          "name": "Security Drive (Flag Stop)",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "3 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 12 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 52 min"
+            }
+          ]
+        },
+        {
+          "name": "Italian Touch Restaurant & Pizza",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "5 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "3-star hotel",
+      "extracted_hotel_class": 3,
+      "rating": 3.9,
+      "reviews": 491,
+      "reviews_histogram": {
+        "5": 223,
+        "4": 145,
+        "3": 44,
+        "2": 29,
+        "1": 50
+      },
+      "location_rating": 3.6,
+      "proximity_to_things_to_do_rating": 3.4,
+      "proximity_to_transit_rating": 4.2,
+      "airport_access_rating": 3.4,
+      "reviews_breakdown": [
+        {
+          "name": "Air Conditioning",
+          "description": "Air conditioning",
+          "total": 6,
+          "positive": 0,
+          "neutral": 1,
+          "negative": 5
+        },
+        {
+          "name": "Accessibility",
+          "description": "Accessibility",
+          "total": 11,
+          "positive": 2,
+          "neutral": 2,
+          "negative": 7
+        },
+        {
+          "name": "Wi-Fi",
+          "description": "Wi-Fi",
+          "total": 7,
+          "positive": 5,
+          "neutral": 0,
+          "negative": 2
+        },
+        {
+          "name": "Gym",
+          "description": "Gym",
+          "total": 6,
+          "positive": 5,
+          "neutral": 1,
+          "negative": 0
+        },
+        {
+          "name": "Property",
+          "description": "Property",
+          "total": 152,
+          "positive": 99,
+          "neutral": 14,
+          "negative": 39
+        },
+        {
+          "name": "Service",
+          "description": "Service",
+          "total": 118,
+          "positive": 80,
+          "neutral": 1,
+          "negative": 37
+        }
+      ],
+      "amenities": [
+        "Free breakfast",
+        "Free Wi‑Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Kitchen in rooms",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMCUJnj0X4kViiZvQBNcfx-WM_IPz7ZrKqD_ljB=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMCUJnj0X4kViiZvQBNcfx-WM_IPz7ZrKqD_ljB=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPbLQuCrZyVZ_QLQUSn83_ezy7wC02DPqU_-aZC=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPbLQuCrZyVZ_QLQUSn83_ezy7wC02DPqU_-aZC=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNPF7T0UIXlBrtXzTO6FfNt-SjS0yP6IIkcVwYe=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNPF7T0UIXlBrtXzTO6FfNt-SjS0yP6IIkcVwYe=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNPzBop5UZqrlHV-h1MS6Pwfy_NAzrOp2cYsAGI=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNPzBop5UZqrlHV-h1MS6Pwfy_NAzrOp2cYsAGI=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzaHNIwgIWNmzhk4V0hSnVi4--U9pnxhulFJiMyUZHpV4q8iEokfkXCDqmaxSA8v7hhrY2VZXBhOzNVsg8DcORrUmqhXR0cgRjJsLYMVEXojgP2ycZ4zRVeLBBNroxUceEv9geuDabCSGHq=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIABIhDryjYTHMus0cvzMgEEoJbJ=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMEfK1Zoz5eCDiSmn1Gxn8lztQTR2cobHqDQ0PD=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMEfK1Zoz5eCDiSmn1Gxn8lztQTR2cobHqDQ0PD=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMymxeXRWc6JPc9Xwgnqw8O5YSD8KGsEOSen83P=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMymxeXRWc6JPc9Xwgnqw8O5YSD8KGsEOSen83P=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPnnlT_JptVQZJAmiowjR7CPBDCwT9tc68lmr37=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPnnlT_JptVQZJAmiowjR7CPBDCwT9tc68lmr37=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPPoHRRjIuSK9OYj5tGOyeIMFovVaZrUcKvBOYY=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPPoHRRjIuSK9OYj5tGOyeIMFovVaZrUcKvBOYY=s10000"
+        }
+      ]
+    },
+    {
+      "type": "vacation_rental",
+      "property_token": "ChkQhL_J8_fVtbJxGg0vZy8xMXhkM2MydzJ4EAI",
+      "name": "LAVALLETTE Beach Home w\\/Rooftop Deck  Tiki Bar Close to Beach -Wifi, C-A\\/C",
+      "link": "https://www.bluepillow.com/search/62336a1b4c4d8d9b9b739d90?dest=bpex&cat=House&lat=39.9621&lng=-74.07313&language=en",
+      "gps_coordinates": {
+        "latitude": 39.96210098266602,
+        "longitude": -74.07312774658203
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "price_per_night": {
+        "price": "$205",
+        "extracted_price": 205,
+        "price_before_taxes": "$205",
+        "extracted_price_before_taxes": 205
+      },
+      "total_price": {
+        "price": "$3,080",
+        "extracted_price": 3080,
+        "price_before_taxes": "$3,080",
+        "extracted_price_before_taxes": 3080
+      },
+      "nearby_places": [
+        {
+          "name": "Ocean County Library - Lavallette Branch",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "3 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 47 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 43 min"
+            }
+          ]
+        },
+        {
+          "name": "Hoshino Sushi",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "9 min"
+            }
+          ]
+        }
+      ],
+      "offers": [
+        {
+          "source": "Bluepillow.com",
+          "logo": "https://www.gstatic.com/travel-hotels/branding/190ff319-d0fd-4c45-bfc8-bad6f5f395f2.png",
+          "num_guests": 2,
+          "price_per_night": {
+            "price_before_taxes": "$205",
+            "extracted_price_before_taxes": 205.0
+          }
+        }
+      ],
+      "rating": 5,
+      "reviews": 8,
+      "location_rating": 3.1,
+      "proximity_to_transit_rating": 2.9,
+      "airport_access_rating": 2.3,
+      "amenities": [
+        "Air conditioning",
+        "Ironing board",
+        "Kitchen",
+        "Outdoor grill",
+        "Smoke-free",
+        "Cable TV"
+      ],
+      "excluded_amenities": [
+        "No parking",
+        "No Wi-Fi"
+      ],
+      "essential_info": [
+        "Entire house",
+        "Sleeps 4",
+        "2 bedrooms",
+        "2 bathrooms",
+        "1 bed"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/slkpw49QRmYrv0JNtJE20k0p-UU4nDpSuCgaUxanaYa6RLy6OpJfghunZdpWzCeDDt7haSUeu6RKwwTYNmxDHzKkMouOyemT8IMnixsFWPBETAP6ts80Uz6s_EHFD3inxPmKOKw6bDZ_Qqa3lrqFJ0JWwWtJe0A=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/748f1ab7.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/AmEcEHUygaaPaflMcxSq0rVHIpO3dxO0GxZJxLC2stvvZjoBTotRYzbALxuFNRFW_HYp1TUPbrZKrCj8lV_dmeU6__sA5GUxBjeBg3TKcwSY-yiZxgo6-gZkEULrWurl7yvsx1QivsrEaVxHnFjCvslENXTlVw=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/6b435f9a.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/-jqZKhxMOoyzeoghrmlrEB2suu-MP1E2D89Ad_WuyjMPCDoyQldBpmdKwxZjSX843pwhqMwZ3yBo2OkYAfDLI5bHmhWtMHprMXo5e8VFwRnCOjmtMpiNqztnlvioHnu0nSkJmRInN6BwdOk1csYu027JzdWqMQ=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/43e63ca7.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/h5wTAj4psSAxzGDtXKK_WX-kvlFh4LcnAQaqv_z4WvaMFIlBJeXZdwgI4U2UjiSN7ZL0qz4f96xKWIj1YDzf2BZXAYzbC9Gi2yTfGrjLw3zgY2XPD4JTcwuhV7kdwlx9D7R26WFcfieDlJlaxvMq9nAkFKP6Nf4=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/50c52972.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/DFo4S5DycfO0K6HbB9aA4EKJLl7eUKL74U5qWTocEp8wn9HHMCVszHGO1tvDWtpW47yd64Yig2_0bisQbDZUexKicSs6IM-DljBoiJD4S5g89_9iMJrL6lCSpksMCbQ5g04i_Wjf1KYSBg9AJiPmNJlA2li0MA=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/37db4951.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/THUeRNxAaSAyIbiNOwQvnPXTtqyYzN6ePP-A_yIjUx2C-A93hbiil-ycj_mgwBCDg0PyeqWtXRJqas_dVqZcPNcTr7Jg6GLtgk_EluWUhPUSFUP0Zq7JYxX-J9rVhIFYtopaWrGzuHL1TDLk3WBZpNEbOpzAUws=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/20db0846.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/xHcstIiVZtWzbUKLxZSPPXvRKqyoZM-I1pU1OZZ4_sK5ub2wdi2KHcakHrejH2PcITW9sBqSATq2kqvrnGrhAlI3sYCYs-nmQe9WubMmuu_pdT68UsLb3A81qzPmRufq9tC04mLAddpHLnt2Epi88AAbMNX1q2M=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/21183089.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/hVt2CsJ7QW8SELch418s-3tvfhlEXtAcIo1DkfHf9JfIBf5xzEZzu0O3FDWiPj4BqM-nZO3DkZtmVfil6jHyVc2uWr4qtArLbN3IJIQbtMM6f3nVptkj7qd4AWBzqq4GAj2xAPH3NcGjoNtTnDFbw4Ah7lBvJw=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/201ceb2e.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/RMOvjt0BVLZzUZxjC9Uy5k-16z0EtKg-U3kleWxNiTyCUxKj42oWCSGx7Yux8WDsILn-fmD4nwcQHdONQT7f2xIEkR-nHJIvfJsY19wLI_7P7BxcL39UaPpWnOaTaTZ4wwfobnmiJ56YR87xRgs9v-KZR_QulN0=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/28000000/27120000/27117600/27117531/35bd13e2.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcIg_PSkPHY3bVuGgsvZy8xdjYyamx2axAB",
+      "data_id": "0x89c3df299a866f53:0x6e6b76c71214b983",
+      "name": "Holiday Inn East Windsor - Cranbury Area by IHG",
+      "link": "https://www.ihg.com/holidayinn/hotels/us/en/east-windsor/ttnew/hoteldetail?cm_mmc=GoogleMaps-_-HI-_-US-_-TTNEW",
+      "description": "Modern option with a conference center, an outdoor pool, sauna & American restaurant. ",
+      "gps_coordinates": {
+        "latitude": 40.2712026,
+        "longitude": -74.506606
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "12:00 PM",
+      "price_per_night": {
+        "price": "$103",
+        "extracted_price": 103,
+        "price_before_taxes": "$90",
+        "extracted_price_before_taxes": 90
+      },
+      "total_price": {
+        "price": "$1,552",
+        "extracted_price": 1552,
+        "price_before_taxes": "$1,354",
+        "extracted_price_before_taxes": 1354
+      },
+      "nearby_places": [
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 13 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 45 min"
+            }
+          ]
+        },
+        {
+          "name": "JT's Restaurant & Pub",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "3 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "3-star hotel",
+      "extracted_hotel_class": 3,
+      "rating": 3.9,
+      "reviews": 1131,
+      "reviews_histogram": {
+        "5": 502,
+        "4": 303,
+        "3": 154,
+        "2": 67,
+        "1": 105
+      },
+      "location_rating": 3.4,
+      "proximity_to_things_to_do_rating": 3.7,
+      "airport_access_rating": 3.4,
+      "reviews_breakdown": [
+        {
+          "name": "Couples",
+          "description": "Couple friendly",
+          "total": 64,
+          "positive": 44,
+          "neutral": 8,
+          "negative": 12
+        },
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 102,
+          "positive": 37,
+          "neutral": 17,
+          "negative": 48
+        },
+        {
+          "name": "Dining",
+          "description": "Food and Beverage",
+          "total": 73,
+          "positive": 40,
+          "neutral": 9,
+          "negative": 24
+        },
+        {
+          "name": "Business",
+          "description": "Business",
+          "total": 40,
+          "positive": 27,
+          "neutral": 5,
+          "negative": 8
+        },
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 38,
+          "positive": 20,
+          "neutral": 7,
+          "negative": 11
+        },
+        {
+          "name": "Restaurant",
+          "description": "Restaurant",
+          "total": 43,
+          "positive": 14,
+          "neutral": 7,
+          "negative": 22
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Parking",
+        "Outdoor pool",
+        "Air conditioning",
+        "Fitness center",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNeLPASgED22mDJ41XYRtWJjT4G_O2k2ABw7KmI=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNeLPASgED22mDJ41XYRtWJjT4G_O2k2ABw7KmI=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOWn3PRb432qX-jxQc0nKgKrseu5ZuC1uih22j2=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOWn3PRb432qX-jxQc0nKgKrseu5ZuC1uih22j2=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxrbchO2683RI4sSd3R1kfuDPiK1gSwoqGyrxeK5MaGZH7VhPvF5v7niKm_dvck7lWynvK3_2o60eyp-HTSQFPOzXHQBsTd1264dB_sALBPOoUWzb_2s_xr0p9OB2zw0caM4baqXw=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgIDqkvbcjAE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN7_a_I9Ob2J6Gk1cpib7UtXfqe1TesF_l2sy8S=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipN7_a_I9Ob2J6Gk1cpib7UtXfqe1TesF_l2sy8S=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOThUfJamRW-3zJ9DDp16ZLG4fY9qXBRyItpoTy=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOThUfJamRW-3zJ9DDp16ZLG4fY9qXBRyItpoTy=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNmpMreQwfqDkZm0o-afyIf7uTSZHoMMavvMXSV=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNmpMreQwfqDkZm0o-afyIf7uTSZHoMMavvMXSV=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNztOFGbcgFmwP0WqUQGwkj4HwS8hLHuer_JAoz=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNztOFGbcgFmwP0WqUQGwkj4HwS8hLHuer_JAoz=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNo19U9GSnl-_PioJzTrh0VAiB_MXKUNhSh7N60=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNo19U9GSnl-_PioJzTrh0VAiB_MXKUNhSh7N60=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxDEEXucBKTrNiSBDsUxOqntj6jkxllKzvs2I74Rk95gnQyKv6OYzHWHHjCrFbCocsl39tXteizN7Un3NuAPhD0gkDN1UoZCJjhhRFuUjn6mYj4iaFU7tkMNmnux2fmWLYbdrNJEg=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgICHjM2PxAE=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChoIg8OlrPfSrYjQARoNL2cvMTFjNTl5ajNqNhAB",
+      "data_id": "0x89c22cf50516eb9f:0xd010b69775896183",
+      "name": "Colts Neck Inn Hotel",
+      "link": "http://coltsneckinnhotel.com/",
+      "description": "Warmly decorated rooms & stately suites in a casual, family-run hotel offering a steakhouse & a gym.",
+      "gps_coordinates": {
+        "latitude": 40.2878135,
+        "longitude": -74.1739867
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "2:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$107",
+        "extracted_price": 107,
+        "price_before_taxes": "$94",
+        "extracted_price_before_taxes": 94
+      },
+      "total_price": {
+        "price": "$1,607",
+        "extracted_price": 1607,
+        "price_before_taxes": "$1,408",
+        "extracted_price_before_taxes": 1408
+      },
+      "nearby_places": [
+        {
+          "name": "Rt-537 at Rt 34#",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "4 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 19 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "2 hr 58 min"
+            }
+          ]
+        },
+        {
+          "name": "Colts Neck Inn Steak House",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "2 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "3-star hotel",
+      "extracted_hotel_class": 3,
+      "rating": 4.2,
+      "reviews": 595,
+      "reviews_histogram": {
+        "5": 350,
+        "4": 120,
+        "3": 59,
+        "2": 31,
+        "1": 35
+      },
+      "location_rating": 3.4,
+      "proximity_to_things_to_do_rating": 3.7,
+      "proximity_to_transit_rating": 2.7,
+      "airport_access_rating": 3.1,
+      "reviews_breakdown": [
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 99,
+          "positive": 66,
+          "neutral": 8,
+          "negative": 25
+        },
+        {
+          "name": "Restaurant",
+          "description": "Restaurant",
+          "total": 57,
+          "positive": 30,
+          "neutral": 8,
+          "negative": 19
+        },
+        {
+          "name": "Bar",
+          "description": "Bar or lounge",
+          "total": 37,
+          "positive": 29,
+          "neutral": 1,
+          "negative": 7
+        },
+        {
+          "name": "Family",
+          "description": "Family friendly",
+          "total": 28,
+          "positive": 16,
+          "neutral": 7,
+          "negative": 5
+        },
+        {
+          "name": "Dining",
+          "description": "Food and Beverage",
+          "total": 33,
+          "positive": 19,
+          "neutral": 4,
+          "negative": 10
+        },
+        {
+          "name": "Pets",
+          "description": "Pets",
+          "total": 20,
+          "positive": 18,
+          "neutral": 1,
+          "negative": 1
+        }
+      ],
+      "amenities": [
+        "Free breakfast",
+        "Free Wi‑Fi",
+        "Free parking",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Bar",
+        "Restaurant",
+        "Golf",
+        "Accessible",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOHesDHAOcineeSEdAfaLKbvCMOSMU7T3P6tx59=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOHesDHAOcineeSEdAfaLKbvCMOSMU7T3P6tx59=s10000"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/S4Vs8f7aMgzAuSNecMof5Pz9Q4Sre6lU7y2jGWEaeY8UtNgTg2B4IIzkoYUfvUVwgTMUujQFHfO-mKax9hlTdwxSOuYtebcGv_lrVAuPKelbtTbtzmEsblB465q8xdzyNDzqFPWWftetfho6rf_b6Rn_J6EXuW8=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/86/869554/869554a_hb_a_007.jpg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipODmL66a20hqMr9dOD6Id2jkqXs7D6STL27JILC=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipODmL66a20hqMr9dOD6Id2jkqXs7D6STL27JILC=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMlk4dwNT5iHo5vEHG66hIWRR4C6C2_EHAPcdkf=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMlk4dwNT5iHo5vEHG66hIWRR4C6C2_EHAPcdkf=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipP6VcMFzZaUdzTle1wAkPlBPRpKtiy5qRSDpBo8=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipP6VcMFzZaUdzTle1wAkPlBPRpKtiy5qRSDpBo8=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNdUj7Oerj-HihVVbSTyvGDv4LY4zfmfIhFmqoG=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNdUj7Oerj-HihVVbSTyvGDv4LY4zfmfIhFmqoG=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPjCXOo8aoQPx-1AIf5xMW1H2W_tv1qrPPaLyya=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPjCXOo8aoQPx-1AIf5xMW1H2W_tv1qrPPaLyya=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPDOdCEangqzvbnULJPr71RblEuhR8Ca2rryzjz=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPDOdCEangqzvbnULJPr71RblEuhR8Ca2rryzjz=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPZk-7Y6klufFrO7NW5-Iu6OSbN7ZsYZ9UD3oBm=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPZk-7Y6klufFrO7NW5-Iu6OSbN7ZsYZ9UD3oBm=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChgIuKLA2eG-wdrcARoLL2cvMXRqMW5mNG0QAQ",
+      "data_id": "0x89c185e3e22805ab:0xdcb505f61b301138",
+      "name": "Atlantic Motel",
+      "link": "http://goatlanticgo.com/",
+      "description": "Low-key rooms & suites in a simple motel with an outdoor pool, plus a free beach shuttle.",
+      "gps_coordinates": {
+        "latitude": 40.1008608,
+        "longitude": -74.0439039
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "2:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$90",
+        "extracted_price": 90,
+        "price_before_taxes": "$79",
+        "extracted_price_before_taxes": 79
+      },
+      "total_price": {
+        "price": "$1,355",
+        "extracted_price": 1355,
+        "price_before_taxes": "$1,182",
+        "extracted_price_before_taxes": 1182
+      },
+      "nearby_places": [
+        {
+          "name": "Manasquan Beach",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "7 min"
+            }
+          ]
+        },
+        {
+          "name": "Point Pleasant Beach",
+          "transportations": [
+            {
+              "duration": "3 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 29 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 59 min"
+            }
+          ]
+        },
+        {
+          "name": "Atlantic Offshore Fishery",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "2 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "2-star hotel",
+      "extracted_hotel_class": 2,
+      "rating": 4,
+      "reviews": 512,
+      "reviews_histogram": {
+        "5": 252,
+        "4": 141,
+        "3": 43,
+        "2": 27,
+        "1": 49
+      },
+      "location_rating": 4.2,
+      "proximity_to_things_to_do_rating": 4.2,
+      "proximity_to_transit_rating": 3.5,
+      "airport_access_rating": 2.8,
+      "reviews_breakdown": [
+        {
+          "name": "Transit",
+          "description": "Public transit",
+          "total": 13,
+          "positive": 10,
+          "neutral": 3,
+          "negative": 0
+        },
+        {
+          "name": "Wi-Fi",
+          "description": "Wi-Fi",
+          "total": 15,
+          "positive": 9,
+          "neutral": 1,
+          "negative": 5
+        },
+        {
+          "name": "Air Conditioning",
+          "description": "Air conditioning",
+          "total": 10,
+          "positive": 5,
+          "neutral": 1,
+          "negative": 4
+        },
+        {
+          "name": "Cleanliness",
+          "description": "Cleanliness",
+          "total": 176,
+          "positive": 141,
+          "neutral": 7,
+          "negative": 28
+        },
+        {
+          "name": "Property",
+          "description": "Property",
+          "total": 183,
+          "positive": 131,
+          "neutral": 18,
+          "negative": 34
+        },
+        {
+          "name": "Couples",
+          "description": "Couple friendly",
+          "total": 5,
+          "positive": 3,
+          "neutral": 0,
+          "negative": 2
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Air conditioning",
+        "Golf",
+        "Accessible",
+        "Kid-friendly"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/s6_kWEUxKM_sBj8E8bp-xY6HlPfiFeXT_aLFu6dKz6LFvN87sADLE-m44O7b3UGlpc31Oa3lDZzNZK0k1x0HLhmiapO9gEXqzjHOH2nHMHsCmV-HtMDWXsgoxQNGi6tN_RlNzP7oHdphxoWNbF36xI6RzwynKg=s287-w287-h192-n-k-no-v1",
+          "original": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/6b/70/fa/the-atlantic-motel.jpg?w=2100&h=1000&s=1"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxTGEgIx_UDhd41rcMmJ1Ln5uEaJhT29JtAK0J4CfTyfXzf5urCviKwm3AXoTpzrfccxGUgIe6C0X0lVFMYLsMhgn9u1YnPk8-9g4TIRaIpRx8o-Qt9wxrOrYuihFHCH4K3TqUt=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgICJ38aE_QE=s10000"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/J_u0nSh2OlEFhGcoBXCe4_0Gsb9RimJ66yvBDzYn-G68Xrv5KSvc7I8wsMUGMNirRwbxMg-5CB7jRJNSaXetHmFnqoLsR4JWb61ZQcLpU2V7oDBpD14iKfksBpzqNy0E83Z2YI-Uvd8K-FWK4HzJgF2Ce1t-LLM=s287-w287-h192-n-k-no-v1",
+          "original": "https://images.trvl-media.com/lodging/14000000/13280000/13279400/13279397/9dc2d404_z.jpg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz8Kep1gjDALekj7xAnazDQ7sPxPQS54d42P7c-xNkkIT0QlzjynIF_sSglpkZ2NNo0I8BImZ1UukT3vAWD4pUXnvsnVihEsuDyprI0FyXrnJrHhpAjsz_d77AMULDRFU5CP40jgeXq-n6q=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIABIhBFdPe_Qk6hBW30xb0X2Voc=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz8Ngxe1F8iQS32QmqVBJiOxdWc-LcTJAaASB53kaOdX-MhPMIFSgIV5ZQmQIT7ZbY8nTHRhx7dEwWZ7SSukqf5l_qp85ckIOgPEt5U2v47zwcn-9g3LFi1M4CwutWEa5apmA5W=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgIDErf70IQ=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyqdtehE46QSD9Gogx2KgbqjmuBNgEM42pf7qgqNNJhZv2y1Taa0N4D-8FwqK8YliRfX1H19AODj7ze4BVylA0Aj2BK10acAmBaeuo_IFWilpvQYm1mkkKlH4-1dMotmYwluAQAKw=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgIC-u-PL6QE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwXaTi9Of2V6naRJacwAD_jfCnlr9SHtZP_RGAMThq1uJ7oLWid97ydRqWfNEpNCxFETu-HIm_4MD3SnPKrF-04INzR4l3H0mHB1NsSt_cRICynyEhiiyQiHuPxBnRgQJqr9HFe=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgICJ38b0DA=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyc0U4srveFbOAf6sUgCwFzudD4b7IZV4dDE95z59dPnDUjkqUC_ef7zPNJXcrpwgVKjqwDN5WdmGgdx-FQLg8ypZYL4rpc9hAmRi_6Gi_QCXE0JKolG8XEeHjEcB76xpolJYGsRg=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgIDaobam-wE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyzyUc8MsMSG08rSsx2f96LcvgoQ_fs_k5bmNPU0mtbA4yfUsX3egEzLYa8XiTB2tTZXGFGhr32MmqRuzpr8xy4BLiMRt1qO6sd-dYlLjeawKCHYqnuvxkHIPwrSfBD9cnV9YEn_g=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgICJ38a01QE=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcI4KL34cvxhbNFGgsvZy8xdGZnOG03ZxAB",
+      "data_id": "0x89c3d432302c31b9:0x4566178cbc3dd160",
+      "name": "Radisson Hotel Freehold",
+      "link": "https://www.choicehotels.com/new-jersey/freehold/radisson-hotels/nj462?mc=llgoxxpx",
+      "description": "Relaxed property with an outdoor pool, a fitness center & a restaurant, plus free Wi-Fi & parking.",
+      "gps_coordinates": {
+        "latitude": 40.2474492,
+        "longitude": -74.2979793
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "12:00 PM",
+      "price_per_night": {
+        "price": "$145",
+        "extracted_price": 145,
+        "price_before_taxes": "$127",
+        "extracted_price_before_taxes": 127
+      },
+      "total_price": {
+        "price": "$2,179",
+        "extracted_price": 2179,
+        "price_before_taxes": "$1,901",
+        "extracted_price_before_taxes": 1901
+      },
+      "nearby_places": [
+        {
+          "name": "iPlay America",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "6 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 23 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "2 hr 34 min"
+            }
+          ]
+        },
+        {
+          "name": "Wingstop",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "7 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "4-star hotel",
+      "extracted_hotel_class": 4,
+      "rating": 4,
+      "reviews": 1257,
+      "reviews_histogram": {
+        "5": 591,
+        "4": 336,
+        "3": 159,
+        "2": 56,
+        "1": 115
+      },
+      "location_rating": 3.5,
+      "proximity_to_things_to_do_rating": 3.3,
+      "proximity_to_transit_rating": 3.0,
+      "airport_access_rating": 3.0,
+      "reviews_breakdown": [
+        {
+          "name": "Couples",
+          "description": "Couple friendly",
+          "total": 146,
+          "positive": 76,
+          "neutral": 34,
+          "negative": 36
+        },
+        {
+          "name": "Bar",
+          "description": "Bar or lounge",
+          "total": 56,
+          "positive": 32,
+          "neutral": 6,
+          "negative": 18
+        },
+        {
+          "name": "Dining",
+          "description": "Food and Beverage",
+          "total": 73,
+          "positive": 47,
+          "neutral": 6,
+          "negative": 20
+        },
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 28,
+          "positive": 16,
+          "neutral": 0,
+          "negative": 12
+        },
+        {
+          "name": "Restaurant",
+          "description": "Restaurant",
+          "total": 33,
+          "positive": 12,
+          "neutral": 5,
+          "negative": 16
+        },
+        {
+          "name": "Nightlife",
+          "description": "Nightlife",
+          "total": 15,
+          "positive": 2,
+          "neutral": 3,
+          "negative": 10
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Air conditioning",
+        "Fitness center",
+        "Bar",
+        "Restaurant",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPQbyRehoYgF4dXNOQFTeFjBq-3nV1kTHRYz-3Z=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPQbyRehoYgF4dXNOQFTeFjBq-3nV1kTHRYz-3Z=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMPzXSKj0FGU05vGD45CPu3x0n4seTnEOFby56X=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMPzXSKj0FGU05vGD45CPu3x0n4seTnEOFby56X=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNmlewvUVPCdxSuJHXVYRTxmK7_UdHKw53grybT=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNmlewvUVPCdxSuJHXVYRTxmK7_UdHKw53grybT=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPO8eJBKBsIv4lQXBO326ulfzspJJT0nBpWAFn3=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPO8eJBKBsIv4lQXBO326ulfzspJJT0nBpWAFn3=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPHEmHAIgcNomQMzRjWvdfbKABxGT145oHwGnBc=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPHEmHAIgcNomQMzRjWvdfbKABxGT145oHwGnBc=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNcLkt2V-7hhUkQC1p_m6gF_3RD0v-PTy65pPuz=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNcLkt2V-7hhUkQC1p_m6gF_3RD0v-PTy65pPuz=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/KWiMfDgrWypRFrfPgzHf2oPxClLyMGoflmVImOrDTLBL7wemC8g2kBXTaLchP3-LgOGHH6YfR0l3Kp33eYo75QaGL3DZj_aTQ4uFq3divrZ0pWmkO7CvLfw7PzvjvHRzJTuNnnsXx8KRmediqbh-3SAdhlJMLLM=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/65/655911/655911a_hb_a_041.jpg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOKjo82fBFrQg5hn06xStOA6eiuKuetWESVi1k-=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOKjo82fBFrQg5hn06xStOA6eiuKuetWESVi1k-=s10000"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/yq3zlop2Ir9MHdM4kCTMP41wnHS5g7ZBsnP9VD-ysgSK5fMHqGAewrGnmolpfFUrNDr4eK37wccf2QkqA-gcU8f-UGcwtxbwKCM6GlGDrkOKfWBwvMPTPNeLiNjQ5Z_GjEn7kxPTbSVaovbqJ60KZWURQiYIIA=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/65/655911/655911a_hb_ro_027.jpg"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChgI1PfNj-3h5LzdARoLL2cvMXRjdGdrNnoQAQ",
+      "data_id": "0x89c3df297ae0c423:0xdd79930ed1f37bd4",
+      "name": "Days Inn by Wyndham East Windsor/Hightstown",
+      "link": "https://www.wyndhamhotels.com/days-inn/east-windsor-new-jersey/days-inn-east-windsor-hightstown/overview?CID=LC:iqv0j1dklijly45:4335&iata=00093796",
+      "description": "Straightforward modern hotel offering free breakfast, parking & Wi-Fi, plus an outdoor pool.",
+      "gps_coordinates": {
+        "latitude": 40.2685229,
+        "longitude": -74.5051376
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$80",
+        "extracted_price": 80,
+        "price_before_taxes": "$70",
+        "extracted_price_before_taxes": 70
+      },
+      "total_price": {
+        "price": "$1,198",
+        "extracted_price": 1198,
+        "price_before_taxes": "$1,046",
+        "extracted_price_before_taxes": 1046
+      },
+      "nearby_places": [
+        {
+          "name": "Working Dog Winery",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "10 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 12 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 47 min"
+            }
+          ]
+        },
+        {
+          "name": "JT's Restaurant & Pub",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "6 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "2-star hotel",
+      "extracted_hotel_class": 2,
+      "rating": 3.6,
+      "reviews": 829,
+      "reviews_histogram": {
+        "5": 295,
+        "4": 214,
+        "3": 134,
+        "2": 72,
+        "1": 114
+      },
+      "location_rating": 3.5,
+      "proximity_to_things_to_do_rating": 3.7,
+      "airport_access_rating": 3.5,
+      "reviews_breakdown": [
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 99,
+          "positive": 42,
+          "neutral": 9,
+          "negative": 48
+        },
+        {
+          "name": "Pets",
+          "description": "Pets",
+          "total": 31,
+          "positive": 15,
+          "neutral": 5,
+          "negative": 11
+        },
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 47,
+          "positive": 24,
+          "neutral": 5,
+          "negative": 18
+        },
+        {
+          "name": "Family",
+          "description": "Family friendly",
+          "total": 32,
+          "positive": 9,
+          "neutral": 8,
+          "negative": 15
+        },
+        {
+          "name": "Restaurant",
+          "description": "Restaurant",
+          "total": 41,
+          "positive": 18,
+          "neutral": 4,
+          "negative": 19
+        },
+        {
+          "name": "Location",
+          "description": "Location",
+          "total": 40,
+          "positive": 26,
+          "neutral": 7,
+          "negative": 7
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Air conditioning",
+        "Pet-friendly",
+        "Bar",
+        "Restaurant",
+        "Accessible",
+        "Business center",
+        "Kid-friendly"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwV4uaKuoTguLduYpdffaqLrlUsq5B9wgfkROAVydndW7yVw1XbpaTs6VlEVsVS4HMEjoJ0EMcPANviC6poWaH1zDngTrybPDFaCj1IMhvbmezZdVcy65qtrcHmKE_d2CzEG4z3IQ=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgIDp_r3W2QE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNFpCqg80XSlyaDBpjOpIHuJTGekehmj5pQY8yC=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNFpCqg80XSlyaDBpjOpIHuJTGekehmj5pQY8yC=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxLrKC0Z1qTH1w2Bdm1k8hkOk01qaN-dB7MCITHPr-YX6WnzpIgqtFZrQh8Q-aOEyFJlOAQ2wOg4wRLIkvnMtrARjJUxJf-X3fPCoFeowzEXoLk1LlgiDNUcCtoFddtBZ_7IM3z-A=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgICD6tmC2QE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOwew6SncfZi5XjYZjIKDB0vaADnFbvUHzb6os7=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOwew6SncfZi5XjYZjIKDB0vaADnFbvUHzb6os7=s10000"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/osMjC9GdP087e26FW4lHlV7toiSgHPy1aFTwVfE5vVjmSpHjlmGqnogG3kd4JvvT3KQUzBQIyXk0pFCsHC5QDvskWG0clEIniGsNIZKrj8R-dqFyOiBvxegliathPLcBe0DePYhOkPPXYqADNQHBkEWS9xxRXA=s287-w287-h192-n-k-no-v1",
+          "original": "https://cdn.worldota.net/t/1024x768/content/62/aa/62aaa45ab39060d347a539897d781c392f126b30.JPEG"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipO4AYctjhXc87FuWIHz9hDWR7K8-8M5Lnd8wpQn=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipO4AYctjhXc87FuWIHz9hDWR7K8-8M5Lnd8wpQn=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOc3rKsR0k6hSan0o8s71UWcn6zA6eKH_R_vySE=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOc3rKsR0k6hSan0o8s71UWcn6zA6eKH_R_vySE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNcDpwtDGbQMhhFYZkAhlxTdfhvlVLBjdnxW-CC=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNcDpwtDGbQMhhFYZkAhlxTdfhvlVLBjdnxW-CC=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNP69hKNq7ptMeD7kCvHBs9zpX0EP-eTG2GSSbC=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNP69hKNq7ptMeD7kCvHBs9zpX0EP-eTG2GSSbC=s10000"
+        }
+      ]
+    },
+    {
+      "type": "vacation_rental",
+      "property_token": "ChkQi7ygh-SNm4QCGg0vZy8xMXd2a3NwNnFnEAI",
+      "name": "Charming 3-bedroom house in Lavallette with WiFi and AC.",
+      "gps_coordinates": {
+        "latitude": 39.96456146240234,
+        "longitude": -74.07351684570312
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$217",
+        "extracted_price": 217,
+        "price_before_taxes": "$217",
+        "extracted_price_before_taxes": 217
+      },
+      "total_price": {
+        "price": "$3,254",
+        "extracted_price": 3254,
+        "price_before_taxes": "$3,254",
+        "extracted_price_before_taxes": 3254
+      },
+      "nearby_places": [
+        {
+          "name": "Ocean County Library - Lavallette Branch",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "10 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 50 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 50 min"
+            }
+          ]
+        },
+        {
+          "name": "Sand Dollar Pancake House & Restaurant",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "10 min"
+            }
+          ]
+        }
+      ],
+      "offers": [
+        {
+          "source": "Bluepillow.com",
+          "logo": "https://www.gstatic.com/travel-hotels/branding/190ff319-d0fd-4c45-bfc8-bad6f5f395f2.png",
+          "num_guests": 2,
+          "price_per_night": {
+            "price_before_taxes": "$217",
+            "extracted_price_before_taxes": 217.0
+          }
+        }
+      ],
+      "rating": 4.4,
+      "reviews": 6,
+      "location_rating": 3.1,
+      "proximity_to_transit_rating": 2.8,
+      "airport_access_rating": 2.3,
+      "amenities": [
+        "Air conditioning",
+        "Heating",
+        "Kitchen",
+        "Pet-friendly",
+        "Smoke-free",
+        "Washer",
+        "Free Wi-Fi"
+      ],
+      "excluded_amenities": [
+        "No indoor pool",
+        "No outdoor pool",
+        "No parking"
+      ],
+      "essential_info": [
+        "Entire house",
+        "Sleeps 6",
+        "3 bedrooms",
+        "1 bathroom",
+        "3 beds"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/gZyeg47ACMVr3te2JHPbdknbbVeycJuMszPdA-_x7epSYKCWNownFM7cW3N-zoWkTveoMKman5sg-srAQf1gDysmzlcU70BZLAYrt7u5IbI4GzfL_BpuKbc8vtWaQVrrkwT_BYKpO_yCb20ePe58S8GXB5BRZOU=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.staticontent.com/media/pictures/67dfbf47-957f-4aa9-8827-6aaa1b01a25f"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/s43NXCD4SuyJRUFvC0405NWnQ_PVRKf22wS0ohCz6zzhcBlUzrE_o4vQfffR9xNfhLVYHI5C2pHe9LLKubBmveRvU4_FncMGGKLAoblZJjQk6YLB8-AbT3rtf8E6tlxAWVno7FvFL2K_4b7VZKlPei50z5EWWQU=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/112000000/111810000/111806300/111806239/e73c0402.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/jjPI9hV9QvZzDmT0zVBh_lDsfZpVhmJKVtiYX-0a7R4gRplTOTmmTGeqs6MBxWAUxqkoTY_cJUzx1d7qseX087KngkDFUpuweHnlmCo-qc40IyXid52X3TR9GIgralnwXl099cFscWN0G3zXRQ4UEZMAib5CrA=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/112000000/111810000/111806300/111806239/890c8ca2.jpg"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/QguCjtSLSa8UkbeX1vxGSp5mmEQlGMsgAYLwy1u5V5tIl3pAE3POSbMOBvkMHNPql4j3feexMG8vn_6GC4Rj5hfh4GFarL9-wEQDKXT859YKdIDhmEVCHAlPNB7iR9vMDHkn6M8cNtJ_6spYCN-7C655iX6rDrk=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/112000000/111810000/111806300/111806239/bb44e9cb.jpg"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/mS_b7KQbruCAfwbh0MWff-vsxn1mDDE6h4Ebtws19nvNAsuds47K4GOguBRaVEWnlIPA0BBNHTAXCfPLRnEiXBoCkchE1zIvGVH41-jMjUxe0_po2vScc_Q_xTLSxAkdqkfmDK4CywB-jf9mlD1ACqpROTpfjA=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/112000000/111810000/111806300/111806239/82d658aa.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/xxd3maTRZXEVmFkDWGkt0JE96Lpz9bvchc01bw3PyuigENxJT0ndjI7QyeWPUP94njgnHQVMEpCXdyGihOklclJiKk7QAvKOwQgnT81E9606leQboO2ymuEB5uuwtA7wCGW6htDVAADrYwPXNOPQDPJ2r3Dc6A=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/112000000/111810000/111806300/111806239/887ea559.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        },
+        {
+          "thumbnail": "https://lh4.googleusercontent.com/proxy/Q3jArt4ITduO6nCK3P3b8ZEIPn5Yvkpdyrv8A3q6HGkeFLeaFvmPx25Grz4oIvyShAI--uEwWmM1B3K2X3Il6Aeu5OiEmv6rpZ_yqRIgAPoKLp0ogWDbqY0BpZUGu47W45mA5BywyYjSFgsGVvbcIME6yerPtw=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/112000000/111810000/111806300/111806239/96cf39c1.jpg"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/lL_oH_cGTRKtA1Wn1aFmg3ZAW1Hlz5eVhRM-ChLyvFxWNSPvqsx9X8BbhlsC50weJdhXZadDfk4XGShyaC-ijSe7g-rB1E2zmuIoYTHY_iaUzPmmqRrqOjx7O6N2VCW7avy9SFUQUxShz1NhRnplwJZskDMoGiM=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.staticontent.com/media/pictures/4ce4f463-7136-46fc-930d-7d63c61bb6de"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/1MxuTONtwCSxymqNCd8U1Npc0XvuHtRjZmfWn-MPdZMl4LwYtzIKO-XdXbPnuQc9w27cMXiQaPDK2ECIj3AcYGbGbyksWSvmtsr_T98NmL6Q84WVuu_04B4Y7Tc2DIzJHyyrWqxrwQlMkeqogSp_98bgUClFdkY=s287-w287-h192-n-k-no-v1",
+          "original": "https://media.vrbo.com/lodging/112000000/111810000/111806300/111806239/896e5c46.jpg?impolicy=ccrop&w=1000&h=666&q=medium"
+        }
+      ]
+    },
+    {
+      "type": "vacation_rental",
+      "property_token": "ChkIrvPiit-O0sUTGg0vZy8xMXR4N3NranJuEAE",
+      "data_id": "0x89c1793a9bcac4f1:0x138b4875f158b9ae",
+      "name": "The Haven at Westwood",
+      "link": "http://thehaventr.com/",
+      "gps_coordinates": {
+        "latitude": 40.0454915,
+        "longitude": -74.2193004
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "12:00 PM",
+      "nearby_places": [
+        {
+          "name": "Insectropolis",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "9 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 33 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 14 min"
+            }
+          ]
+        },
+        {
+          "name": "Starter and Stone",
+          "transportations": [
+            {
+              "duration": "6 min"
+            }
+          ]
+        }
+      ],
+      "rating": 4.7,
+      "reviews": 93,
+      "reviews_histogram": {
+        "5": 85,
+        "4": 2,
+        "3": 0,
+        "2": 2,
+        "1": 4
+      },
+      "location_rating": 3.2,
+      "proximity_to_things_to_do_rating": 3.8,
+      "airport_access_rating": 2.6,
+      "reviews_breakdown": [
+        {
+          "name": "Location",
+          "description": "Location",
+          "total": 19,
+          "positive": 17,
+          "neutral": 1,
+          "negative": 1
+        },
+        {
+          "name": "Family",
+          "description": "Family friendly",
+          "total": 12,
+          "positive": 11,
+          "neutral": 1,
+          "negative": 0
+        },
+        {
+          "name": "Atmosphere",
+          "description": "Atmosphere",
+          "total": 13,
+          "positive": 13,
+          "neutral": 0,
+          "negative": 0
+        },
+        {
+          "name": "Kitchen",
+          "description": "Kitchen",
+          "total": 12,
+          "positive": 9,
+          "neutral": 0,
+          "negative": 3
+        },
+        {
+          "name": "Property",
+          "description": "Property",
+          "total": 35,
+          "positive": 32,
+          "neutral": 0,
+          "negative": 3
+        },
+        {
+          "name": "Accessibility",
+          "description": "Accessibility",
+          "total": 5,
+          "positive": 4,
+          "neutral": 0,
+          "negative": 1
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Free parking",
+        "Air conditioning",
+        "Kitchen in rooms",
+        "Accessible",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN1Zp-qPHj0Uv6B07WqVZbPtCu7vGxXpZ0AYD13=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipN1Zp-qPHj0Uv6B07WqVZbPtCu7vGxXpZ0AYD13=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipM-4-WYzrtD0dSW2KitbmSU8CcU5HfoLr6B6MPV=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipM-4-WYzrtD0dSW2KitbmSU8CcU5HfoLr6B6MPV=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNRAhikS99gx-1AwkbhBaYUrcuSEwuG9PSKaJa9=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNRAhikS99gx-1AwkbhBaYUrcuSEwuG9PSKaJa9=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMN1vCcFJ8H9xZaf3yzv-5pTgU-_H9-VleYhQ6g=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMN1vCcFJ8H9xZaf3yzv-5pTgU-_H9-VleYhQ6g=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMV7G-tuquolhc0iJ4JNTYRpb9SFVpn74dEZ4Uq=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMV7G-tuquolhc0iJ4JNTYRpb9SFVpn74dEZ4Uq=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMhyVRuFA9126D_aCjlpuBza5LMDrXnYx7477O3=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMhyVRuFA9126D_aCjlpuBza5LMDrXnYx7477O3=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOX1zALxG7-QLIpu7ST65wntIuSmu3pfvDQxDSg=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOX1zALxG7-QLIpu7ST65wntIuSmu3pfvDQxDSg=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPNhlGdhS0PCv09eOSSVZhWWPWRShYc46E9yNZJ=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPNhlGdhS0PCv09eOSSVZhWWPWRShYc46E9yNZJ=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMRmW_dxBIE1uh5lb-kiEzdpCgTtOHH4xccLY04=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMRmW_dxBIE1uh5lb-kiEzdpCgTtOHH4xccLY04=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChoI-Z3oisXhmOvyARoNL2cvMTFmM3NodGJ5XxAB",
+      "data_id": "0x89c22efa4f2fb827:0xf2d6630c515a0ef9",
+      "name": "Hawthorn Suites by Wyndham Tinton Falls",
+      "link": "https://www.wyndhamhotels.com/hawthorn-extended-stay/tinton-falls-new-jersey/hawthorn-suites-by-wyndham-tinton-falls/overview?CID=LC:b84ll71au8zr1jm:52284&iata=00093796",
+      "description": "Informal hotel offering relaxed rooms & suites with kitchens, plus a pool & free breakfast.",
+      "gps_coordinates": {
+        "latitude": 40.2874292,
+        "longitude": -74.0865091
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$128",
+        "extracted_price": 128,
+        "price_before_taxes": "$111",
+        "extracted_price_before_taxes": 111
+      },
+      "total_price": {
+        "price": "$1,915",
+        "extracted_price": 1915,
+        "price_before_taxes": "$1,670",
+        "extracted_price_before_taxes": 1670
+      },
+      "nearby_places": [
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 15 min"
+            }
+          ]
+        },
+        {
+          "name": "Brick House Tavern + Tap"
+        }
+      ],
+      "hotel_class": "3-star hotel",
+      "extracted_hotel_class": 3,
+      "rating": 3,
+      "reviews": 777,
+      "reviews_histogram": {
+        "5": 247,
+        "4": 122,
+        "3": 68,
+        "2": 59,
+        "1": 281
+      },
+      "location_rating": 3.0,
+      "proximity_to_things_to_do_rating": 3.6,
+      "airport_access_rating": 3.3,
+      "reviews_breakdown": [
+        {
+          "name": "Family",
+          "description": "Family friendly",
+          "total": 80,
+          "positive": 32,
+          "neutral": 9,
+          "negative": 39
+        },
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 66,
+          "positive": 27,
+          "neutral": 4,
+          "negative": 35
+        },
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 88,
+          "positive": 53,
+          "neutral": 5,
+          "negative": 30
+        },
+        {
+          "name": "Safety",
+          "description": "Safety",
+          "total": 52,
+          "positive": 6,
+          "neutral": 4,
+          "negative": 42
+        },
+        {
+          "name": "Sleep",
+          "description": "Sleep",
+          "total": 116,
+          "positive": 19,
+          "neutral": 9,
+          "negative": 88
+        },
+        {
+          "name": "Kitchen",
+          "description": "Kitchen",
+          "total": 88,
+          "positive": 27,
+          "neutral": 6,
+          "negative": 55
+        }
+      ],
+      "amenities": [
+        "Free breakfast",
+        "Free Wi‑Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Hot tub",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Kitchen in some rooms",
+        "Golf",
+        "Full‑service laundry",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4jlIgxWEQtJpjuYwZplduY8vFyf4B26ICNbh0E6wurfaOg-5336EM8DGKPshNCzDiZmzfQ_uf2FVCBysa5Chafad_E5bT_qJb8am9NCJYSnKNIsWvhxAgzvlBsbcB5FFRVg8XvQ=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgICRuPuJqAE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz3D7-ODOtDV6CPEOumT_7A5DEGURbazuN5ZNb9reSiPtF_bPIt12TDIb-69bNe1w4-0szk84aZul8bxL0hTheTXZZMtuf9zNvyn-mVBf0wayxc64CpfB__nF1lX9QH6WSS4GcGdg=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgICMtI_5ggE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPcNfaO3GZyYs7N8Rwjkj16B7gf1ZWoB7YjuN3l=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPcNfaO3GZyYs7N8Rwjkj16B7gf1ZWoB7YjuN3l=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMtvEkfT9JjUpE63soLlej1XTtx28W3BTNFej2a=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMtvEkfT9JjUpE63soLlej1XTtx28W3BTNFej2a=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNF8MqD6L3-2KuaS6nHAFXybnZUrgwh4YL6HbKc=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNF8MqD6L3-2KuaS6nHAFXybnZUrgwh4YL6HbKc=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMGV55_4pEdY4pEij93jK6AugTttki9TWFex0qw=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMGV55_4pEdY4pEij93jK6AugTttki9TWFex0qw=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOZ7DDtL5TDvU0_OQqEj3eTl7K6qlDmNxkbIEsY=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOZ7DDtL5TDvU0_OQqEj3eTl7K6qlDmNxkbIEsY=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNWxMhoAROaFGtXfBp_yrkFZ88xZ5SB-t1OUFeW=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNWxMhoAROaFGtXfBp_yrkFZ88xZ5SB-t1OUFeW=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMOWW4nmmaTMKmVXknEaOgMYKMFpTTF18OhwZ5y=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMOWW4nmmaTMKmVXknEaOgMYKMFpTTF18OhwZ5y=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcI2ZHlwpnLo78GGgsvZy8xdGR6bWc4ahAB",
+      "data_id": "0x89c228e23a6981bd:0x67e8e59985948d9",
+      "name": "Holiday Inn Express Neptune by IHG",
+      "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/neptune/nepnj/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-NEPNJ",
+      "description": "Contemporary lodging with a heated indoor pool & fitness center, plus free WiFi & breakfast.",
+      "gps_coordinates": {
+        "latitude": 40.225492900000006,
+        "longitude": -74.0752043
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "12:00 PM",
+      "price_per_night": {
+        "price": "$138",
+        "extracted_price": 138,
+        "price_before_taxes": "$121",
+        "extracted_price_before_taxes": 121
+      },
+      "total_price": {
+        "price": "$2,073",
+        "extracted_price": 2073,
+        "price_before_taxes": "$1,808",
+        "extracted_price_before_taxes": 1808
+      },
+      "deal": "17% less than usual",
+      "deal_description": "Deal",
+      "nearby_places": [
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 18 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 50 min"
+            }
+          ]
+        },
+        {
+          "name": "Golden Horn Restaurant",
+          "transportations": [
+            {
+              "duration": "4 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "2-star hotel",
+      "extracted_hotel_class": 2,
+      "rating": 4,
+      "reviews": 665,
+      "reviews_histogram": {
+        "5": 348,
+        "4": 149,
+        "3": 72,
+        "2": 38,
+        "1": 58
+      },
+      "location_rating": 3.2,
+      "proximity_to_things_to_do_rating": 3.7,
+      "proximity_to_transit_rating": 2.1,
+      "airport_access_rating": 3.1,
+      "reviews_breakdown": [
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 64,
+          "positive": 38,
+          "neutral": 6,
+          "negative": 20
+        },
+        {
+          "name": "Pool",
+          "description": "Pool",
+          "total": 37,
+          "positive": 30,
+          "neutral": 2,
+          "negative": 5
+        },
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 100,
+          "positive": 75,
+          "neutral": 6,
+          "negative": 19
+        },
+        {
+          "name": "Service",
+          "description": "Service",
+          "total": 196,
+          "positive": 144,
+          "neutral": 5,
+          "negative": 47
+        },
+        {
+          "name": "Gym",
+          "description": "Gym",
+          "total": 17,
+          "positive": 11,
+          "neutral": 0,
+          "negative": 6
+        },
+        {
+          "name": "Restaurant",
+          "description": "Restaurant",
+          "total": 59,
+          "positive": 46,
+          "neutral": 5,
+          "negative": 8
+        }
+      ],
+      "amenities": [
+        "Free breakfast",
+        "Free Wi‑Fi",
+        "Free parking",
+        "Indoor pool",
+        "Hot tub",
+        "Air conditioning",
+        "Fitness center",
+        "Kitchen in some rooms",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMgBxNPsSroUFwDHFIptjpqjz-BIDcOlqq381h3=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMgBxNPsSroUFwDHFIptjpqjz-BIDcOlqq381h3=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMOumXTbDxysusCqtGY4fFNw5DfamUuw6zq_TI2=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMOumXTbDxysusCqtGY4fFNw5DfamUuw6zq_TI2=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNc2JEGx0l1ajcgI342onmghbIwWMtK4y0i37VQ=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNc2JEGx0l1ajcgI342onmghbIwWMtK4y0i37VQ=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMDlNM_qb-eJKn9mG1YkxpCuK2JzS6A0viYEeiv=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMDlNM_qb-eJKn9mG1YkxpCuK2JzS6A0viYEeiv=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOP4vszvMl2gdoA416OioR4akQy5KWJI_PLj6lj=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOP4vszvMl2gdoA416OioR4akQy5KWJI_PLj6lj=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMeolBS6XJtZC_hu9emusQXhLsHPgU116gLjqmH=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMeolBS6XJtZC_hu9emusQXhLsHPgU116gLjqmH=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPrOBf7kci_WvZDqnLGMXOW_khb5rf3isYa2o6i=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPrOBf7kci_WvZDqnLGMXOW_khb5rf3isYa2o6i=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMhPvj0vHniIu112Bx1TacXOm0HF-MYQsR3Godr=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMhPvj0vHniIu112Bx1TacXOm0HF-MYQsR3Godr=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPdnf6KBkvwtTQbJxOTegH0eoqiZmAsdY58HU4P=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPdnf6KBkvwtTQbJxOTegH0eoqiZmAsdY58HU4P=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcIw8Hmr_WBvoMZGgsvZy8xdGRibHhndxAB",
+      "data_id": "0x89c187b19d42d6bd:0x1906f80f55f9a0c3",
+      "name": "Sea Girt Lodge",
+      "link": "http://www.seagirtlodge.com/",
+      "description": "Low-key motel offering modest rooms with minifridges, plus free breakfast & an outdoor pool.",
+      "gps_coordinates": {
+        "latitude": 40.1363152,
+        "longitude": -74.0622661
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$102",
+        "extracted_price": 102,
+        "price_before_taxes": "$87",
+        "extracted_price_before_taxes": 87
+      },
+      "total_price": {
+        "price": "$1,529",
+        "extracted_price": 1529,
+        "price_before_taxes": "$1,302",
+        "extracted_price_before_taxes": 1302
+      },
+      "deal": "28% less than usual",
+      "deal_description": "Great Deal",
+      "nearby_places": [
+        {
+          "name": "Allaire State Park",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "9 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 26 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "4 hr 14 min"
+            }
+          ]
+        },
+        {
+          "name": "Turning Point of Sea Girt",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "6 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "2-star hotel",
+      "extracted_hotel_class": 2,
+      "rating": 3.8,
+      "reviews": 282,
+      "reviews_histogram": {
+        "5": 123,
+        "4": 81,
+        "3": 28,
+        "2": 11,
+        "1": 39
+      },
+      "location_rating": 3.8,
+      "proximity_to_things_to_do_rating": 3.9,
+      "proximity_to_transit_rating": 2.4,
+      "airport_access_rating": 2.8,
+      "reviews_breakdown": [
+        {
+          "name": "Cleanliness",
+          "description": "Cleanliness",
+          "total": 113,
+          "positive": 96,
+          "neutral": 8,
+          "negative": 9
+        },
+        {
+          "name": "Nature",
+          "description": "Nature and outdoor activities",
+          "total": 17,
+          "positive": 14,
+          "neutral": 3,
+          "negative": 0
+        },
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 16,
+          "positive": 7,
+          "neutral": 3,
+          "negative": 6
+        },
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 27,
+          "positive": 24,
+          "neutral": 0,
+          "negative": 3
+        },
+        {
+          "name": "Location",
+          "description": "Location",
+          "total": 34,
+          "positive": 29,
+          "neutral": 3,
+          "negative": 2
+        },
+        {
+          "name": "Pool",
+          "description": "Pool",
+          "total": 16,
+          "positive": 15,
+          "neutral": 0,
+          "negative": 1
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Parking ($)",
+        "Outdoor pool",
+        "Air conditioning",
+        "Golf",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPAf2BUfTh8ETu9YbMosqhvnWEjtw2dAGw190ZI=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPAf2BUfTh8ETu9YbMosqhvnWEjtw2dAGw190ZI=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMmIbm5plDcMLJIP51hXg1Ktel3kp7lMQozZBfj=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMmIbm5plDcMLJIP51hXg1Ktel3kp7lMQozZBfj=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNAZtb4Ug_bnch_gn4095aOGmgWjAQ8QtQyL6VO=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNAZtb4Ug_bnch_gn4095aOGmgWjAQ8QtQyL6VO=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN27fRPuZPcxbEOoabq7gHen5vaeB6N6pFrV-Q4=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipN27fRPuZPcxbEOoabq7gHen5vaeB6N6pFrV-Q4=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPyEC6G5V8I9Gx_8iymqgIfDDwkmIrB8MgTi6p-=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPyEC6G5V8I9Gx_8iymqgIfDDwkmIrB8MgTi6p-=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMEE8jdf066Bg_GA3rstI5xSfjKjOs0hjm2dIPK=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMEE8jdf066Bg_GA3rstI5xSfjKjOs0hjm2dIPK=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/Vmuw-__SbdyPVzmIHPzdkUcMQ5QSPLqwcs7XD8dlPgDw3qQzTkNEdxvao2kXoSSfKidG8spskP-nS0wbNkLDXxjf-9wkm-M4hLxQTz0IL1SrlOWzkUTHnDQkVsJhiZ-ROCx_WJ1xCLsLYFnpiNoKGY7DIeuG9Q=s287-w287-h192-n-k-no-v1",
+          "original": "https://cdn.worldota.net/t/1024x768/content/cf/85/cf85d542857229a63f181f4ac83e651e239c768d.jpeg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN9RAw0F5eoH3q8-Hhod20elAnCL4eg7LdzsfRj=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipN9RAw0F5eoH3q8-Hhod20elAnCL4eg7LdzsfRj=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMYynbYUI-jgjUeyIyEqQFYDFTAiCgsOUlKbOUI=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMYynbYUI-jgjUeyIyEqQFYDFTAiCgsOUlKbOUI=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcI3MmyuOyDvPQeGgsvZy8xdjhnY3l4cxAB",
+      "data_id": "0x89c18304b6fcc047:0x1ee8f01ec70ca4dc",
+      "name": "Hilton Garden Inn Lakewood",
+      "link": "https://www.hilton.com/en/hotels/ewrlwgi-hilton-garden-inn-lakewood/?SEO_id=GMB-AMER-GI-EWRLWGI&y_source=1_MjA4Mjc1OS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
+      "description": "Modern hotel with an indoor pool, fitness center and sundeck, plus free WiFi & parking.",
+      "gps_coordinates": {
+        "latitude": 40.0560607,
+        "longitude": -74.16389459999999
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "12:00 PM",
+      "nearby_places": [
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 29 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 34 min"
+            }
+          ]
+        },
+        {
+          "name": "LongHorn Steakhouse",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "2 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "3-star hotel",
+      "extracted_hotel_class": 3,
+      "rating": 4.2,
+      "reviews": 937,
+      "reviews_histogram": {
+        "5": 511,
+        "4": 241,
+        "3": 93,
+        "2": 36,
+        "1": 56
+      },
+      "location_rating": 3.4,
+      "proximity_to_things_to_do_rating": 3.8,
+      "airport_access_rating": 2.7,
+      "reviews_breakdown": [
+        {
+          "name": "Service",
+          "description": "Service",
+          "total": 251,
+          "positive": 193,
+          "neutral": 11,
+          "negative": 47
+        },
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 81,
+          "positive": 40,
+          "neutral": 6,
+          "negative": 35
+        },
+        {
+          "name": "Sleep",
+          "description": "Sleep",
+          "total": 61,
+          "positive": 33,
+          "neutral": 7,
+          "negative": 21
+        },
+        {
+          "name": "Location",
+          "description": "Location",
+          "total": 66,
+          "positive": 50,
+          "neutral": 5,
+          "negative": 11
+        },
+        {
+          "name": "Bathroom",
+          "description": "Bathroom and toiletries",
+          "total": 40,
+          "positive": 15,
+          "neutral": 3,
+          "negative": 22
+        },
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 47,
+          "positive": 32,
+          "neutral": 2,
+          "negative": 13
+        }
+      ],
+      "eco_certified": true,
+      "amenities": [
+        "Free Wi‑Fi",
+        "Free parking",
+        "Indoor pool",
+        "Hot tub",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOdTNQZVoEJf0sGUn_RTnKBEvJWtQmY5jMskz48=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOdTNQZVoEJf0sGUn_RTnKBEvJWtQmY5jMskz48=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPk-CHM5ka5Me8XY26-pDESBrkxlJrnYMQwOHau=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPk-CHM5ka5Me8XY26-pDESBrkxlJrnYMQwOHau=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipP9f755PrT10hoKqHupkLMPh9A1_TN0Hpk2kySv=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipP9f755PrT10hoKqHupkLMPh9A1_TN0Hpk2kySv=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwW1ZehhG0RvBwwMydkuUBeG8O-xczLLuxLoxYB_5IdndoFTlz8HnqvOJ1ZzaIF2S6hTFGcLRFmkmL-olDQPoddUFjiUJtI9BEeh6wCdcZdTNppDtdM0qh9AwnDyWpfgq_lk44FPA=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgIDpprnJmwE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN331FaGSw5pKVxv93nAPdm-BUxYHv6JiCS_sIt=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipN331FaGSw5pKVxv93nAPdm-BUxYHv6JiCS_sIt=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMowPYWAkRCHsV6w-MGsuDWN8qVtlqg3IvyoNQe=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMowPYWAkRCHsV6w-MGsuDWN8qVtlqg3IvyoNQe=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMp8knTP7U1N_w2bzYMZ7dXBitRJTNPNKsFbLP9=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMp8knTP7U1N_w2bzYMZ7dXBitRJTNPNKsFbLP9=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMhPwi_pUbkbA9i0W8F8teCvf2qv3jbDwp3lGPC=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMhPwi_pUbkbA9i0W8F8teCvf2qv3jbDwp3lGPC=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPYsR7jYcEJyNNZuYflkBMhoRqVshlvPVmTqx_Z=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPYsR7jYcEJyNNZuYflkBMhoRqVshlvPVmTqx_Z=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcI_NnBw4Xt_OjuARoKL20vMF82c3FqNxAB",
+      "data_id": "0x89c22efe459e101d:0xeed1f36858706cfc",
+      "name": "Sonesta Select Tinton Falls Eatontown",
+      "link": "https://www.sonesta.com/sonesta-select/nj/tinton-falls/sonesta-select-tinton-falls-eatontown?utm_source=google&utm_medium=organic&utm_campaign=gmb",
+      "description": "Relaxed hotel offering laid-back rooms & a restaurant, plus an exercise room & Wi-Fi.",
+      "gps_coordinates": {
+        "latitude": 40.2893341,
+        "longitude": -74.0797217
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "4:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$120",
+        "extracted_price": 120,
+        "price_before_taxes": "$105",
+        "extracted_price_before_taxes": 105
+      },
+      "total_price": {
+        "price": "$1,798",
+        "extracted_price": 1798,
+        "price_before_taxes": "$1,569",
+        "extracted_price_before_taxes": 1569
+      },
+      "nearby_places": [
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 13 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 35 min"
+            }
+          ]
+        },
+        {
+          "name": "Maurizio's Pizza & Ristorante",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "3 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "3-star hotel",
+      "extracted_hotel_class": 3,
+      "rating": 3.9,
+      "reviews": 542,
+      "reviews_histogram": {
+        "5": 232,
+        "4": 156,
+        "3": 66,
+        "2": 31,
+        "1": 57
+      },
+      "location_rating": 3.4,
+      "proximity_to_things_to_do_rating": 3.6,
+      "airport_access_rating": 3.3,
+      "reviews_breakdown": [
+        {
+          "name": "Couples",
+          "description": "Couple friendly",
+          "total": 22,
+          "positive": 5,
+          "neutral": 8,
+          "negative": 9
+        },
+        {
+          "name": "Bar",
+          "description": "Bar or lounge",
+          "total": 31,
+          "positive": 16,
+          "neutral": 1,
+          "negative": 14
+        },
+        {
+          "name": "Sleep",
+          "description": "Sleep",
+          "total": 64,
+          "positive": 30,
+          "neutral": 9,
+          "negative": 25
+        },
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 26,
+          "positive": 11,
+          "neutral": 3,
+          "negative": 12
+        },
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 31,
+          "positive": 8,
+          "neutral": 4,
+          "negative": 19
+        },
+        {
+          "name": "Business",
+          "description": "Business",
+          "total": 18,
+          "positive": 10,
+          "neutral": 2,
+          "negative": 6
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Parking ($)",
+        "Outdoor pool",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Restaurant",
+        "Full‑service laundry",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNqih25vqzj9ICR6PS0X5jKa2uJJG4fijtm6m7m=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNqih25vqzj9ICR6PS0X5jKa2uJJG4fijtm6m7m=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPi6aqmzbwYudUlOnGjBmFszaHwfEzC2HpmIxgb=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPi6aqmzbwYudUlOnGjBmFszaHwfEzC2HpmIxgb=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOSMGuzXPedlNn--ZwdrsVVgFULk7o-6UG4mZFk=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOSMGuzXPedlNn--ZwdrsVVgFULk7o-6UG4mZFk=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOXNQpXEAT_JH39Prwz2Y-zA5UQm2ted_MaI21Z=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOXNQpXEAT_JH39Prwz2Y-zA5UQm2ted_MaI21Z=s10000"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/JNsn89EASqgyQB79H9lbzq4dOeXaOYBHH5OxDHmInan4rwW4fVsgNH0jmU9B_h6L2urNgHB6w0O03hpt0x8dn4Nn1yLdPzEgMdrEHbDA2gcjqj6-ujvE1A9VFQv4xqVPeaH5cDtJD-_Bgs3iwHfKqwAQ1XlXWKw=s287-w287-h192-n-k-no-v1",
+          "original": "https://www.iceportal.com/data/2813-140553-f80054260_XXLejpg/United-States-of-America/New-Jersey/Tinton-Falls/Sonesta-Select-Tinton-Falls-Eatontown/Photo/Sonesta-Select-Tinton-Falls-Eatontown-Tinton-Falls-Undefined-Outdoor-Pool.jpg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMJJiksRKHKwUGQVqpxQ7F3BkJ0e-6m9shdHUIG=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMJJiksRKHKwUGQVqpxQ7F3BkJ0e-6m9shdHUIG=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPu9Ia-N8hfCiA8nn_W6mMtFD6PqoTeLVA78P3S=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPu9Ia-N8hfCiA8nn_W6mMtFD6PqoTeLVA78P3S=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOdfwDGlMHdDFDkS9Bdl_KpzkxkAWvmhfkOd8R2=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOdfwDGlMHdDFDkS9Bdl_KpzkxkAWvmhfkOd8R2=s10000"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/RW9AQAtzoN2r0Fs1e4LXpJEv_UYiNLtBQ29Js6Aif8OBkhX38fH2COG9N1yKVHnNOj4IeRBJsHkk0P9DnJ5i_2WEiAL4ZLhdE_s8J4Kd_AMt_wWDpp2WxM5PzF0Ck_z1aa4lnUCr8HN_pHV7iSTbI5zJZaMrFw=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/25/252096/252096a_hb_ba_001.jpg"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcIg8CiwIjc6L8QGgsvZy8xdGc5dGxqYhAB",
+      "data_id": "0x89c22f86f0f3f1a3:0x107fa2e08808a003",
+      "name": "Holiday Inn Express & Suites West Long Branch - Eatontown by IHG",
+      "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/west-long-branch/wlbnj/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-WLBNJ",
+      "description": "Relaxed hotel offering complimentary breakfast, parking & Wi-Fi, plus an indoor pool & a gym.",
+      "gps_coordinates": {
+        "latitude": 40.292541,
+        "longitude": -74.033117
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "12:00 PM",
+      "price_per_night": {
+        "price": "$130",
+        "extracted_price": 130,
+        "price_before_taxes": "$114",
+        "extracted_price_before_taxes": 114
+      },
+      "total_price": {
+        "price": "$1,945",
+        "extracted_price": 1945,
+        "price_before_taxes": "$1,712",
+        "extracted_price_before_taxes": 1712
+      },
+      "nearby_places": [
+        {
+          "name": "Monmouth Park",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "5 min"
+            }
+          ]
+        },
+        {
+          "name": "Long Branch",
+          "transportations": [
+            {
+              "duration": "9 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 21 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 36 min"
+            }
+          ]
+        },
+        {
+          "name": "The Squire at Branches",
+          "transportations": [
+            {
+              "duration": "6 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "2-star hotel",
+      "extracted_hotel_class": 2,
+      "rating": 3.8,
+      "reviews": 717,
+      "reviews_histogram": {
+        "5": 332,
+        "4": 162,
+        "3": 88,
+        "2": 43,
+        "1": 92
+      },
+      "location_rating": 3.6,
+      "proximity_to_things_to_do_rating": 3.7,
+      "proximity_to_transit_rating": 3.1,
+      "airport_access_rating": 3.0,
+      "reviews_breakdown": [
+        {
+          "name": "Service",
+          "description": "Service",
+          "total": 218,
+          "positive": 136,
+          "neutral": 8,
+          "negative": 74
+        },
+        {
+          "name": "Cleanliness",
+          "description": "Cleanliness",
+          "total": 188,
+          "positive": 141,
+          "neutral": 8,
+          "negative": 39
+        },
+        {
+          "name": "Property",
+          "description": "Property",
+          "total": 194,
+          "positive": 133,
+          "neutral": 14,
+          "negative": 47
+        },
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 125,
+          "positive": 84,
+          "neutral": 10,
+          "negative": 31
+        },
+        {
+          "name": "Bathroom",
+          "description": "Bathroom and toiletries",
+          "total": 63,
+          "positive": 13,
+          "neutral": 5,
+          "negative": 45
+        },
+        {
+          "name": "Sleep",
+          "description": "Sleep",
+          "total": 81,
+          "positive": 27,
+          "neutral": 9,
+          "negative": 45
+        }
+      ],
+      "amenities": [
+        "Free breakfast",
+        "Free Wi‑Fi",
+        "Free parking",
+        "Indoor pool",
+        "Hot tub",
+        "Air conditioning",
+        "Fitness center",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNo7KS1HJUVriocyiStoBEm-d79dcr3hMcK4J4y=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNo7KS1HJUVriocyiStoBEm-d79dcr3hMcK4J4y=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNhpN97jWhHiHqeB7QWN4xnrZoixQjICIrMD-Ut=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNhpN97jWhHiHqeB7QWN4xnrZoixQjICIrMD-Ut=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOvaLz4rE12DpdYtQaoUs3ZhpAiqFX2PlodC6yp=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOvaLz4rE12DpdYtQaoUs3ZhpAiqFX2PlodC6yp=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOu6YuMv4EmUhft7ye1O79iFcaO9b2a0DcPTHfP=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOu6YuMv4EmUhft7ye1O79iFcaO9b2a0DcPTHfP=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMyOWIr4WzyyMstWbAfJkp6W2SCGjmE8DKGHDdU=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMyOWIr4WzyyMstWbAfJkp6W2SCGjmE8DKGHDdU=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPljwIpfdbnjvh8GV-i-avN6gwa7K_x-Gvry60I=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPljwIpfdbnjvh8GV-i-avN6gwa7K_x-Gvry60I=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPv9MMQrJkN01SDFE0llMGFZEwUpucRhFlqA4bU=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPv9MMQrJkN01SDFE0llMGFZEwUpucRhFlqA4bU=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNDNooW2fw17IbtoK7pQw66y3Fe3-nwL4LD8mAx=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNDNooW2fw17IbtoK7pQw66y3Fe3-nwL4LD8mAx=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN7RKXopPTUhbiCAWmZLkZ_us9RRi2ej1L0-krB=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipN7RKXopPTUhbiCAWmZLkZ_us9RRi2ej1L0-krB=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcI7fHCx9G8mv5vGgsvZy8xdGtybXIyMBAB",
+      "data_id": "0x89c187ed3df65d1d:0x6ffc69e518f0b8ed",
+      "name": "Atlantic Inn & Suites",
+      "link": "https://www.atlanticinnandsuites.xyz/",
+      "description": "Straightforward lodging with an outdoor pool & a BBQ area, plus free Wi-Fi & continental breakfast.",
+      "gps_coordinates": {
+        "latitude": 40.1573015,
+        "longitude": -74.0520366
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "11:00 AM",
+      "price_per_night": {
+        "price": "$94",
+        "extracted_price": 94,
+        "price_before_taxes": "$82",
+        "extracted_price_before_taxes": 82
+      },
+      "total_price": {
+        "price": "$1,416",
+        "extracted_price": 1416,
+        "price_before_taxes": "$1,235",
+        "extracted_price_before_taxes": 1235
+      },
+      "nearby_places": [
+        {
+          "name": "Spring Lake Beach",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "8 min"
+            }
+          ]
+        },
+        {
+          "name": "Warren Ave at Old Mill#",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "9 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 26 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 46 min"
+            }
+          ]
+        },
+        {
+          "name": "Marigold Market & Cafe",
+          "transportations": [
+            {
+              "duration": "5 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "2-star hotel",
+      "extracted_hotel_class": 2,
+      "rating": 3.5,
+      "reviews": 257,
+      "reviews_histogram": {
+        "5": 101,
+        "4": 53,
+        "3": 38,
+        "2": 15,
+        "1": 50
+      },
+      "location_rating": 3.5,
+      "proximity_to_things_to_do_rating": 4.0,
+      "proximity_to_transit_rating": 2.7,
+      "airport_access_rating": 2.9,
+      "reviews_breakdown": [
+        {
+          "name": "Breakfast",
+          "description": "Breakfast",
+          "total": 33,
+          "positive": 22,
+          "neutral": 4,
+          "negative": 7
+        },
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 43,
+          "positive": 39,
+          "neutral": 1,
+          "negative": 3
+        },
+        {
+          "name": "Cleanliness",
+          "description": "Cleanliness",
+          "total": 111,
+          "positive": 65,
+          "neutral": 4,
+          "negative": 42
+        },
+        {
+          "name": "Nature",
+          "description": "Nature and outdoor activities",
+          "total": 18,
+          "positive": 12,
+          "neutral": 3,
+          "negative": 3
+        },
+        {
+          "name": "Pool",
+          "description": "Pool",
+          "total": 26,
+          "positive": 25,
+          "neutral": 0,
+          "negative": 1
+        },
+        {
+          "name": "Location",
+          "description": "Location",
+          "total": 34,
+          "positive": 25,
+          "neutral": 5,
+          "negative": 4
+        }
+      ],
+      "amenities": [
+        "Free breakfast",
+        "Free Wi‑Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Air conditioning",
+        "Golf",
+        "Accessible",
+        "Kid-friendly"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/2z9bhRUlAlQFZdrfkVWDP8slrh7FFw0j8EY6NsG0TgbeBU2hzYJb73OgbnA2mcuDgM92FOR6JN73YK5-8PINXklqlB9WU9-0YEkIxRzZrUlN0FNU1mC3lGX4v_9GNptJx_YX0v-Yu4JfrmUHkvFeaieqF2qXhv0=s287-w287-h192-n-k-no-v1",
+          "original": "https://cdn.worldota.net/t/1024x768/content/6c/bf/6cbfc4b0380b4d0f42447d2d48fc2275dcbcd41a.jpeg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxPakZZSAPCAhPZL-1Qaa5oBc-077Y0CBr3_JOJlLfqLhwy7v9BlhsOa19krH36QoKYzESpbvYwYtW7dw5_07L5soGR3e1xF4BOFMTZfaHNnlXhkt68ULfvoRyGU-MK_wpHZK3wow=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIHM0ogKEICAgICOhIqt8gE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/1aB6tWiNjIxZa6W5J8ATzI5D_eL2Pd8I9hCzXA87anbDrVOK767LVxiPTdSoBn8CvSDXriGpCKNwlgZy0d-9z0NAgMIcEVqnCxbPSus6-jdUbYig-Nwkfo6dR1rK0kSBrn0U8ymIGFJDbLb08hEt9-looJhsPQ=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/35/352973/352973a_hb_p_003.jpg"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/xkYmXjYPSgNY_JrSIVx5pyNBL0dIvFRF6vI47TH4G0amgaFZDTzWRJJf_Co-YjsDfm3GwawIC0wR9uLC6zhyAN6oy6cwtm66WDaTo0KyDUdhU5k4KpHUnZ0bpJuRpgfmvaI9EsVHaIVOoidmklKsbyvEoV3RVz4=s287-w287-h192-n-k-no-v1",
+          "original": "https://cdn.worldota.net/t/1024x768/content/4b/8c/4b8c9d2812d13833c107755838b73b4f883c4600.jpeg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/proxy/uMMRNEULU4lldVNkL2P4oaqMDSOoKln_Pca3sRc0kivJkQRF2AUxInS_9DYHmJS_xeOwx2hMPHIDecMcGcHNNRC7iW_n8NGW4geS2CWhkUkp2Sdjf2vh5jJZ0n6Wk80mE8csJUeOV-iS1rS6emZrKjOQs3eCmg=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/35/352973/352973a_hb_k_001.jpg"
+        },
+        {
+          "thumbnail": "https://lh5.googleusercontent.com/proxy/ZlCvtG-SCpAOesm4Gix4BcYMLQN0lRcoM6ZvF1ga52cvTlS9NuqaOTIVqLyLoVQ6f-zls6uZsVwNfaVsX0oEe_hSrrCGa_v2-0bzG778-cc8GQexCnca1geDACU62TrhdCGq5qKH20pUq_hBvEpI3NTeKL3f7Qc=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/35/352973/352973a_hb_a_023.jpg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNprjHleQtD2JYDjYOgNKhMcxQXrM-LkVHV8_aJ=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNprjHleQtD2JYDjYOgNKhMcxQXrM-LkVHV8_aJ=s10000"
+        },
+        {
+          "thumbnail": "https://lh6.googleusercontent.com/proxy/lNHLe9yoehdGyRWVJaOPjkL2-_pafq6OzCYsbBbRfFVPTPscZ7fHi4BIFTB26SJLcOXh0DvLe5NrNn0WrmkNaotqC9aM7jh5jKanEgEJp7Z7XAquapg1Qm7c-93fj8zRaD7rmNhkLkUckUQeKz4XwCug0N8v8co=s287-w287-h192-n-k-no-v1",
+          "original": "https://photos.hotelbeds.com/giata/original/35/352973/352973a_hb_a_024.jpg"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNN5yEIoGwjmHqdpnKPyriR-6X6GS4L1H98-9yc=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNN5yEIoGwjmHqdpnKPyriR-6X6GS4L1H98-9yc=s10000"
+        }
+      ]
+    },
+    {
+      "type": "hotel",
+      "property_token": "ChcIzPemydCiwIzsARoKL20vMHBkanBuNxAB",
+      "data_id": "0x89c3db9c3a60f909:0xec1901150929bbcc",
+      "name": "Courtyard by Marriott Cranbury South Brunswick",
+      "link": "https://www.marriott.com/en-us/hotels/ewrbk-courtyard-cranbury-south-brunswick/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0",
+      "description": "Straightforward hotel offering contemporary rooms & an indoor pool, plus a free local shuttle.",
+      "gps_coordinates": {
+        "latitude": 40.3452644,
+        "longitude": -74.48322770000001
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "check_in_time": "3:00 PM",
+      "check_out_time": "12:00 PM",
+      "price_per_night": {
+        "price": "$122",
+        "extracted_price": 122,
+        "price_before_taxes": "$106",
+        "extracted_price_before_taxes": 106
+      },
+      "total_price": {
+        "price": "$1,829",
+        "extracted_price": 1829,
+        "price_before_taxes": "$1,596",
+        "extracted_price_before_taxes": 1596
+      },
+      "nearby_places": [
+        {
+          "name": "Thompson Park",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "8 min"
+            }
+          ]
+        },
+        {
+          "name": "Interchange Plaza (Flag Stop)",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "3 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 8 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "4 hr"
+            }
+          ]
+        },
+        {
+          "name": "The Bistro - Eat. Drink. Connect.",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "1 min"
+            }
+          ]
+        }
+      ],
+      "hotel_class": "3-star hotel",
+      "extracted_hotel_class": 3,
+      "rating": 4.2,
+      "reviews": 913,
+      "reviews_histogram": {
+        "5": 475,
+        "4": 249,
+        "3": 103,
+        "2": 34,
+        "1": 52
+      },
+      "location_rating": 3.2,
+      "proximity_to_things_to_do_rating": 3.6,
+      "proximity_to_transit_rating": 4.2,
+      "airport_access_rating": 3.6,
+      "reviews_breakdown": [
+        {
+          "name": "Fitness",
+          "description": "Fitness",
+          "total": 37,
+          "positive": 20,
+          "neutral": 6,
+          "negative": 11
+        },
+        {
+          "name": "Bar",
+          "description": "Bar or lounge",
+          "total": 48,
+          "positive": 33,
+          "neutral": 8,
+          "negative": 7
+        },
+        {
+          "name": "Pool",
+          "description": "Pool",
+          "total": 26,
+          "positive": 17,
+          "neutral": 1,
+          "negative": 8
+        },
+        {
+          "name": "Couples",
+          "description": "Couple friendly",
+          "total": 14,
+          "positive": 7,
+          "neutral": 4,
+          "negative": 3
+        },
+        {
+          "name": "Business",
+          "description": "Business",
+          "total": 30,
+          "positive": 16,
+          "neutral": 8,
+          "negative": 6
+        },
+        {
+          "name": "Dining",
+          "description": "Food and Beverage",
+          "total": 41,
+          "positive": 31,
+          "neutral": 4,
+          "negative": 6
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Free parking",
+        "Indoor pool",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Bar",
+        "Restaurant",
+        "Accessible",
+        "Business center",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMqlmfTKdumnSQls96U0atlZbdnFwG4VA4wp8RC=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMqlmfTKdumnSQls96U0atlZbdnFwG4VA4wp8RC=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPIx-WTqPBUbn4OWMia1ILjx1M70iA58NVCZeak=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPIx-WTqPBUbn4OWMia1ILjx1M70iA58NVCZeak=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNett-ozAL_hKbIZZOKQxNAj8CkJ4rOzPAE4Jn3=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipNett-ozAL_hKbIZZOKQxNAj8CkJ4rOzPAE4Jn3=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPr2ghju3u5MsYyoZHp9fOdPxXQwDa3vxVXXVmm=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPr2ghju3u5MsYyoZHp9fOdPxXQwDa3vxVXXVmm=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOCG6KdRKO1JAY1TFgK5BAI9NhoJm6BtZVm1Ib2=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOCG6KdRKO1JAY1TFgK5BAI9NhoJm6BtZVm1Ib2=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPvxSmruNjZqev79tBY3ureKMH_IyknGVNRmuP9=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPvxSmruNjZqev79tBY3ureKMH_IyknGVNRmuP9=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipO2MvX_qyrFXkT_3uAE6GPVdwTURCPCFP2ZQ8aE=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipO2MvX_qyrFXkT_3uAE6GPVdwTURCPCFP2ZQ8aE=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPmcY2UYqH_IgqBnXWdqgb6Ubsd9bnQmC-YuxSB=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPmcY2UYqH_IgqBnXWdqgb6Ubsd9bnQmC-YuxSB=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPz8HowXji0QorM98DH0khV9udJwybYLhoGkED4=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipPz8HowXji0QorM98DH0khV9udJwybYLhoGkED4=s10000"
+        }
+      ]
+    },
+    {
+      "type": "vacation_rental",
+      "property_token": "ChkIjommnqPtxog4Gg0vZy8xMXg3MzZkZ19uEAE",
+      "data_id": "0x89c179c1bee7537d:0x38111b6a33c9848e",
+      "name": "Malon",
+      "link": "https://malonlakewood.com/",
+      "gps_coordinates": {
+        "latitude": 40.093332,
+        "longitude": -74.2436298
+      },
+      "city": "Jackson Township",
+      "country": "US",
+      "nearby_places": [
+        {
+          "name": "CR-528 at MILLER RD #",
+          "transportations": [
+            {
+              "type": "Walking",
+              "duration": "7 min"
+            }
+          ]
+        },
+        {
+          "name": "John F. Kennedy International Airport",
+          "transportations": [
+            {
+              "type": "Taxi",
+              "duration": "1 hr 39 min"
+            },
+            {
+              "type": "Public Transport",
+              "duration": "3 hr 16 min"
+            }
+          ]
+        },
+        {
+          "name": "5 Star Grill"
+        }
+      ],
+      "rating": 5,
+      "reviews": 15,
+      "reviews_histogram": {
+        "5": 15,
+        "4": 0,
+        "3": 0,
+        "2": 0,
+        "1": 0
+      },
+      "location_rating": 3.2,
+      "proximity_to_things_to_do_rating": 3.8,
+      "proximity_to_transit_rating": 3.7,
+      "airport_access_rating": 2.5,
+      "reviews_breakdown": [
+        {
+          "name": "Property",
+          "description": "Property",
+          "total": 7,
+          "positive": 7,
+          "neutral": 0,
+          "negative": 0
+        },
+        {
+          "name": "Cleanliness",
+          "description": "Cleanliness",
+          "total": 6,
+          "positive": 6,
+          "neutral": 0,
+          "negative": 0
+        }
+      ],
+      "amenities": [
+        "Free Wi‑Fi",
+        "Free parking",
+        "Air conditioning",
+        "Kitchen in rooms",
+        "Accessible",
+        "Smoke-free property"
+      ],
+      "images": [
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN2vg8I10BCpDhVlS4Cwm-YT6m24P8D-i6MBGm7=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipN2vg8I10BCpDhVlS4Cwm-YT6m24P8D-i6MBGm7=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSynK3ylVkhJp_H5iUu0w2RbjuPPCZ0THoVUFnVNM5qQJTmhvm6yrApnFno8l3g77gcNAzXbbUtXc3a1qVd35gtAou7HHWhqg6_GCF2JUdqI5GEkpb7GBQxP2cCPllFIMQTyaIxaEk-T2_Wb=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIABIhBn9O67vYXiFEGrq6o06dDQ=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipP5K1rb1aAsS0UU7QjUkZNvdEGrBBj-qaZEgAhQ=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipP5K1rb1aAsS0UU7QjUkZNvdEGrBBj-qaZEgAhQ=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMUekNhSTuWcQCHOsVdZRDiYrfn6-FS7ifpOsl4=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipMUekNhSTuWcQCHOsVdZRDiYrfn6-FS7ifpOsl4=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOXY8NW8r9b7A12MP2kxSx5TTUvv55HHXsYAi7y=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/AF1QipOXY8NW8r9b7A12MP2kxSx5TTUvv55HHXsYAi7y=s10000"
+        },
+        {
+          "thumbnail": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=eRQgsXlG3Tf6ueOWzqSBMg&cb_client=search.estubs.gps&w=287&h=192&yaw=73.41835&pitch=0&thumbfov=100&scale=2"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy-ppH9n1VTKBuI3w5AX6Z8jJdL_bE6TFqD6ueCefUcu8mNBuQlwLSeEqVDe02UWFdDYHmdugZMXdNZEAZUinQr3FPkvQe-j_jQYxINKTPLD-RQYYlhQLd3bidO0hv9fXYmCZcVUgJBJqw=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIABIhC_K0pFVtx4lBY_tIpRQ1Oj=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyr8f_BcOIiAxa-hOLT5JxybCmvUw-hEVm4Y18D31EVCYjEnyvQiKR3gqQqpsn1CbJDJ6TFXIkMIHfLPnUW721zrCuAQvniXl1rFS7ODeyO757zER2DCALUmXVsSRWhrm2WVFL_WVIvcLGn=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIABIhAb3J5geOJUtpay2oF3dyJT=s10000"
+        },
+        {
+          "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxwRaFjQAW8am6lsuHAErmn4u7E6GAVwoVuDZte3E__dXfLJVZ5AkQtvmXzaQT7VsQz-QI2YHXynAYjeSh6mnvftXxuimRQx15hm4sE37mPVl3OwXpk60dYehVSgKlggIMbjw38OXgVfj5M=s287-w287-h192-n-k-no-v1",
+          "original": "https://lh5.googleusercontent.com/p/CIABIhAu0_fIZSAva4HLO7tDTmUZ=s10000"
+        }
+      ]
+    }
+  ],
+  "brands": [
+    {
+      "id": 18,
+      "title": "Best Western International",
+      "children": [
+        {
+          "id": 254,
+          "title": "Best Western Premier Collection"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Choice Hotels",
+      "children": [
+        {
+          "id": 29,
+          "title": "Clarion"
+        },
+        {
+          "id": 82,
+          "title": "Quality Inn"
+        },
+        {
+          "id": 78,
+          "title": "Rodeway Inn"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Hilton Honors",
+      "children": [
+        {
+          "id": 81,
+          "title": "DoubleTree by Hilton"
+        },
+        {
+          "id": 115,
+          "title": "Hampton by Hilton"
+        },
+        {
+          "id": 71,
+          "title": "Hilton Garden Inn"
+        },
+        {
+          "id": 77,
+          "title": "Homewood Suites by Hilton"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "IHG Hotels & Resorts",
+      "children": [
+        {
+          "id": 64,
+          "title": "Holiday Inn"
+        },
+        {
+          "id": 56,
+          "title": "Holiday Inn Express"
+        },
+        {
+          "id": 43,
+          "title": "Staybridge Suites"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Marriott Bonvoy",
+      "children": [
+        {
+          "id": 86,
+          "title": "Courtyard by Marriott"
+        },
+        {
+          "id": 75,
+          "title": "Residence Inn by Marriott"
+        },
+        {
+          "id": 12,
+          "title": "Sheraton Hotels and Resorts"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "title": "Motel 6"
+    },
+    {
+      "id": 80,
+      "title": "Radisson Hotel Group",
+      "children": [
+        {
+          "id": 76,
+          "title": "Radisson"
+        }
+      ]
+    },
+    {
+      "id": 345,
+      "title": "Red Roof Inn",
+      "children": [
+        {
+          "id": 4,
+          "title": "Red Roof"
+        }
+      ]
+    },
+    {
+      "id": 424,
+      "title": "Sonesta Hotels",
+      "children": [
+        {
+          "id": 427,
+          "title": "Sonesta Select"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "title": "Wyndham Hotels & Resorts",
+      "children": [
+        {
+          "id": 19,
+          "title": "Days Inn"
+        },
+        {
+          "id": 34,
+          "title": "Hawthorn Suites"
+        },
+        {
+          "id": 93,
+          "title": "Super 8 Motels"
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "records_from": 1,
+    "records_to": 20,
+    "next_page_token": "CBI="
+  }
+}

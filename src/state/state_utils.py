@@ -3,6 +3,7 @@ from src.state.planner_state import PlannerState
 from src.state.visa_state import VisaState
 from src.state.flight_state import FlightState
 from src.state.accommodation_state import AccommodationState
+from src.state.activity_state import ActivityState
 
 
 def get_planner_state(tool_context: ToolContext) -> PlannerState:
@@ -150,6 +151,39 @@ def save_accommodation_state(
         return
 
     state_obj["accommodation"] = accommodation_state.model_dump()
+
+
+def get_activity_state(tool_context: ToolContext) -> ActivityState:
+    """
+    Load ActivityState from ADK's session state.
+
+    Activity and itinerary planning output is stored under the "activities" key
+    to keep it separate from the core PlannerState.
+    """
+    state_obj = getattr(tool_context, "state", None)
+    if state_obj is None:
+        return ActivityState()
+
+    raw = state_obj.get("activities") or {}
+    try:
+        return ActivityState.model_validate(raw)
+    except Exception:
+        return ActivityState()
+
+
+def save_activity_state(
+    tool_context: ToolContext,
+    activity_state: ActivityState,
+) -> None:
+    """
+    Persist ActivityState into ADK's per-session state under the
+    "activities" key.
+    """
+    state_obj = getattr(tool_context, "state", None)
+    if state_obj is None:
+        return
+
+    state_obj["activities"] = activity_state.model_dump()
 
 
 
